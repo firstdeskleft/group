@@ -30,7 +30,19 @@ create table tour(
 tid int unsigned primary key auto_increment,
 location varchar (45) not null,
 cost int unsigned not null default 0,
-date date not null,
-gid 
+tdate date not null,
+gid int unsigned,
+foreign key (gid) references guide(gid) 
 );
+
+create table booking(
+bid int unsigned primary key auto_increment,
+cid int unsigned,
+tid int unsigned,
+foreign key (cid) references customer(cid) ,
+foreign key (tid) references tour(tid) 
+);
+
+
+
 
