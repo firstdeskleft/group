@@ -25,7 +25,6 @@ cert_id int unsigned,
 foreign key (cert_id) references certificate(cert_id)
 );
 
-drop table tour;
 create table tour(
 tid int unsigned primary key auto_increment,
 location varchar (45) not null,
