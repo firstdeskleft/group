@@ -25,7 +25,7 @@ cert_id int unsigned,
 foreign key (cert_id) references certificate(cert_id)
 );
 
-drop table tour;
+
 create table tour(
 tid int unsigned primary key auto_increment,
 location varchar (45) not null,
@@ -44,5 +44,16 @@ foreign key (tid) references tour(tid)
 );
 
 
+insert into certificate (title) values('Egypt'),
+('Minoan'),
+('Myc');
+select * from certificate;
+select * from guide;
+insert into guide (firstName,lastName,subject,cert_id)
+values('Nikos','Sampanis','Otieinai',1),
+('Chris','Maroulis','OtiNaeinai',2);
 
-
+insert into tour(location,cost,tdate,gid) values('Athens, Acropolis',300,'2020-01-01',1),
+('Cornith, Corn',500,'2020-02-02',2),
+('Athens, Monastirakion',100,'2020-01-02',1);
+select * from tour;
