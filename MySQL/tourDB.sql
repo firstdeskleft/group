@@ -3,20 +3,30 @@ create database tourDB;
 
 use tourDB;
 
-create table Customer(
-cid int unsigned primary key auto_increment,
+drop table if exists user;
+create table user(
+id int unsigned primary key not null auto_increment,
+username varchar(20) not null,
+password varchar(100) not null
+);
+
+drop table if exists customer;
+create table customer(
+id int unsigned primary key auto_increment,
 firstName varchar (45) not null,
 lastName varchar (45) not null,
 credits int unsigned not null default 0
 );
 
+drop table if exists certificate;
 create table certificate(
 cert_id int unsigned primary key auto_increment,
 title varchar (45) not null
 );
 
+drop table if exists guide;
 create table guide(
-gid int unsigned primary key auto_increment,
+id int unsigned primary key auto_increment,
 firstName varchar (45) not null,
 lastName varchar (45) not null,
 profits int unsigned not null default 0,
@@ -25,38 +35,50 @@ cert_id int unsigned,
 foreign key (cert_id) references certificate(cert_id)
 );
 
-<<<<<<< HEAD
+drop table if exists role;
+create table role(
+rid int unsigned primary key not null auto_increment,
+rname varchar(30),
+unique (rname)
+);
 
-=======
->>>>>>> 59d5c7f03c0e669fc30b43bbe538ca33204e6ad3
+drop table if exists user_role;
+create table user_role(
+id int unsigned,
+rid int unsigned,
+primary key(id,rid),
+constraint userrole_fk1 foreign key (id) references user(id),
+constraint userrole_fk2 foreign key (rid) references role(rid)
+);
+
+
+
+drop table if exists tour;
 create table tour(
 tid int unsigned primary key auto_increment,
 location varchar (45) not null,
 cost int unsigned not null default 0,
 tdate date not null,
 gid int unsigned,
-foreign key (gid) references guide(gid) 
+foreign key (gid) references guide(id) 
 );
 
 create table booking(
 bid int unsigned primary key auto_increment,
 cid int unsigned,
 tid int unsigned,
-foreign key (cid) references customer(cid) ,
+foreign key (cid) references customer(id) ,
 foreign key (tid) references tour(tid) 
 );
 
+insert into role(rname) values('ROLE_ADMIN');
+insert into role(rname) values ('ROLE_GUIDE');
+insert into role(rname) values ('ROLE_CUSTOMER');
+																			-- pass is 1234
+insert into user (username, password) values ('admin', '$2a$10$D59ZadCxXwvWRi39ASUFweNxuzCvldwJNAu6fYH2Fcr9YKeAAcKee');
 
-insert into certificate (title) values('Egypt'),
-('Minoan'),
-('Myc');
-select * from certificate;
-select * from guide;
-insert into guide (firstName,lastName,subject,cert_id)
-values('Nikos','Sampanis','Otieinai',1),
-('Chris','Maroulis','OtiNaeinai',2);
+insert into user_role (id,rid) values(1,1);
 
-insert into tour(location,cost,tdate,gid) values('Athens, Acropolis',300,'2020-01-01',1),
-('Cornith, Corn',500,'2020-02-02',2),
-('Athens, Monastirakion',100,'2020-01-02',1);
-select * from tour;
+select * from user;
+select * from role;
+select * from user_role;

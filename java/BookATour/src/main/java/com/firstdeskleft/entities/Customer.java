@@ -5,12 +5,15 @@
  */
 package com.firstdeskleft.entities;
 
+import com.firstdeskleft.listeners.GenericListener;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -19,11 +22,11 @@ import javax.persistence.Table;
  */
 @Entity(name = "Customer")
 @Table(name = "customer")
-public class Customer implements Serializable {
+@EntityListeners(GenericListener.class)
+@PrimaryKeyJoinColumn(name = "id")
+public class Customer extends User implements Serializable {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer cid;
+  
     private String firstName;
     private String lastName;
     private Integer credits;
@@ -31,33 +34,16 @@ public class Customer implements Serializable {
     public Customer() {
     }
 
+      
     public Customer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        
     }
 
     public Customer(String firstName, String lastName, Integer credits) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.credits = credits;
-    }
-
-   
-
-    public Customer(Integer cid, String firstName, String lastName, Integer credits) {
-        this.cid = cid;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.credits = credits;
-    }
-
-    public Integer getCid() {
-        return cid;
-    }
-
-    public void setCid(Integer cid) {
-        this.cid = cid;
     }
 
     public String getFirstName() {
@@ -87,10 +73,9 @@ public class Customer implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 37 * hash + Objects.hashCode(this.cid);
-        hash = 37 * hash + Objects.hashCode(this.firstName);
-        hash = 37 * hash + Objects.hashCode(this.lastName);
-        hash = 37 * hash + Objects.hashCode(this.credits);
+        hash = 67 * hash + Objects.hashCode(this.firstName);
+        hash = 67 * hash + Objects.hashCode(this.lastName);
+        hash = 67 * hash + Objects.hashCode(this.credits);
         return hash;
     }
 
@@ -112,9 +97,6 @@ public class Customer implements Serializable {
         if (!Objects.equals(this.lastName, other.lastName)) {
             return false;
         }
-        if (!Objects.equals(this.cid, other.cid)) {
-            return false;
-        }
         if (!Objects.equals(this.credits, other.credits)) {
             return false;
         }
@@ -123,8 +105,10 @@ public class Customer implements Serializable {
 
     @Override
     public String toString() {
-        return "Customer{" + "cid=" + cid + ", firstName=" + firstName + ", lastName=" + lastName + ", credits=" + credits + '}';
+        return "Customer{" + "firstName=" + firstName + ", lastName=" + lastName + ", credits=" + credits + '}';
     }
+
+   
     
     
 }

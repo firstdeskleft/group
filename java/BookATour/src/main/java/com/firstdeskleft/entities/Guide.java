@@ -1,41 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.firstdeskleft.entities;
 
-import java.io.Serializable;
+import com.firstdeskleft.listeners.GenericListener;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.EntityListeners;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
  *
  * @author User
  */
-@Entity(name = "Guide")
+@Entity (name = "Guide")
+@EntityListeners(GenericListener.class)
+@PrimaryKeyJoinColumn(name = "id")
 @Table(name = "guide")
-public class Guide implements Serializable {
-    
-     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private Integer gid;
-     private String firstName;
+public class Guide extends User {
+
+    private String firstName;
      private String lastName;
      private String subject;
-    
-     @ManyToOne
+
+    @ManyToOne
      @JoinColumn(name = "cert_id")
-     private Certificate certificate;
+     private Certificate certificate; 
      
      private Integer profits;
      
@@ -46,54 +39,24 @@ public class Guide implements Serializable {
     public Guide() {
     }
 
-    public Guide(Integer gid, String firstName, String lastName, String subject, Certificate certificate, Integer profits) {
-        this.gid = gid;
+    public Guide(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Guide(String firstName, String lastName, Integer profits) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.profits = profits;
+    }
+
+    public Guide(String firstName, String lastName, String subject, Certificate certificate, Integer profits, List<Tour> tours) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.subject = subject;
         this.certificate = certificate;
         this.profits = profits;
-    }
-
-    public Guide(String firstName, String lastName, String subject, Certificate certificate, Integer profits) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.subject = subject;
-        this.certificate = certificate;
-        this.profits = profits;
-    }
-
-    public Guide(String firstName, String lastName, String subject, Certificate certificate) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.subject = subject;
-        this.certificate = certificate;
-    }
-
-    public List<Tour> getTours() {
-        return tours;
-    }
-
-    public void setTours(List<Tour> tours) {
         this.tours = tours;
-    }
-
-    
-    
-    public Certificate getCertificate() {
-        return certificate;
-    }
-
-    public void setCertificate(Certificate certificate) {
-        this.certificate = certificate;
-    }
-
-    public Integer getGid() {
-        return gid;
-    }
-
-    public void setGid(Integer gid) {
-        this.gid = gid;
     }
 
     public String getFirstName() {
@@ -120,6 +83,14 @@ public class Guide implements Serializable {
         this.subject = subject;
     }
 
+    public Certificate getCertificate() {
+        return certificate;
+    }
+
+    public void setCertificate(Certificate certificate) {
+        this.certificate = certificate;
+    }
+
     public Integer getProfits() {
         return profits;
     }
@@ -128,15 +99,23 @@ public class Guide implements Serializable {
         this.profits = profits;
     }
 
+    public List<Tour> getTours() {
+        return tours;
+    }
+
+    public void setTours(List<Tour> tours) {
+        this.tours = tours;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 19 * hash + Objects.hashCode(this.gid);
-        hash = 19 * hash + Objects.hashCode(this.firstName);
-        hash = 19 * hash + Objects.hashCode(this.lastName);
-        hash = 19 * hash + Objects.hashCode(this.subject);
-        hash = 19 * hash + Objects.hashCode(this.certificate);
-        hash = 19 * hash + Objects.hashCode(this.profits);
+        hash = 17 * hash + Objects.hashCode(this.firstName);
+        hash = 17 * hash + Objects.hashCode(this.lastName);
+        hash = 17 * hash + Objects.hashCode(this.subject);
+        hash = 17 * hash + Objects.hashCode(this.certificate);
+        hash = 17 * hash + Objects.hashCode(this.profits);
+        hash = 17 * hash + Objects.hashCode(this.tours);
         return hash;
     }
 
@@ -161,13 +140,13 @@ public class Guide implements Serializable {
         if (!Objects.equals(this.subject, other.subject)) {
             return false;
         }
-        if (!Objects.equals(this.gid, other.gid)) {
-            return false;
-        }
         if (!Objects.equals(this.certificate, other.certificate)) {
             return false;
         }
         if (!Objects.equals(this.profits, other.profits)) {
+            return false;
+        }
+        if (!Objects.equals(this.tours, other.tours)) {
             return false;
         }
         return true;
@@ -175,10 +154,14 @@ public class Guide implements Serializable {
 
     @Override
     public String toString() {
-        return "Guide{" + "gid=" + gid + ", firstName=" + firstName + ", lastName=" + lastName + ", subject=" + subject + ", certificate=" + certificate + ", profits=" + profits + '}';
+        return "Guide{" + "firstName=" + firstName + ", lastName=" + lastName + ", subject=" + subject + ", certificate=" + certificate + ", profits=" + profits + ", tours=" + tours + '}';
     }
      
      
      
-    
+     
+     
+     
 }
+
+    

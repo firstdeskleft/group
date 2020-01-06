@@ -24,8 +24,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class MyWebAppConfig implements WebMvcConfigurer {
 
     
-//    @Autowired
-//    private StringToRoleConverter stringToRoleConverter;
+    @Autowired
+    private StringToRoleConverter stringToRoleConverter;
     
 
     @Override
@@ -42,10 +42,10 @@ public class MyWebAppConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
     }
 
-//    @Override
-//    public void addFormatters(FormatterRegistry registry) {
-//        registry.addConverter(stringToRoleConverter);
-//    }
+    @Override
+    public void addFormatters(FormatterRegistry registry) {
+        registry.addConverter(stringToRoleConverter);
+    }
     
     
 
