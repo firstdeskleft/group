@@ -19,6 +19,8 @@ public class CustomerServiceImpl implements CustomerService {
     
      @Autowired
     CustomerDao cdao;
+     @Autowired
+     RoleService roleService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -31,7 +33,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void createOrUpdateCustomer(Customer c) {
         c.setPassword(passwordEncoder.encode(c.getPassword()));
+        roleService.findById(1);
         cdao.saveOrUpdate(c);
+    }
+
+    @Override
+    public Customer findByUsername(String username) {
+         return  cdao.findByUsername(username);
     }
 
     

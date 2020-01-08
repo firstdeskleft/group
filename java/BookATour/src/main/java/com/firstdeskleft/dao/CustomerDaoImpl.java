@@ -7,9 +7,10 @@ package com.firstdeskleft.dao;
 
 import com.firstdeskleft.entities.Customer;
 import java.util.List;
+import javax.persistence.NoResultException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -36,6 +37,22 @@ public class CustomerDaoImpl implements CustomerDao{
     @Override
     public void saveOrUpdate(Customer c) {
          getSession().saveOrUpdate(c);
+    }
+
+    @Override
+    public Customer findByUsername(String username) {
+           Query q =getSession().createQuery("SELECT c FROM Customer c WHERE c.username=:name");
+       q.setParameter("name", username);
+       Customer customer;
+       try{
+           customer = (Customer) q.getSingleResult();
+       }catch(NoResultException e){
+           
+           System.out.println("There is no result");
+           customer = null;
+       }
+      
+       return customer;
     }
     
 }

@@ -17,5 +17,7 @@ public interface CustomerService {
     public List<Customer> getAllCustomers();
 
     public void createOrUpdateCustomer(Customer c);
+
+    public Customer findByUsername(String username);
     
 }
