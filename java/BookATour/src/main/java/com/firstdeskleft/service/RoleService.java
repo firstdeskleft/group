@@ -9,4 +9,5 @@ public interface RoleService {
 
     public Role findById(Integer id);
     
+    public Role findByName(String rname);
 }

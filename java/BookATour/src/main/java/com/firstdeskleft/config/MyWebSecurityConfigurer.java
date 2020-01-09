@@ -37,15 +37,15 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 
-                .antMatchers("/").authenticated()
+                .antMatchers("/").anonymous()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .antMatchers("/*/create/**", "/*/update/**", "/*/delete/**").permitAll()
                 
                 
-                .and().formLogin()
-                .loginPage("/loginPage")
-                .loginProcessingUrl("/authenticate")                 
-                .permitAll()
+//                .and().formLogin()
+//                .loginPage("/loginPage")
+//                .loginProcessingUrl("/authenticate")                 
+//                .permitAll()
                 
                 .and().logout().permitAll()
                 .and().exceptionHandling().accessDeniedPage("/access-denied");

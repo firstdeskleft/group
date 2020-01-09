@@ -42,11 +42,7 @@ public class RegistrationController {
         return "guide-reg-form";
     }
     
-    @ModelAttribute("roloi")
-    public List<Role> fereRoles(){
-        
-        return roleService.getRoles();
-    }
+  
     
     @PostMapping("/customer")
     public String processCustomerRegistration(@Valid @ModelAttribute("customer") Customer customer,
@@ -54,33 +50,33 @@ public class RegistrationController {
         
         if(result.hasErrors()){
             
-            return "customer-reg-form";
+            return "formCustomerr";
         }
         Customer existing = customerService.findByUsername(customer.getUsername());
         if(existing !=null){
-            m.addAttribute("user",new Customer());
+            m.addAttribute("customer",new Customer());
             m.addAttribute("customerExistsError","Username already exists");
             return "customer-reg-form";
         }
-        customerService.createOrUpdateCustomer(customer);
+        customerService.save(customer);
         
-        return "registration-confirmation";
+        return "customer-reg-confirmation";
     }
-    @PostMapping("/processRegistration")
-    public String processRegistration(@Valid @ModelAttribute("user") User user,
+    @PostMapping("/guide")
+    public String processGuideRegistration(@Valid @ModelAttribute("guide") Guide guide,
             BindingResult result,Model m){
         
         if(result.hasErrors()){
             
-            return "registration-form";
+            return "guide-reg-form";
         }
-        User existing = userService.findByUsername(user.getUsername());
+        Guide existing = guideService.findByUsername(guide.getUsername());
         if(existing !=null){
-            m.addAttribute("user",new User());
-            m.addAttribute("userExistsError","Username already exists");
-            return "registration-form";
+            m.addAttribute("guide",new Guide());
+            m.addAttribute("guideExistsError","Username already exists");
+            return "guide-reg-form";
         }
-        userService.save(user);
+        guideService.save(guide);
         
         return "registration-confirmation";
     }

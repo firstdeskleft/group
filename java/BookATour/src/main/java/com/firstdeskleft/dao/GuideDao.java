@@ -5,6 +5,7 @@
  */
 package com.firstdeskleft.dao;
 
+import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Guide;
 import java.util.List;
 
@@ -16,6 +17,12 @@ public interface GuideDao {
 
     public List<Guide> findAll();
 
-    public void saveOrUpdate(Guide g);
+
+
+    public void save(Guide guide);
+
+    public Guide findByUsername(String username);
+
+    public void update(Guide g);
     
 }

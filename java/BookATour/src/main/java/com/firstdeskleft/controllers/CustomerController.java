@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/customerr")
+@RequestMapping("/customer")
 public class CustomerController {
     
     
@@ -37,19 +37,15 @@ public class CustomerController {
         return "listCustomers";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String showForm(@ModelAttribute("customer") Customer c) {
-
-        return "formCustomer";
-    }
+ 
    
     
 
-    @PostMapping("/create")
+    @PostMapping("/update")
     public String createOrUpdateCustomer(Customer c) { 
 
-        service.createOrUpdateCustomer(c);
+        service.UpdateCustomer(c);
 
-        return "redirect:/customerr/list";
+        return "/profile";
     }
 }

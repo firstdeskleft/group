@@ -3,6 +3,7 @@ package com.firstdeskleft.entities;
 
 import com.firstdeskleft.listeners.GenericListener;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
@@ -42,7 +43,7 @@ public class User implements Serializable {
             joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "rid"))
 
-    private List<Role> roles;
+    private List<Role> roles = new ArrayList();
 
     public User() {
     }
@@ -53,6 +54,8 @@ public class User implements Serializable {
     }
 
     public User(String username, String password, List<Role> roles) {
+        
+        
         this.username = username;
         this.password = password;
         this.roles = roles;

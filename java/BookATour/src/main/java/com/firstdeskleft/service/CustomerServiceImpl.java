@@ -7,6 +7,8 @@ package com.firstdeskleft.service;
 
 import com.firstdeskleft.dao.CustomerDao;
 import com.firstdeskleft.entities.Customer;
+import com.firstdeskleft.entities.Role;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,17 +32,31 @@ public class CustomerServiceImpl implements CustomerService {
         return cdao.findAll();
     }
 
-    @Override
-    public void createOrUpdateCustomer(Customer c) {
-        c.setPassword(passwordEncoder.encode(c.getPassword()));
-        roleService.findById(1);
-        cdao.saveOrUpdate(c);
-    }
+   
 
     @Override
     public Customer findByUsername(String username) {
          return  cdao.findByUsername(username);
     }
+
+    @Override
+    public void save(Customer customer) {
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+       
+        List<Role> list = new ArrayList();
+       Role role = roleService.findByName("ROLE_CUSTOMER");
+       list.add(role);
+       customer.setRoles(list);
+       
+        cdao.save(customer);
+    }
+
+    @Override
+    public void UpdateCustomer(Customer c) {
+        cdao.update(c);
+    }
+
+  
 
     
     

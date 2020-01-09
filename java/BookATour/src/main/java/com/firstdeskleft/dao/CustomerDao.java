@@ -16,8 +16,14 @@ public interface CustomerDao {
 
     public List<Customer> findAll();
 
-    public void saveOrUpdate(Customer c);
+
 
     public Customer findByUsername(String username);
+
+    public void save(Customer customer);
+
+    public void update(Customer c);
+
+ 
     
 }

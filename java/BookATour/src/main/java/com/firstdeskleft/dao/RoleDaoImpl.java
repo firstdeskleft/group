@@ -6,6 +6,7 @@
 package com.firstdeskleft.dao;
 
 import com.firstdeskleft.entities.Role;
+import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,15 @@ public class RoleDaoImpl implements RoleDao{
     @Override
     public Role findById(Integer id) {
         return getSession().byId(Role.class).load(id);
+    }
+
+    @Override
+    public Role findByName(String rname) {
+        Query q = getSession().createQuery("SELECT r FROM Role r WHERE r.rname=:name");
+        q.setParameter("name", rname);
+        Role role = (Role) q.getSingleResult();
+        
+        return role;
     }
     
 }

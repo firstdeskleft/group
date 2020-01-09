@@ -32,12 +32,12 @@ public class GuideController {
         return "formGuide";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/update")
     public String createOrUpdateGuide(Guide g) { 
 
-        service.createOrUpdateGuide(g);
+        service.UpdateGuide(g);
 
-        return "redirect:/guide/list";
+        return "profile";
     }
 
 }

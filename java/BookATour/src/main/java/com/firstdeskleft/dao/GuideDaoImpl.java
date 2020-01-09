@@ -1,8 +1,10 @@
 
 package com.firstdeskleft.dao;
 
+import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Guide;
 import java.util.List;
+import javax.persistence.NoResultException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -27,8 +29,31 @@ public class GuideDaoImpl implements GuideDao{
         return list;
     }
 
+  
+
     @Override
-    public void saveOrUpdate(Guide g) {
+    public void save(Guide guide) {
+       getSession().saveOrUpdate(guide);
+    }
+
+    @Override
+    public Guide findByUsername(String username) {
+            javax.persistence.Query q =getSession().createQuery("SELECT g FROM Guide g WHERE g.username=:name");
+       q.setParameter("name", username);
+       Guide guide;
+       try{
+           guide = (Guide) q.getSingleResult();
+       }catch(NoResultException e){
+           
+           System.out.println("There is no result");
+           guide = null;
+       }
+      
+       return guide;
+    }
+
+    @Override
+    public void update(Guide g) {
         getSession().saveOrUpdate(g);
     }
     

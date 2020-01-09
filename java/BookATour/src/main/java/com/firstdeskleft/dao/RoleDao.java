@@ -14,5 +14,7 @@ import com.firstdeskleft.entities.Role;
 public interface RoleDao {
 
     public Role findById(Integer id);
+
+    public Role findByName(String rname);
     
 }

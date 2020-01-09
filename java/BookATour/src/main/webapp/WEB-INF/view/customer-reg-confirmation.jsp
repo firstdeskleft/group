@@ -13,6 +13,7 @@
     </head>
     <body>
         <p>Customer successfully created</p>
+       
         <a href="${pageContext.request.contextPath}/">Home</a>
     </body>
 </html>

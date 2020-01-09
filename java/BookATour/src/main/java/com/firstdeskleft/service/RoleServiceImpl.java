@@ -22,6 +22,11 @@ public class RoleServiceImpl implements RoleService{
     public Role findById(Integer id) {
         return rdao.findById(id);
     }
+
+    @Override
+    public Role findByName(String rname) {
+        return rdao.findByName(rname);
+    }
     
     
 }

@@ -6,7 +6,10 @@
 package com.firstdeskleft.service;
 
 import com.firstdeskleft.dao.GuideDao;
+import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Guide;
+import com.firstdeskleft.entities.Role;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -21,6 +24,9 @@ public class GuideServiceImpl implements GuideService {
     @Autowired
     GuideDao gdao;
     
+     @Autowired
+     RoleService roleService;
+    
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;     
     
@@ -30,9 +36,25 @@ public class GuideServiceImpl implements GuideService {
     }
 
     @Override
-    public void createOrUpdateGuide(Guide g) {
-        g.setPassword(passwordEncoder.encode(g.getPassword()));
-        gdao.saveOrUpdate(g);
+    public void UpdateGuide(Guide g) {
+       gdao.update(g);
+       
+    }
+
+    @Override
+    public void save(Guide guide) {
+        guide.setPassword(passwordEncoder.encode(guide.getPassword()));
+         List<Role> list = new ArrayList();
+       Role role = roleService.findByName("ROLE_GUIDE");
+       list.add(role);
+       guide.setRoles(list);
+        
+        gdao.save(guide);
+    }
+
+    @Override
+    public Guide findByUsername(String username) {
+        return  gdao.findByUsername(username);
     }
     
 }

@@ -34,10 +34,6 @@ public class CustomerDaoImpl implements CustomerDao{
         return list;
     }
 
-    @Override
-    public void saveOrUpdate(Customer c) {
-         getSession().saveOrUpdate(c);
-    }
 
     @Override
     public Customer findByUsername(String username) {
@@ -54,5 +50,17 @@ public class CustomerDaoImpl implements CustomerDao{
       
        return customer;
     }
+
+    @Override
+    public void save(Customer customer) {
+         getSession().saveOrUpdate(customer);
+    }
+
+    @Override
+    public void update(Customer c) {
+         getSession().saveOrUpdate(c);
+    }
+
+  
     
 }
