@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>This page is forbidden</h1>
-        <h3>This is Spring security baby!</h3>
+        
         <a href="${pageContext.request.contextPath}/">Home Page</a>
     </body>
 </html>

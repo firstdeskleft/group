@@ -42,10 +42,10 @@
                                 <b>Register</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/CustomerRegister.html">
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/register/customer">
                                     Customer Registration</a>
 
-                                <a class="dropdown-item nav-link-hover" href="/jsp/GuideRegister.html">
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/register/guide">
                                     Tour Guide Registration</a>
                             </div>
                         </li>

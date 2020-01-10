@@ -33,13 +33,13 @@ public class RegistrationController {
         
         m.addAttribute("customer", new Customer());
         
-        return "customer-reg-form";
+        return "CustomerRegister";
     }
     
     @GetMapping("/guide")
     public String ShowGuideRegistrationForm(Model m){
         m.addAttribute("guide",new Guide());
-        return "guide-reg-form";
+        return "GuideRegister";
     }
     
   
@@ -50,13 +50,13 @@ public class RegistrationController {
         
         if(result.hasErrors()){
             
-            return "formCustomerr";
+            return "CustomerRegister";
         }
         Customer existing = customerService.findByUsername(customer.getUsername());
         if(existing !=null){
             m.addAttribute("customer",new Customer());
             m.addAttribute("customerExistsError","Username already exists");
-            return "customer-reg-form";
+            return "CustomerRegister";
         }
         customerService.save(customer);
         
@@ -68,13 +68,13 @@ public class RegistrationController {
         
         if(result.hasErrors()){
             
-            return "guide-reg-form";
+            return "GuideRegister";
         }
         Guide existing = guideService.findByUsername(guide.getUsername());
         if(existing !=null){
             m.addAttribute("guide",new Guide());
             m.addAttribute("guideExistsError","Username already exists");
-            return "guide-reg-form";
+            return "GuideRegister";
         }
         guideService.save(guide);
         
