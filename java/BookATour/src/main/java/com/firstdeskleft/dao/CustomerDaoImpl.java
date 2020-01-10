@@ -31,6 +31,7 @@ public class CustomerDaoImpl implements CustomerDao{
     public List<Customer> findAll() {
          Query q = getSession().createQuery("FROM Customer c");
         List<Customer> list = q.getResultList();
+        
         return list;
     }
 

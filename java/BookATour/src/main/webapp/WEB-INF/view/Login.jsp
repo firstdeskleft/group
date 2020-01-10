@@ -85,7 +85,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 form-group">
-                <input type="submit" class="btn btn-block btn-login text-white" placeholder="Enter your Password" >
+                <input type="submit" class="btn btn-block btn-login text-white" value="Submit" >
             </div>
         </div>
     </div>

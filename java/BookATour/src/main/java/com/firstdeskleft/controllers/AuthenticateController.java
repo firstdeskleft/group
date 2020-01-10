@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AuthenticateController {
     
-    @GetMapping("/loginPage")
+    @GetMapping("/Login")
     public String showLoginForm(){
-        return "form-login";
+        return "Login";
     }
     
     @GetMapping("/access-denied")
