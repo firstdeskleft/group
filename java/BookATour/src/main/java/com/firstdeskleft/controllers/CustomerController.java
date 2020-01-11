@@ -34,7 +34,7 @@ public class CustomerController {
     public String showCustomers(Model m) {
         List<Customer> list = service.getAllCustomers();
         m.addAttribute("listOfCustomers", list);
-        return "listCustomers";
+        return "HomeAdmin";
     }
 
  

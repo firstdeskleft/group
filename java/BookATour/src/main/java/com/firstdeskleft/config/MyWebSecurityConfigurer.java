@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 /**
  *
@@ -21,51 +22,51 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private DataSource datasource;
-    
+
     @Autowired
     private com.firstdeskleft.service.UserService userDetailsService;
-    
-    
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        
+
         auth.authenticationProvider(authenticationProvider());
 
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
+        return new MySimpleUrlAuthenticationSuccessHandler();
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                
                 .antMatchers("/").permitAll()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
+                .antMatchers("/customer/list").hasRole("ADMIN")
                 .antMatchers("/*/create/**", "/*/update/**", "/*/delete/**").permitAll()
-                
-                
                 .and().formLogin()
                 .loginPage("/Login")
-                .loginProcessingUrl("/authenticate")                 
+                .loginProcessingUrl("/authenticate")
+                .successHandler(myAuthenticationSuccessHandler())
                 .permitAll()
-                
                 .and().logout().permitAll()
                 .and().exceptionHandling().accessDeniedPage("/access-denied");
 
     }
-    
+
     @Bean
-    public DaoAuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
         auth.setUserDetailsService(userDetailsService);
         auth.setPasswordEncoder(passwordEncoder());
-        
-        
+
         return auth;
     }
-    
+
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){          
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
 
 }

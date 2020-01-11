@@ -4,8 +4,10 @@ package com.firstdeskleft.controllers;
 
 
 
+import com.firstdeskleft.entities.Certificate;
 import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Guide;
+import com.firstdeskleft.service.CertificateService;
 import com.firstdeskleft.service.CustomerService;
 import com.firstdeskleft.service.GuideService;
 import java.util.List;
@@ -28,11 +30,14 @@ public class RegistrationController {
     @Autowired
     GuideService guideService;
     
+    @Autowired
+    CertificateService certificateService;
+    
     @GetMapping("/customer")
     public String showCustomerRegistrationForm(Model m){
         
         m.addAttribute("customer", new Customer());
-        
+        m.addAttribute("certificate", new Certificate());
         return "CustomerRegister";
     }
     
@@ -60,7 +65,7 @@ public class RegistrationController {
         }
         customerService.save(customer);
         
-        return "customer-reg-confirmation";
+        return "Home";
     }
     @PostMapping("/guide")
     public String processGuideRegistration(@Valid @ModelAttribute("guide") Guide guide,
@@ -76,9 +81,10 @@ public class RegistrationController {
             m.addAttribute("guideExistsError","Username already exists");
             return "GuideRegister";
         }
+        certificateService()
         guideService.save(guide);
         
-        return "registration-confirmation";
+        return "Home";
     }
     
 

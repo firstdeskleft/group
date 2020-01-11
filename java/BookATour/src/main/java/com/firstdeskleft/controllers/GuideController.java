@@ -26,11 +26,7 @@ public class GuideController {
         return "listGuides";
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String showForm(@ModelAttribute("guide") Guide g) {
-
-        return "formGuide";
-    }
+   
 
     @PostMapping("/update")
     public String createOrUpdateGuide(Guide g) { 
