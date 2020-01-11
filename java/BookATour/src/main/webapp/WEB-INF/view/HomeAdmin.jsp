@@ -5,9 +5,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <br>
     <title>Home</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/fontAwesome/css/all.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/fontAwesome/css/all.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
@@ -35,8 +35,12 @@
                                 <b>{user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/Login.jsp">
-                                    Logout</a>
+                                <a class="dropdown-item nav-link-hover">
+                                    <p>Logged in as :${user.username} |
+            <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+            <input type="submit" value="Logout">
+        </form:form>
+        </p></a>
                                     </div>
                         </li>
                     </ul>

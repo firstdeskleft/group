@@ -50,7 +50,10 @@ public class RegistrationController {
     
     @PostMapping("/customer")
     public String processCustomerRegistration(@Valid @ModelAttribute("customer") Customer customer,
+          
             BindingResult result,Model m){
+        
+        System.out.println("------------------------POST REGISTRATION CUSTOMER"+customer);
         
         if(result.hasErrors()){
             

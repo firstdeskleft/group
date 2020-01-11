@@ -24,13 +24,14 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User findByUserName(String username) {
-        Query q = getSession().createQuery("SELECT u FROM User u WHERE u.username= :name");
+        System.out.println("--------------------------UDAO USER:" +username);
+        Query q = getSession().createQuery("SELECT u FROM User u WHERE u.username=:name");
         q.setParameter("name", username);
 
         User user = null;
         try {
             user = (User) q.getSingleResult();
-
+            System.out.println("------------------------------------USERDAO USER ENTITY:" + user);
         } catch (Exception e) {
             System.out.println("===============UDAO=================No user found");
         }finally{

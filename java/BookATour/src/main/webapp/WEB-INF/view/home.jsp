@@ -5,12 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <br>
     <title>Home</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/fontAwesome/css/all.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/fontAwesome/css/all.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
+   <!-- ${pageContext.request.contextPath}/logout -->
 
     <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
@@ -30,8 +31,9 @@
                                 <i class="far fa-user-circle"></i>
                                 <b>User</b>
                             </a>
+                            
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/Login.jsp">
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/Login">
                                     Login</a>
                                     </div>
                         </li>

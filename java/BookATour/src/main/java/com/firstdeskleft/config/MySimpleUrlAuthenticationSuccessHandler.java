@@ -79,6 +79,7 @@ public class MySimpleUrlAuthenticationSuccessHandler
         } else if (isGuide) {
             return "/HomeGuide";
         } else if (isCustomer) {
+            System.out.println("---------------------------------------------IS CUSTOME SUCCESSHANDLER");
             return "/HomeCustomer";
         } else {
             throw new IllegalStateException();

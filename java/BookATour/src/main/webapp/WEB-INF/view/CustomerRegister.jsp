@@ -101,14 +101,7 @@
             </div>
           </div>
        
-          <div class="control-group">
-            <!-- Password -->
-            <label class="control-label"  for="password_confirm">Password (Confirm)</label>
-            <div class="controls">
-              <form:input path="password" type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge"/>
-              <p class="help-block">Please confirm password</p>
-            </div>
-          </div>
+          
        
           <div class="control-group">
             <!-- Button -->

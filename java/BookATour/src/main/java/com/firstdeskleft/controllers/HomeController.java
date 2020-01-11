@@ -11,7 +11,7 @@ public class HomeController {
     
     @GetMapping
     public String home(){
-        
+        System.out.println("-------------------------------------------------------HOMEHOME");
         return "Home";
     }
     
@@ -29,7 +29,7 @@ public class HomeController {
     
     @GetMapping("/HomeCustomer")
     public String customerHome(){
-        
+        System.out.println("=======================================HOMECONTROLLER customer");
         return "HomeCustomer";
     }
     
