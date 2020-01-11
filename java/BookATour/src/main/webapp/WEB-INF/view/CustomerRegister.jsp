@@ -1,4 +1,5 @@
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 
@@ -58,7 +59,7 @@
 </header>
 <div class="image"></div>
 <br>
-    <form id="registerForm" class="form-horizontal Register" method="POST">
+    <form:form action="${pageContext.request.contextPath}/register/customer" id="registerForm" class="form-horizontal Register" method="POST" modelAttribute="customer">
         <fieldset>
           <div id="legend">
             <legend class="">Customer Registration</legend>
@@ -67,7 +68,7 @@
             <!-- First name -->
             <label class="control-label"  for="firstName">First Name</label>
             <div class="controls">
-              <input type="text" id="firstName" name="firstName" placeholder="" class="input-xlarge">
+              <form:input path="firstName" type="text" id="firstName" name="firstName" placeholder="" class="input-xlarge"/>
               <p class="help-block">First Name can contain any letters or numbers, without spaces</p>
             </div>
           </div>
@@ -76,7 +77,7 @@
             <!-- Last name -->
             <label class="control-label"  for="lastName">Last Name</label>
             <div class="controls">
-              <input type="text" id="lastName" name="lastName" placeholder="" class="input-xlarge">
+              <form:input path="lastName" type="text" id="lastName" name="lastName" placeholder="" class="input-xlarge"/>
               <p class="help-block">Last Name can contain any letters or numbers, without spaces</p>
             </div>
           </div>
@@ -86,7 +87,7 @@
             <!-- Username -->
             <label class="control-label"  for="username">Username</label>
             <div class="controls">
-              <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+              <form:input path="username" type="text" id="username" name="username" placeholder="" class="input-xlarge"/>
               <p class="help-block">Username can contain any letters or numbers, without spaces</p>
             </div>
           </div>
@@ -95,7 +96,7 @@
             <!-- Password-->
             <label class="control-label" for="password">Password</label>
             <div class="controls">
-              <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+              <form:input path="password" type="password" id="password" name="password" placeholder="" class="input-xlarge"/>
               <p class="help-block">Password should be at least 4 characters</p>
             </div>
           </div>
@@ -104,7 +105,7 @@
             <!-- Password -->
             <label class="control-label"  for="password_confirm">Password (Confirm)</label>
             <div class="controls">
-              <input type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge">
+              <form:input path="password" type="password" id="password_confirm" name="password_confirm" placeholder="" class="input-xlarge"/>
               <p class="help-block">Please confirm password</p>
             </div>
           </div>
@@ -116,7 +117,7 @@
             </div>
           </div>
         </fieldset>
-      </form>
+      </form:form>
       <br>
       <!--JQUERY-->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"

@@ -75,11 +75,11 @@ public class MySimpleUrlAuthenticationSuccessHandler
         }
 
         if (isAdmin) {
-            return "/HomeAdmin.jsp";
+            return "/HomeAdmin";
         } else if (isGuide) {
-            return "/Home-Guide.jsp";
+            return "/HomeGuide";
         } else if (isCustomer) {
-            return "/HomeCustomer.jsp";
+            return "/HomeCustomer";
         } else {
             throw new IllegalStateException();
         }

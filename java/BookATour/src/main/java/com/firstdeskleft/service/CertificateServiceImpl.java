@@ -9,6 +9,6 @@ package com.firstdeskleft.service;
  *
  * @author User
  */
-public class CertificateServiceImpl {
+public class CertificateServiceImpl implements CertificateService{
     
 }

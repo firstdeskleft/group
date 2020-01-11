@@ -42,14 +42,11 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/customer/list").hasRole("ADMIN")
                 .antMatchers("/*/create/**", "/*/update/**", "/*/delete/**").permitAll()
                 .and().formLogin()
                 .loginPage("/Login")
-                .loginProcessingUrl("/authenticate")
-                .successHandler(myAuthenticationSuccessHandler())
-                .permitAll()
+                .loginProcessingUrl("/authenticate").permitAll()
+//                .successHandler(myAuthenticationSuccessHandler())  
                 .and().logout().permitAll()
                 .and().exceptionHandling().accessDeniedPage("/access-denied");
 

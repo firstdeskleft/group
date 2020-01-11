@@ -68,7 +68,7 @@
             <!-- First name -->
             <label class="control-label"  for="firstName">First Name</label>
             <div class="controls">
-              <form:input path="firstName" id="firstName" name="firstName" placeholder="" class="input-xlarge"/>
+              <form:input type="text" path="firstName" id="firstName" name="firstName" placeholder="" class="input-xlarge"/>
               <p class="help-block">First Name can contain any letters or numbers, without spaces</p>
             </div>
           </div>

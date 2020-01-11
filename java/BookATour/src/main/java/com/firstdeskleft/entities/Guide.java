@@ -3,6 +3,7 @@ package com.firstdeskleft.entities;
 import com.firstdeskleft.listeners.GenericListener;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -26,9 +27,10 @@ public class Guide extends User {
      private String lastName;
      private String subject;
 
-    @ManyToOne
+    @ManyToOne(cascade ={CascadeType.ALL})
      @JoinColumn(name = "cert_id")
-     private Certificate certificate; 
+    
+     private Certificate certificate ; 
      
      private Integer profits;
      
@@ -51,10 +53,11 @@ public class Guide extends User {
     }
 
     public Guide(String firstName, String lastName, String subject, Certificate certificate, Integer profits, List<Tour> tours) {
+        
         this.firstName = firstName;
         this.lastName = lastName;
         this.subject = subject;
-        this.certificate = certificate;
+        this.certificate = new Certificate();
         this.profits = profits;
         this.tours = tours;
     }

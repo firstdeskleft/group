@@ -15,18 +15,22 @@ public class HomeController {
         return "Home";
     }
     
-    @GetMapping("/admin")
+    @GetMapping("/HomeAdmin")
     public String adminHome(){
         
-        return "admin";
+        return "HomeAdmin";
     }
     
-    @GetMapping("/user")
-    public String userHome(){
+    @GetMapping("/HomeGuide")
+    public String guideHome(){
         
-        return "user ";
+        return "HomeGuide";
     }
     
-    
+    @GetMapping("/HomeCustomer")
+    public String customerHome(){
+        
+        return "HomeCustomer";
+    }
     
 }

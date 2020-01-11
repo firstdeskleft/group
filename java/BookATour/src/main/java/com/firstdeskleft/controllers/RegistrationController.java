@@ -30,14 +30,13 @@ public class RegistrationController {
     @Autowired
     GuideService guideService;
     
-    @Autowired
-    CertificateService certificateService;
+
     
     @GetMapping("/customer")
     public String showCustomerRegistrationForm(Model m){
         
         m.addAttribute("customer", new Customer());
-        m.addAttribute("certificate", new Certificate());
+       
         return "CustomerRegister";
     }
     
@@ -81,7 +80,7 @@ public class RegistrationController {
             m.addAttribute("guideExistsError","Username already exists");
             return "GuideRegister";
         }
-        certificateService()
+        
         guideService.save(guide);
         
         return "Home";
