@@ -34,7 +34,7 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                <a class="dropdown-item nav-link-hover">
-                                    <p>Logged in as :${user.username} |
+                                    <p>Logged in as :${user.username} 
             <form:form action="${pageContext.request.contextPath}/logout" method="POST">
             <input type="submit" value="Logout">
         </form:form>

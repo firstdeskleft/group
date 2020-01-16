@@ -75,12 +75,12 @@
         <h2 class="LoginForm"><b>Login</b></h2>
         <div class="row">
             <div class="col-md-12 form-group">
-                <input type="text" name="username" class="form-control" placeholder="Username" required="required">
+                <form:input path="username" type="text" name="username" class="form-control" placeholder="Username" required="required"/>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 form-group">
-                <input type="password" name="password" placeholder="Enter your Password" class="form-control" required="required">
+                <form:input path="password" type="password" name="password" placeholder="Enter your Password" class="form-control" required="required"/>
             </div>
         </div>
         <div class="row">

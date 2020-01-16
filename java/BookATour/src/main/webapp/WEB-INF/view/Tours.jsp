@@ -73,15 +73,17 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <c:forEach items="${listOfTours}" var="t">
                     <tr>
                         <td class="text-center">${t.location}</td>
-                        <td class="text-center">${t.date}</td>
+                        <td class="text-center">${t.tdate}</td>
                         <td class="text-center">${t.cost}</td>
                         <td class="text-center">${t.guide}</td>
                         <td class="text-center"><a name="booking" href="#" id="booking" type="submit">
                             <b class="text-dark"><button onclick="alert('you have to Login first')" 
                                 class="btn btn-primary" id="bookButton" name="bookButton">
                                 Book now</button></b></a></td>
+                    </c:forEach>
                     </tr>
                 </tbody>
             </table>

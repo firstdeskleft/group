@@ -1,4 +1,6 @@
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <!DOCTYPE html>
 <html>
 
@@ -6,9 +8,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <br>
     <title>Home</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/fontAwesome/css/all.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/fontAwesome/css/all.css">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 
 <body>
@@ -23,13 +25,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a href="/jsp/HomeAdmin.html"
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/HomeAdmin"
                             class="nav-link nav-link-hover"><b>Home</b></a></li>
-                        <li class="nav-item"><a href="/jsp/ToursAdmin.html"
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}"
                             class="nav-link nav-link-hover"><b>Tours</b></a></li>
-                            <li class="nav-item"><a href="/jsp/Guides.html"
+                            <li class="nav-item"><a href="${pageContext.request.contextPath}/guide/list"
                                 class="nav-link nav-link-hover"><b>Guides</b></a></li>
-                                <li class="nav-item"><a href="/jsp/Customers.html"
+                                <li class="nav-item"><a href="${pageContext.request.contextPath}"
                                     class="nav-link nav-link-hover"><b>Customers</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
