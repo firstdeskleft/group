@@ -15,7 +15,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-info bg-dark">
+         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
                 <a id="appTitle" class="navbar-brand nav-link-hover text-primary"><b>Book a Tour</b></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarUtils"
@@ -24,9 +24,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
-                     <li class="nav-item main-item"><a href="/jsp/Home.html"
+                     <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/"
                             class="nav-link nav-link-hover"><b>Home</b></a></li>
-                        <li class="nav-item main-item"><a href="/jsp/Tours.html"
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/tour/list"
                             class="nav-link nav-link-hover"><b>Our Tours</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
@@ -35,7 +35,7 @@
                                 <b>User</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/Login.jsp">
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/Login">
                                     Login</a>
                                     </div>
                         </li>
@@ -46,10 +46,10 @@
                                 <b>Register</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/CustomerRegister.html">
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/register/customer">
                                     Customer Registration</a>
 
-                                <a class="dropdown-item nav-link-hover" href="/jsp/GuideRegister.html">
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/register/guide">
                                     Tour Guide Registration</a>
                             </div>
                         </li>

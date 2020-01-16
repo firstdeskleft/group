@@ -65,10 +65,10 @@
                             <input type="text" id="location" name="location" placeholder="Enter Location" required>
                         </td>
                         <td class="text-center">
-                            <input type="text" id="date" name="date" placeholder="Enter Date" required>
+                            <input type="date" id="createTourDate" name="createTourDate" placeholder="Enter Date" value="" required>
                         </td>
                         <td class="text-center">
-                            <input type="number" id="cost" name="cost" placeholder="Enter Cost" required>
+                            <p><input type="number" id="cost" name="cost" placeholder="Enter Price in Euros..." required>  </p>
                         </td>
                     </tr>
                 </tbody>

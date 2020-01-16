@@ -25,7 +25,7 @@ public class TourController {
         List<Tour> list = service.getAllTours();
         m.addAttribute("listOfTours",list);
         
-        return "listTour";
+        return "Tours";
     }
 
 }
