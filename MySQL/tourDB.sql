@@ -1,6 +1,8 @@
 drop database if exists tourDB;
 create database tourDB;
 
+SET FOREIGN_KEY_CHECKS=1;
+
 use tourDB;
 
 drop table if exists user;
@@ -15,7 +17,7 @@ create table customer(
 id int unsigned primary key auto_increment,
 firstName varchar (45) not null,
 lastName varchar (45) not null,
-credits int unsigned not null default 0
+credits int unsigned  default 0
 );
 
 drop table if exists certificate;
@@ -29,7 +31,7 @@ create table guide(
 id int unsigned primary key auto_increment,
 firstName varchar (45) not null,
 lastName varchar (45) not null,
-profits int unsigned not null default 0,
+profits int unsigned  default 0,
 subject varchar (45),
 cert_id int unsigned,
 foreign key (cert_id) references certificate(cert_id)
@@ -52,7 +54,6 @@ constraint userrole_fk2 foreign key (rid) references role(rid)
 );
 
 
-
 drop table if exists tour;
 create table tour(
 tid int unsigned primary key auto_increment,
@@ -71,14 +72,26 @@ foreign key (cid) references customer(id) ,
 foreign key (tid) references tour(tid) 
 );
 
+
 insert into role(rname) values('ROLE_ADMIN');
 insert into role(rname) values ('ROLE_GUIDE');
 insert into role(rname) values ('ROLE_CUSTOMER');
 																			-- pass is 1234
 insert into user (username, password) values ('admin', '$2a$10$D59ZadCxXwvWRi39ASUFweNxuzCvldwJNAu6fYH2Fcr9YKeAAcKee');
 
+-- insert into user (username, password) values ('customer', '$2a$10$K5pZsA5s0ibOaU6q.Ba5XeE4vnT0yiWeCSbRr9rY6Wrp1M.DOf1bS');
+
 insert into user_role (id,rid) values(1,1);
+-- insert into user_role (id,rid) values(2,3);
+
 
 select * from user;
+select * from customer;
 select * from role;
 select * from user_role;
+
+select * from guide;
+
+select * from certificate;
+
+select * from user;
