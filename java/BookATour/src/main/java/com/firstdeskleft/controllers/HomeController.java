@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("/")
-@SessionAttributes("user")
 public class HomeController {
 
     @GetMapping
@@ -22,10 +21,8 @@ public class HomeController {
     }
 
     @GetMapping("/HomeAdmin")
-    public String adminHome(
-  @SessionAttribute("user") User user, Model model,
-                                     HttpServletRequest request) {
-            System.out.println("----------------------------------ADminHome" +user);
+    public String adminHome() {
+
         return "HomeAdmin";
     }
 
@@ -41,9 +38,6 @@ public class HomeController {
         return "HomeCustomer";
     }
 
-    @ModelAttribute("user")
-    public User getuser() {
-        return new User();
-    }
+   
 
 }
