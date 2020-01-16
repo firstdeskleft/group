@@ -61,7 +61,7 @@ location varchar (45) not null,
 cost int unsigned not null default 0,
 tdate date not null,
 gid int unsigned,
-foreign key (gid) references guide(id) 
+foreign key (gid) references guide(id) on delete cascade 
 );
 
 create table booking(
@@ -69,7 +69,7 @@ bid int unsigned primary key auto_increment,
 cid int unsigned,
 tid int unsigned,
 foreign key (cid) references customer(id) ,
-foreign key (tid) references tour(tid) 
+foreign key (tid) references tour(tid) on delete cascade
 );
 
 
@@ -89,9 +89,11 @@ select * from user;
 select * from customer;
 select * from role;
 select * from user_role;
-
+select * from tour;
 select * from guide;
-
 select * from certificate;
 
-select * from user;
+insert into guide values(1,"Chris","Mark",500,"AAA",1);
+insert into tour values(1,"Kriti",600,"1999-09-09",1);
+delete from guide where id=1;
+insert into  certificate values(1,"Pasparation");

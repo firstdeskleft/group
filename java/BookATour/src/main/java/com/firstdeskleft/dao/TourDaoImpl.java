@@ -1,5 +1,6 @@
 package com.firstdeskleft.dao;
 
+import com.firstdeskleft.entities.Guide;
 import com.firstdeskleft.entities.Tour;
 import java.util.List;
 import javax.persistence.Query;
@@ -31,5 +32,22 @@ public class TourDaoImpl implements TourDao{
         
         return q.getResultList();
     }
+    
+    @Override
+    public void save(Tour tour) {
+       getSession().saveOrUpdate(tour);
+    }
+
+    @Override
+    public void findbyname(String name) {
+       javax.persistence.Query q =getSession().createQuery("SELECT t FROM Tour t WHERE t.tid:name");
+       q.setParameter("name", name);
+       Guide guide;
+        
+        
+    }
+    
+    
+    
     
 }

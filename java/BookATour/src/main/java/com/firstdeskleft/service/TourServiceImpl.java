@@ -29,4 +29,17 @@ public class TourServiceImpl implements TourService{
         return tdao.findAll();        
     }
     
+    @Override
+    public void save(Tour tour) {
+       tdao.save(tour);
+       
+    }
+
+    @Override
+    public List<Tour> findByUsername(String name) {
+       tdao.findbyname(name);
+    }
+    
+    
+    
 }

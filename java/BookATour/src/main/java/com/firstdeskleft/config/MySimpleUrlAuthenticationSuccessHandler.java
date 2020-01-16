@@ -35,6 +35,12 @@ public class MySimpleUrlAuthenticationSuccessHandler
             HttpServletResponse response, Authentication authentication)
             throws IOException {
 
+        System.out.println("___________________________________");
+        System.out.println("onAuthenticationSuccess:::request :::" + request);
+        System.out.println("onAuthenticationSuccess:::response :::" + response);
+        System.out.println("onAuthenticationSuccess:::authentication :::" + authentication);
+        System.out.println("___________________________________");
+
         handle(request, response, authentication);
         clearAuthenticationAttributes(request);
     }
@@ -43,12 +49,16 @@ public class MySimpleUrlAuthenticationSuccessHandler
             HttpServletResponse response, Authentication authentication)
             throws IOException {
 
+        System.out.println("___________________________________");
+        System.out.println("handle :::request :::" + request);
+        System.out.println("handle :::response :::" + response);
+        System.out.println("handle :::authentication :::" + authentication);
+        System.out.println("___________________________________");
+
         String targetUrl = determineTargetUrl(authentication);
 
         if (response.isCommitted()) {
-            logger.debug(
-                    "Response has already been committed. Unable to redirect to "
-                    + targetUrl);
+            logger.debug("Response has already been committed. Unable to redirect to " + targetUrl);
             return;
         }
 
@@ -56,11 +66,16 @@ public class MySimpleUrlAuthenticationSuccessHandler
     }
 
     protected String determineTargetUrl(Authentication authentication) {
+
+        System.out.println("______________________________________");
+        System.out.println("determineTargetUrl:::authentication" + authentication);
+        System.out.println("______________________________________");
+
         boolean isGuide = false;
         boolean isCustomer = false;
         boolean isAdmin = false;
-        Collection<? extends GrantedAuthority> authorities
-                = authentication.getAuthorities();
+
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
                 isAdmin = true;
@@ -79,7 +94,6 @@ public class MySimpleUrlAuthenticationSuccessHandler
         } else if (isGuide) {
             return "/HomeGuide";
         } else if (isCustomer) {
-            System.out.println("---------------------------------------------IS CUSTOME SUCCESSHANDLER");
             return "/HomeCustomer";
         } else {
             throw new IllegalStateException();
@@ -87,6 +101,11 @@ public class MySimpleUrlAuthenticationSuccessHandler
     }
 
     protected void clearAuthenticationAttributes(HttpServletRequest request) {
+        
+        System.out.println("______________________________________________");
+        System.out.println("clearAuthenticationAttributes:::request" + request);
+        System.out.println("______________________________________________");
+        
         HttpSession session = request.getSession(false);
         if (session == null) {
             return;

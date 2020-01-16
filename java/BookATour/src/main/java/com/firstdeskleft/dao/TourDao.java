@@ -16,4 +16,9 @@ public interface TourDao {
 
     public List<Tour> findAll();
     
+     public void save(Tour tour);
+
+    public void findbyname(String name);
+    
+    
 }
