@@ -39,12 +39,12 @@ public class TourDaoImpl implements TourDao{
     }
 
     @Override
-    public void findbyname(String name) {
-       javax.persistence.Query q =getSession().createQuery("SELECT t FROM Tour t WHERE t.tid:name");
-       q.setParameter("name", name);
-       Guide guide;
+    public List<Tour> findByGuideId(Integer Id) {
+       javax.persistence.Query q =getSession().createQuery("SELECT t FROM Tour t WHERE t.guide.id=:id");
+       q.setParameter("id", Id);
+     List<Tour> list  =  q.getResultList();
         
-        
+        return list;
     }
     
     

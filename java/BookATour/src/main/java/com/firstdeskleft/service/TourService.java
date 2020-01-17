@@ -13,5 +13,5 @@ public interface TourService {
     
     public void save(Tour tour);
 
-    public List<Tour> findByUsername(String name);
+    public List<Tour> findByGuideId(Integer Id);
 }

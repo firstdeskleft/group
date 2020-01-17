@@ -18,7 +18,7 @@ public interface TourDao {
     
      public void save(Tour tour);
 
-    public void findbyname(String name);
+    public List<Tour> findByGuideId(Integer Id);
     
     
 }

@@ -24,7 +24,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User findByUserName(String username) {
-        System.out.println("--------------------------UDAO USER:" +username);
+        System.out.println("--------------------------UDAO USER USERNAME SEARCH:" +username);
         Query q = getSession().createQuery("SELECT u FROM User u WHERE u.username=:name");
         q.setParameter("name", username);
 

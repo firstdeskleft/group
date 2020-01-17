@@ -36,8 +36,9 @@ public class TourServiceImpl implements TourService{
     }
 
     @Override
-    public List<Tour> findByUsername(String name) {
-       tdao.findbyname(name);
+    public List<Tour> findByGuideId(Integer Id) {
+       
+       return tdao.findByGuideId(Id);
     }
     
     

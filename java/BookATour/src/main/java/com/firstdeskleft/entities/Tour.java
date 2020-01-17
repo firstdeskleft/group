@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -29,6 +30,7 @@ public class Tour implements Serializable {
     private Integer tid;
     private String location;
     private Integer cost;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate tdate;
     @ManyToOne
     @JoinColumn(name = "gid")

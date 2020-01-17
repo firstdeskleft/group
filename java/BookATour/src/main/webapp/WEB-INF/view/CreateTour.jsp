@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    ${tour}
     <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
@@ -62,6 +63,7 @@
                 </thead>
                 <tbody>
                     <tr>
+                        <form:hidden path="tid"/>
                         <td class="text-center">
                             
                             <form:input path="location" type="text" id="location" name="location" placeholder="Enter Location"   />

@@ -1,5 +1,10 @@
 package com.firstdeskleft.controllers;
 
+import com.firstdeskleft.entities.Guide;
+import com.firstdeskleft.service.GuideService;
+import java.security.Principal;
+import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +16,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("user")
 public class HomeController {
 
+    @Autowired
+    GuideService gservice;
+    
     @GetMapping
     public String home() {
         System.out.println("$$$$$ entered home()");
@@ -26,9 +34,11 @@ public class HomeController {
     }
 
     @GetMapping("/HomeGuide")
-    public String guideHome() {
-
-        System.out.println("$$$$$$ Entered HomeGuide");
+    public String guideHome(HttpSession session, Principal Principal) {
+        String username = Principal.getName();
+        Guide guide = gservice.findByUsername(username);
+        session.setAttribute("guide", guide);
+        System.out.println("$$$$$$ Entered HomeGuide"+guide +" ---  HttpSession  getattribute " +session.getAttribute("guide" ) +" WHOLE SESSION  "+session );
 
         return "HomeGuide";
     }

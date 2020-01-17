@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
+    ${user}
+    <hr/>
+    ${guide}
+    <hr/>
+    ${customer}/
     <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">

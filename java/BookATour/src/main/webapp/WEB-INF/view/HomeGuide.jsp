@@ -13,7 +13,8 @@
 </head>
 
 <body>
-
+    ${guide}
+    ${guide.username}
     <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
@@ -24,7 +25,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item main-item"><a href="/jsp/Tours-Guide.html"
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/tour/guide-tours"
                                                           class="nav-link nav-link-hover"><b>myTours</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
