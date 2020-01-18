@@ -23,5 +23,9 @@ public interface CustomerService {
     public void save(Customer customer);
 
     public void UpdateCustomer(Customer c);
+
+    public Customer findCustomerById(Integer id);
+
+    public void deleteCustomer(Integer id);
     
 }

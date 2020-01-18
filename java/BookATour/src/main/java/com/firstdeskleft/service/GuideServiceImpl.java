@@ -56,5 +56,10 @@ public class GuideServiceImpl implements GuideService {
     public Guide findByUsername(String username) {
         return  gdao.findByUsername(username);
     }
+
+    @Override
+    public Guide findCustomerById(Integer id) {
+        return gdao.findById(id);
+    }
     
 }

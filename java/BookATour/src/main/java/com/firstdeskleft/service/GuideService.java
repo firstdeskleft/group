@@ -15,5 +15,7 @@ public interface GuideService {
     public void save(Guide guide);
 
     public Guide findByUsername(String username);
+
+    public Guide findCustomerById(Integer id);
     
 }

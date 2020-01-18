@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -26,14 +27,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TourController {
 
     @Autowired
-    TourService service;
+    TourService tservice;
 
     @Autowired
     GuideService gService;
 
     @GetMapping("/list")
     public String showTours(Model m) {
-        List<Tour> list = service.getAllTours();
+        List<Tour> list = tservice.getAllTours();
         m.addAttribute("listOfTours", list);
 
         return "Tours";
@@ -55,25 +56,46 @@ public class TourController {
         t.setGuide((Guide) session.getAttribute("guide"));
         System.out.println("---------------------------Post CReate form  tour:  " + t + "  ---------session" + session);
 
-        service.save(t);
+        tservice.save(t);
 
         Guide g = (Guide) session.getAttribute("guide");
-
-        List<Tour> list = service.findByGuideId(g.getId());
-
+        System.out.println("--------------------------- Post Create from tour ----find guide by id guide=  " +g);
+        List<Tour> list = tservice.getAllTours(); // PROSORINA TO GETALL  MEXRI NA LIHEI TO PROBLIMA ME TO MODEL GUIDE
+//        System.out.println("--------------------------- Post Create from tour ----find tours by id,  tours=   "+list);
         m.addAttribute("listOfTours", list);
 
         return "Tours-Guide";
     }
 
-    @GetMapping("guide-tours")
+    @GetMapping("guidetours")
     public String showGuideTours(Model m, HttpSession session) {
         Guide g = (Guide) session.getAttribute("guide");
-
-        List<Tour> list = service.findByGuideId(g.getId());
-
+        System.out.println("------------------------------getmapping guidetours getguide "+ g);
+        List<Tour> list = tservice.getAllTours(); // PROSORINA TO GETALL  MEXRI NA LIHEI TO PROBLIMA ME TO MODEL GUIDE
+//System.out.println("------------------------------getmapping guidetours listtoursbyguide "+ list);
         m.addAttribute("listOfTours", list);
-
+        System.out.println("-------------------------------List of tours in modelattribute "+ m.getAttribute("listOfTours"));
         return "Tours-Guide";
     }
+    
+     @GetMapping("/delete")
+    public String deleteTour(@RequestParam("tid") Integer  id) {
+        tservice.deleteTour(id);
+
+        return "redirect:/tour/guidetours";
+    }
+
+    @GetMapping("/update")
+    public String showUpdateTouForm(
+            @RequestParam("tid") Integer id, Model model
+    ) {
+        Tour t = tservice.findTourById(id);
+        model.addAttribute("tour", t);
+        return "CreateTour";
+    }
+    
+    
+    
+    
+    
 }

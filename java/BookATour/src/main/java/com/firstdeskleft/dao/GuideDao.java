@@ -24,5 +24,7 @@ public interface GuideDao {
     public Guide findByUsername(String username);
 
     public void update(Guide g);
+
+    public Guide findById(Integer id);
     
 }

@@ -19,33 +19,39 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-    
-    
-     @Autowired
+
+    @Autowired
     CustomerService service;
 
-   
-     
     @GetMapping("/list")
     public String showCustomers(Model m) {
         List<Customer> list = service.getAllCustomers();
+        System.out.println("------------------------------CUstomer COntroller get all" + list);
         m.addAttribute("listOfCustomers", list);
-        return "HomeAdmin";
+        return "Customers";
     }
 
- 
-   
-    
+    @GetMapping("/update")
+    public String UpdateCustomer(Model model) {
+        Integer id= null;
+        Customer c = service.findCustomerById(id);
+        
+         model.addAttribute("customer", c);
+        
 
-    @PostMapping("/update")
-    public String createOrUpdateCustomer(Customer c) { 
-
-        service.UpdateCustomer(c);
-
-        return "/profile";
+        return "!!!!!!!formCustomer";
     }
+
+   @GetMapping("/delete")
+    public String deleteTour(@RequestParam("id") Integer  id) {
+        service.deleteCustomer(id);
+
+        return "redirect:/customer/list";
+    }
+
 }

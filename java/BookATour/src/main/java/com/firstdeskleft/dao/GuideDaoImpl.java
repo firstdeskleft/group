@@ -56,6 +56,11 @@ public class GuideDaoImpl implements GuideDao{
     public void update(Guide g) {
         getSession().saveOrUpdate(g);
     }
+
+    @Override
+    public Guide findById(Integer id) {
+        return (Guide) getSession().get(Guide.class, id);
+    }
     
     
 }

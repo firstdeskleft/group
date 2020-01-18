@@ -14,4 +14,8 @@ public interface TourService {
     public void save(Tour tour);
 
     public List<Tour> findByGuideId(Integer Id);
+
+    public void deleteTour(Integer id);
+
+    public Tour findTourById(Integer id);
 }

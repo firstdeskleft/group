@@ -24,6 +24,10 @@ public interface CustomerDao {
 
     public void update(Customer c);
 
+    public Customer findById(Integer id);
+
+    public void delete(Integer id);
+
  
     
 }

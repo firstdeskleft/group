@@ -25,7 +25,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/tour/guide-tours"
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/tour/guidetours"
                                                           class="nav-link nav-link-hover"><b>myTours</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
