@@ -5,6 +5,7 @@
  */
 package com.firstdeskleft.service;
 
+import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Tour;
 
 /**
@@ -13,6 +14,6 @@ import com.firstdeskleft.entities.Tour;
  */
 public interface BookingService {
 
-    public void createBooking(Tour t);
+    public void createBooking(Tour t,Customer c);
     
 }

@@ -5,6 +5,8 @@
  */
 package com.firstdeskleft.dao;
 
+import com.firstdeskleft.entities.Booking;
+import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Tour;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -28,9 +30,10 @@ public class BookingDaoImpl implements BookingDao{
     
     
     @Override
-    public void save(Tour t) {
+    public void save(Booking booking) {
         
-         getSession().saveOrUpdate(t);
+         getSession().save(booking);
+         
     }
     
 }

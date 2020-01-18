@@ -5,6 +5,8 @@
  */
 package com.firstdeskleft.dao;
 
+import com.firstdeskleft.entities.Booking;
+import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Tour;
 
 /**
@@ -13,6 +15,6 @@ import com.firstdeskleft.entities.Tour;
  */
 public interface BookingDao {
 
-    public void save(Tour t);
+    public void save(Booking booking);
     
 }

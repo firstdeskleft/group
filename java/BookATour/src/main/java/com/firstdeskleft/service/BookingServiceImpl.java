@@ -7,6 +7,8 @@ package com.firstdeskleft.service;
 
 import com.firstdeskleft.dao.BookingDao;
 import com.firstdeskleft.dao.TourDao;
+import com.firstdeskleft.entities.Booking;
+import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Tour;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +25,9 @@ public class BookingServiceImpl implements BookingService{
     
     
     @Override
-    public void createBooking(Tour t) {
-        
-        bdao.save(t);
+    public void createBooking(Tour t,Customer c) {
+        Booking booking = new Booking(t,c);
+        bdao.save(booking);
     }
     
 }

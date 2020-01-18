@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,11 +38,28 @@ public class BookingController {
         
         Tour t = tservice.findTourById(tid);
                 System.out.println("---------------------------BookingController FindTourByID:" +t);
-                System.out.println("---------------------------Booking Controller FuindCustomer");
+          Customer c = cservice.findCustomerById(3);
+                System.out.println("---------------------------Booking Controller FuindCustomer" +c);
        
-        bservice.createBooking(t);
+        bservice.createBooking(t,c);
         
         return "Tours";
     }
+    
+    @PostMapping("/create")
+    public String createBookingPost(
+            @RequestParam("tid") Integer tid) {
+        //Model Customer Id or Name
+        
+        Tour t = tservice.findTourById(tid);
+                System.out.println("---------------------------BookingController FindTourByID:" +t);
+          Customer c = cservice.findCustomerById(3);
+                System.out.println("---------------------------Booking Controller FuindCustomer" +c);
+       
+        bservice.createBooking(t,c);
+        
+        return "Tours";
+    }
+    
 
 }
