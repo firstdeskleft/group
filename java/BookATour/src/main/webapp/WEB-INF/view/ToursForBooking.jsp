@@ -77,9 +77,13 @@
                                                 <td class="text-center">${t.tdate}</td>
                                                 <td class="text-center">${t.cost}</td>
                                                 <td class="text-center">${t.guide.username}</td>                      
-                                                <td class="text-center"><a name="booking" href="${booklink}">Book Now</a>
-                                                      
-                                                        </form>
+                                                <td class="text-center">
+                                                    <a href="${booklink}">
+                                                    <button onclick="return confirmBooking(this);" type="submit" class="btn btn-primary" 
+                                                            id="bookButton" name="bookButton">
+                                                        Book now
+                                                    </button>
+                                                        </a>
                                                 </td>
                                             </c:forEach>
                                         </tr>   
@@ -94,7 +98,7 @@
                             integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
                             <!--BOOTSTRAP-->
                             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-                            <script src="/js/app.js"></script>
+                            <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
                             </body>
 
                             </html>

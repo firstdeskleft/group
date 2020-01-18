@@ -44,7 +44,7 @@ public class TourController {
     public String showToursforCustomer(Model m){
         List<Tour> list = tservice.getAllTours();
         m.addAttribute("listOfTours", list);
-        return "Tours2";
+        return "ToursForBooking";
     }
 
     @GetMapping("/create")
