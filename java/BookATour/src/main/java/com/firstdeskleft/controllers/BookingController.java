@@ -26,6 +26,9 @@ public class BookingController {
     
     @Autowired
     TourService tservice;
+    
+    @Autowired
+    CustomerService cservice;
 
     @GetMapping("/create")
     public String createBooking(
@@ -33,8 +36,11 @@ public class BookingController {
         //Model Customer Id or Name
         
         Tour t = tservice.findTourById(tid);
-                
+                System.out.println("---------------------------BookingController FindTourByID:" +t);
+                System.out.println("---------------------------Booking Controller FuindCustomer");
        
+        bservice.createBooking(t);
+        
         return "Tours";
     }
 

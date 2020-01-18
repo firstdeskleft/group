@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
- * @author /////////////////////////
+ * @author ///
  */
 @Controller
 @RequestMapping("/tour")

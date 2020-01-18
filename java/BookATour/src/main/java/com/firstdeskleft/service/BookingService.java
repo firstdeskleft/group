@@ -5,10 +5,14 @@
  */
 package com.firstdeskleft.service;
 
+import com.firstdeskleft.entities.Tour;
+
 /**
  *
  * @author User
  */
 public interface BookingService {
+
+    public void createBooking(Tour t);
     
 }

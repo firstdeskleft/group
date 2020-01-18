@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.firstdeskleft.service;
+package com.firstdeskleft.dao;
 
-import org.springframework.stereotype.Repository;
+import com.firstdeskleft.entities.Tour;
 
+/**
+ *
+ * @author User
+ */
+public interface BookingDao {
 
-
-
-@Repository
-public class BookingDaoImpl implements BookingDao{
+    public void save(Tour t);
     
 }
