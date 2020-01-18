@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/guide")
@@ -41,5 +42,13 @@ public class GuideController {
 
         return "!!!!!!!formGuide";
     }
+    
+    @GetMapping("/delete")
+    public String deleteGuide(@RequestParam("id") Integer  id) {
+        service.deleteGuide(id);
+
+        return "redirect:/guide/list";
+    }
+    
 
 }

@@ -18,7 +18,7 @@ public class HomeController {
 
     @Autowired
     GuideService gservice;
-    
+
     @GetMapping
     public String home() {
         System.out.println("$$$$$ entered home()");
@@ -35,15 +35,16 @@ public class HomeController {
 
     @GetMapping("/HomeGuide")
     public String guideHome(Model m) {
-       m.getAttribute("user");
-        System.out.println("----------------------------------Model attribute user" +m.getAttribute("user"));
+        m.getAttribute("user");
+        System.out.println("----------------------------------Model attribute user" + m.getAttribute("user"));
         return "HomeGuide";
     }
 
     @GetMapping("/HomeCustomer")
-    public String customerHome() {
+    public String customerHome(Model m) {
+        m.getAttribute("user");
         System.out.println("$$$$$$ Entered HomeCustomer");
-
+        System.out.println("----------------------------------Model attribute user" + m.getAttribute("user"));
         return "HomeCustomer";
     }
 

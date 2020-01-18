@@ -16,9 +16,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class AuthenticateController {
 
     @GetMapping("/Login")
-    public String showLoginForm(Model model) {
-        model.addAttribute("user", new User());
-//        System.out.println("$$$$ On authenticate Controller, user=" + user + " , model:" + model);
+    public String showLoginForm() {
+      
         return "Login";
     }
 

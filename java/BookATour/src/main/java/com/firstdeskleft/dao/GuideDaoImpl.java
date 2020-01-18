@@ -5,9 +5,10 @@ import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Guide;
 import java.util.List;
 import javax.persistence.NoResultException;
+import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,7 +39,7 @@ public class GuideDaoImpl implements GuideDao{
 
     @Override
     public Guide findByUsername(String username) {
-            javax.persistence.Query q =getSession().createQuery("SELECT g FROM Guide g WHERE g.username=:name");
+            Query q =getSession().createQuery("SELECT g FROM Guide g WHERE g.username=:name");
        q.setParameter("name", username);
        Guide guide;
        try{
@@ -60,6 +61,13 @@ public class GuideDaoImpl implements GuideDao{
     @Override
     public Guide findById(Integer id) {
         return (Guide) getSession().get(Guide.class, id);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        Query q = getSession().createQuery("DELETE FROM Guide  g WHERE g.id=:id");
+        q.setParameter("id", id);
+        int result = q.executeUpdate();
     }
     
     

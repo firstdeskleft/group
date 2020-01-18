@@ -26,5 +26,7 @@ public interface GuideDao {
     public void update(Guide g);
 
     public Guide findById(Integer id);
+
+    public void delete(Integer id);
     
 }

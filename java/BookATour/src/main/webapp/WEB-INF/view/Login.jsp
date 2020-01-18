@@ -76,16 +76,16 @@
                 <p>Logged out successfully</p>
             </div>
         </c:if>
-        <form:form action="${pageContext.request.contextPath}/authenticate" method="POST" modelAttribute="user">
+        <form:form action="${pageContext.request.contextPath}/authenticate" method="POST">
             <h2 class="LoginForm"><b>Login</b></h2>
             <div class="row">
                 <div class="col-md-12 form-group">
-                    <form:input path="username" type="text" name="username" class="form-control" placeholder="Username" required="required"/>
+                    <input  type="text" name="username" class="form-control" placeholder="Username" required="required"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 form-group">
-                    <form:input path="password" type="password" name="password" placeholder="Enter your Password" class="form-control" required="required"/>
+                    <input type="password" name="password" placeholder="Enter your Password" class="form-control" required="required"/>
                 </div>
             </div>
             <div class="row">

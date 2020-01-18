@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("/customer")
+
 public class CustomerController {
 
     @Autowired
@@ -44,11 +46,11 @@ public class CustomerController {
          model.addAttribute("customer", c);
         
 
-        return "!!!!!!!formCustomer";
+        return "CustomerProfile";
     }
 
    @GetMapping("/delete")
-    public String deleteTour(@RequestParam("id") Integer  id) {
+    public String deleteCustomer(@RequestParam("id") Integer  id) {
         service.deleteCustomer(id);
 
         return "redirect:/customer/list";

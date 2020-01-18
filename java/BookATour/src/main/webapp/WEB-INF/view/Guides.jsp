@@ -55,6 +55,7 @@
             <table id="tourTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
                 <thead>
                     <tr class="bg-info">
+                        <th class="text-center" scope="col">Guide ID</th>
                         <th class="text-center" scope="col">First Name</th>
                         <th class="text-center" scope="col">Last Name</th>
                         <th class="text-center" scope="col">Subject</th>
@@ -63,15 +64,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                   <c:forEach items="${listOfGuides}" var="g">
+
+                    <c:url value="/guide/delete" var="deletelink" >
+                        <c:param name="id" value="${g.id}" />
+                    </c:url>
                     <tr>
+                        <td class="text-center">${g.id}</td>
                         <td class="text-center">${g.firstName}</td>
                         <td class="text-center">${g.lastName}</td>
                         <td class="text-center">${g.subject}</td>
                         <td class="text-center">${g.certificate}</td>
-                        <td class="text-center"><a name="booking" href="#" id="booking" type="submit">
-                            <b class="text-dark"><button onclick="alert('you have to Login first')" 
-                                class="btn btn-primary" id="bookButton" name="bookButton">
-                               </button></b></a></td>
+                         <td class="text-center"><a name="deleteGuide" href="${deletelink}" id="deleteGuide" type="submit">
+                                <b class="text-dark"><button onclick="alert('Are you sure you want to delete this Guide?')"
+                                                             class="btn btn-danger text-center" id="deleteGuideBtn" name="deleteGuideBtn">
+                                        <b id="adminDeleteGuide">Delete</b></button></b></a></td>
+                                    </c:forEach>
                     </tr>
                 </tbody>
             </table>

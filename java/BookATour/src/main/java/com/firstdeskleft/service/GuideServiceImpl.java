@@ -61,5 +61,10 @@ public class GuideServiceImpl implements GuideService {
     public Guide findCustomerById(Integer id) {
         return gdao.findById(id);
     }
+
+    @Override
+    public void deleteGuide(Integer id) {
+        gdao.delete(id);
+    }
     
 }

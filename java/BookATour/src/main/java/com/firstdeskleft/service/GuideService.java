@@ -17,5 +17,7 @@ public interface GuideService {
     public Guide findByUsername(String username);
 
     public Guide findCustomerById(Integer id);
+
+    public void deleteGuide(Integer id);
     
 }

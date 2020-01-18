@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="secutiry" uri="http://www.springframework.org/security/tags" %>
 <html>
 
     <head>
@@ -34,12 +35,17 @@
                                 <b>${user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                               <a class="dropdown-item nav-link-hover">
+                                <a class="dropdown-item nav-link-hover">
                                     <p>Logged in as :${user.username} 
-            <form:form action="${pageContext.request.contextPath}/logout" method="POST">
-            <input type="submit" value="Logout">
-        </form:form>
-        </p></a>
+                                        <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                            <input type="submit" value="Logout">
+                                        </form:form>
+                                    <secutiry:authorize access="isAuthenticated()">
+                                        Logged in as:
+                                        <secutiry:authentication property="principal.username" />
+
+                                    </secutiry:authorize>
+                                    </p></a>
                             </div>
                         </li>
                     </ul>
