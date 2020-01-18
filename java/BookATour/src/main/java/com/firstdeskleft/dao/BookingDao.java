@@ -8,6 +8,7 @@ package com.firstdeskleft.dao;
 import com.firstdeskleft.entities.Booking;
 import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Tour;
+import java.util.List;
 
 /**
  *
@@ -16,5 +17,7 @@ import com.firstdeskleft.entities.Tour;
 public interface BookingDao {
 
     public void save(Booking booking);
+
+    public  List <Booking> findByCustomerId(Integer Id);
     
 }

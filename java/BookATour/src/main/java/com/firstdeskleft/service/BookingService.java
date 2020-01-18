@@ -5,8 +5,10 @@
  */
 package com.firstdeskleft.service;
 
+import com.firstdeskleft.entities.Booking;
 import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Tour;
+import java.util.List;
 
 /**
  *
@@ -15,5 +17,7 @@ import com.firstdeskleft.entities.Tour;
 public interface BookingService {
 
     public void createBooking(Tour t,Customer c);
+
+    public  List <Booking> findByCustomerId(Integer Id);
     
 }

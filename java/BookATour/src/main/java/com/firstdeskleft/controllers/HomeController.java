@@ -1,9 +1,12 @@
 package com.firstdeskleft.controllers;
 
+import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Guide;
+import com.firstdeskleft.entities.User;
+import com.firstdeskleft.service.CustomerService;
 import com.firstdeskleft.service.GuideService;
+import com.firstdeskleft.service.UserService;
 import java.security.Principal;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +20,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 public class HomeController {
 
     @Autowired
-    GuideService gservice;
+    UserService userService;
+    @Autowired
+    GuideService guideService;
+    @Autowired
+    CustomerService customerService;
 
     @GetMapping
     public String home() {
@@ -26,26 +33,32 @@ public class HomeController {
     }
 
     @GetMapping("/HomeAdmin")
-    public String adminHome(Model m) {
-        System.out.println("$$$$$$ Entered HomeAdmin");
-        System.out.println("$$$$$$ model" + m);
-        System.out.println("$$$$$$ model.user" + m.getAttribute("user"));
+    public String adminHome(Principal principal, Model model) {
+        String username = principal.getName();
+        User user = userService.findByUserName(username);
+        model.addAttribute("user", user);
+        printModel(model);
         return "HomeAdmin";
     }
 
     @GetMapping("/HomeGuide")
-    public String guideHome(Model m) {
-        m.getAttribute("user");
-        System.out.println("----------------------------------Model attribute user" + m.getAttribute("user"));
+    public String guideHome(Principal principal, Model model) {
+        String username = principal.getName();
+        Guide guide = guideService.findByUsername(username);
+        model.addAttribute("user", guide);
+        printModel(model);
         return "HomeGuide";
     }
-
     @GetMapping("/HomeCustomer")
-    public String customerHome(Model m) {
-        m.getAttribute("user");
-        System.out.println("$$$$$$ Entered HomeCustomer");
-        System.out.println("----------------------------------Model attribute user" + m.getAttribute("user"));
+    public String customerHome(Principal principal, Model model) {
+        String username = principal.getName();
+        Customer customer = customerService.findByUsername(username);
+        model.addAttribute("user", customer);
+        printModel(model);
         return "HomeCustomer";
+    }
+    public void printModel(Model model) {
+        System.out.println("ModelAttribute.user: {" + model.getAttribute("user") + "}");
     }
 
 }

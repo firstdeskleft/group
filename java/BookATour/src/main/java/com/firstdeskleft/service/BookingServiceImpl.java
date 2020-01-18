@@ -10,6 +10,7 @@ import com.firstdeskleft.dao.TourDao;
 import com.firstdeskleft.entities.Booking;
 import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Tour;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +29,11 @@ public class BookingServiceImpl implements BookingService{
     public void createBooking(Tour t,Customer c) {
         Booking booking = new Booking(t,c);
         bdao.save(booking);
+    }
+
+    @Override
+    public  List <Booking> findByCustomerId(Integer Id) {
+     return  bdao.findByCustomerId(Id);
     }
     
 }

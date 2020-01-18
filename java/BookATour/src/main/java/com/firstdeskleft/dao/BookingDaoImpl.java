@@ -7,7 +7,11 @@ package com.firstdeskleft.dao;
 
 import com.firstdeskleft.entities.Booking;
 import com.firstdeskleft.entities.Customer;
+import com.firstdeskleft.entities.Guide;
 import com.firstdeskleft.entities.Tour;
+import static java.util.Collections.list;
+import java.util.List;
+import javax.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +38,14 @@ public class BookingDaoImpl implements BookingDao{
         
          getSession().save(booking);
          
+    }
+
+    @Override
+    public  List <Booking> findByCustomerId(Integer Id) {
+        Query q = getSession().createQuery("SELECT b FROM Booking b WHERE b.bid=:id");
+        q.setParameter("id", Id);
+        List<Booking> list = q.getResultList();
+        return list;
     }
     
 }

@@ -1,5 +1,5 @@
-
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 
 <head>
@@ -75,36 +75,39 @@
     </div>
     <h3 class="text-left"><b>Personal Info</b></h3>
         <br>
-        <form method="POST">
-       
+        <form:form method="POST" action="${pageContext.request.contextPath}/customer/update" modelAttribute="user">
         <div class="row padding">
             <table id="customerInfoTable" class="bg-info table table-hover table-striped table-bordered col-4 border border-dark">
                 <thead>
                     <tr class="bg-dark text-white">
-                      <label for="firstName"><th class="text-center" scope="col"><h5>{user.firstName}</h5></th></label>  
-                      <label for="lastName"><th class="text-center" scope="col"><h5>{user.lastName}</h5></th></label>  
-                      <label for="credits"><th class="text-center" scope="col"><h5>{user.credits} $</h5></th></label>  
-                    </tr>
+                <label for="firstName"><th class="text-center" scope="col"><h5>userrn</h5></th></label>  
+                <label for="lastName"><th class="text-center" scope="col"><h5>UserLastName</h5></th></label>  
+                <label for="credits"><th class="text-center" scope="col"><h5>UserCredits </h5></th></label>  
+                </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td class="text-center">
-                            <input type="text" id="firstName" name="firstName" placeholder="Edit here...">
+                            <form:input path="firstName" type="text"  id="firstName" name="firstName"  class="input-xlarge"/>
                         </td>
                         <td class="text-center">
-                            <input type="text" id="date" name="date" placeholder="Edit here...">
+                            <form:input path="lastName" type="text" id="lastName" name="lastName" class="input-xlarge"/>
                         </td>
                         <td class="text-center">
-                            <input type="number" id="cost" name="cost" placeholder="Edit here...">
+                            <form:input path="credits" type="text" id="date" name="credits" class="input-xlarge"/>
+                        </td>
+                        <td class="text-center">
+                            <form:input path="booking" type="text" id="date" name="credits" class="input-xlarge"/>
                         </td>
                     </tr>
                 </tbody>
             </table>
-           
         </div>
         <button type="submit" id="editCustomerBtn" class="btn btn-primary"><a name="editCustomer" id="editCustomer">
-            Submit Changes</a></button>
-    </form>
+                Submit Changes
+            </a>
+        </button>
+    </form:form>
 
 
 

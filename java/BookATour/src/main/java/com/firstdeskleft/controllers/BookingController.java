@@ -5,11 +5,13 @@
  */
 package com.firstdeskleft.controllers;
 
+import com.firstdeskleft.entities.Booking;
 import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Tour;
 import com.firstdeskleft.service.BookingService;
 import com.firstdeskleft.service.CustomerService;
 import com.firstdeskleft.service.TourService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,7 +35,7 @@ public class BookingController {
 
     @GetMapping("/create")
     public String createBooking(
-            @RequestParam("tid") Integer tid ) {
+            @RequestParam("tid") Integer tid ,Model model) {
         //Model Customer Id or Name
         
         Tour t = tservice.findTourById(tid);
@@ -42,6 +44,9 @@ public class BookingController {
                 System.out.println("---------------------------Booking Controller FuindCustomer" +c);
        
         bservice.createBooking(t,c);
+        
+        Integer Id=3;
+      List <Booking> list =  bservice.findByCustomerId(Id);
         
         return "Bookings";
     }

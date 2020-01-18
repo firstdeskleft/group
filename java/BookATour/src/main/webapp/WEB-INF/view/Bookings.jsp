@@ -78,20 +78,15 @@
                         <td class="text-center">${t.tdate}</td>
                         <td class="text-center">${t.cost}</td>
                         <td class="text-center">${t.guide.username}</td>                      
-                        <td class="text-center"><a name="deleteBooking" href="${deletelink}" id="deleteBooking" type="submit">
-                                <b class="text-dark"><button
-                                        class="btn btn-primary text-white text-center" id="dltBkngBtn" name="deleteBookingBtn">
-                                        <b id="bookingDeleteTour">Edit</b></button></b></a></td>
-                        </td>
-                    </c:forEach>
-                    <td class="text-center"><a name="booking" href="#" id="booking" type="submit">
-                            <b class="text-dark">
+                        <td class="text-center"><a href="${deletelink}">
                                 <button onclick="return tourCancelConfirm(this)"  type="submit" class="btn btn-danger" id="cancelBookButton" name="cancelBookButton">
                                     Cancel
                                 </button>
-                            </b>
-                        </a>
-                    </td>
+                            </a>
+                        </td>
+                        
+                    </c:forEach>
+                    
                 </tr>
             </tbody>
         </table>
@@ -101,6 +96,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- JavaScript -->
     <script src="/js/app.js"></script>
+     <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 </body>
 
 </html>
