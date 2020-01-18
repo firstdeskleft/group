@@ -9,9 +9,9 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <br>
     <title>Login</title>
-    <link rel="stylesheet" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/fontAwesome/css/all.css">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/fontAwesome/css/all.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 </head>
 <body>
     ${user}

@@ -8,9 +8,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <br>
     <title>Home</title>
-    <link rel="stylesheet" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/fontAwesome/css/all.css">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/fontAwesome/css/all.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 </head>
 
 <body>
@@ -87,7 +87,7 @@
                                         class="btn btn-primary text-white text-center" id="editTourBtn" name="editTourBtn">
                                         <b id="guideEditTour">Edit</b></button></b></a></td>
                         <td class="text-center"><a name="deleteTour" href="${deletelink}" id="deleteTour" type="submit">
-                                <b class="text-dark"><button onclick="alert('Are you sure you want to delete this tour?')"
+                                <b class="text-dark"><button onclick="return tourDeleteConfirm(this);"
                                                              class="btn btn-danger text-center" id="deleteTourBtn" name="deleteTourBtn">
                                         <b id="guideDeleteTour">Delete</b></button></b></a></td>
                                     </c:forEach>

@@ -8,13 +8,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <br>
     <title>Home</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/fontAwesome/css/all.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/fontAwesome/css/all.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 </head>
 
 <body>
-////////////////////////////////////////////////
+
     <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
@@ -78,9 +78,13 @@
                                                 <td class="text-center">${t.cost}</td>
                                                 <td class="text-center">${t.guide.username}</td>                      
                                                 <td class="text-center"><a name="booking" href="${booklink}" id="booking" type="submit">
-                                                        <b class="text-dark"><button
-                                                                class="btn btn-primary" id="bookButton" name="bookButton">
-                                                                Book now</button></b></a></td>
+                                                        <form onsubmit="return confirmBooking(this);" id="booking" action="" method="POST">
+                                                            <button type="submit" class="btn btn-primary" 
+                                                                    id="bookButton" name="bookButton" value="Submit">
+                                                                Book now
+                                                            </button>
+                                                        </form>
+                                                </td>
                                             </c:forEach>
                                         </tr>   
                                     </tbody>
