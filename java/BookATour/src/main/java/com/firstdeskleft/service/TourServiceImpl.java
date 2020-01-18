@@ -40,6 +40,16 @@ public class TourServiceImpl implements TourService{
        
        return tdao.findByGuideId(Id);
     }
+
+    @Override
+    public void deleteTour(Integer id) {
+        tdao.delete(id);
+    }
+
+    @Override
+    public Tour findTourById(Integer id) {
+        return tdao.findById(id);
+    }
     
     
     

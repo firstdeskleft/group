@@ -64,6 +64,7 @@ gid int unsigned,
 foreign key (gid) references guide(id) on delete cascade 
 );
 
+drop table if exists booking;
 create table booking(
 bid int unsigned primary key auto_increment,
 cid int unsigned,
@@ -79,10 +80,10 @@ insert into role(rname) values ('ROLE_CUSTOMER');
 																			-- pass is 1234
 insert into user (username, password) values ('admin', '$2a$10$D59ZadCxXwvWRi39ASUFweNxuzCvldwJNAu6fYH2Fcr9YKeAAcKee');
 
-insert into user (username, password) values ('guide1', '$2a$10$K5pZsA5s0ibOaU6q.Ba5XeE4vnT0yiWeCSbRr9rY6Wrp1M.DOf1bS');
+
 
 insert into user_role (id,rid) values(1,1);
-insert into user_role (id,rid) values(2,2);
+
 
 
 select * from user;
@@ -93,9 +94,4 @@ select * from tour;
 select * from guide;
 select * from certificate;
 
-insert into  certificate values(1,"Pasparation");
-insert into guide values(1,"Chris","Mark",500,"AAA",1),
-(2,"Nikos","Sampanis","60000","BBB",1);
-insert into tour values(1,"Kriti",600,"1999-09-09",1);
-insert into tour values(2,"Samos",700,"2001-09-09",2);
 

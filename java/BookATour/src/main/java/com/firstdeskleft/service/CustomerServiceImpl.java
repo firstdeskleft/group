@@ -56,6 +56,17 @@ public class CustomerServiceImpl implements CustomerService {
         cdao.update(c);
     }
 
+    @Override
+    public Customer findCustomerById(Integer id) {
+        return cdao.findById(id);
+    }
+
+    @Override
+    public void deleteCustomer(Integer id) {
+        cdao.delete(id);
+        
+    }
+
   
 
     

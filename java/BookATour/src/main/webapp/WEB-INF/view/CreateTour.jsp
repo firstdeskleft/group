@@ -25,9 +25,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item main-item"><a href="/jsp/Home-Guide.html"
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeGuide"
                                                           class="nav-link nav-link-hover"><b>Home</b></a></li>
-                        <li class="nav-item  active"><a href="/jsp/Tours-Guide.html"
+                        <li class="nav-item  active"><a href="${pageContext.request.contextPath}/tour/guidetours"
                                                         class="nav-link nav-link-hover"><b>myTours</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
@@ -36,8 +36,9 @@
                                 <b>{user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/Login.jsp">
-                                    Logout</a>
+                                <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form:form>
                             </div>
                         </li>
                     </ul>

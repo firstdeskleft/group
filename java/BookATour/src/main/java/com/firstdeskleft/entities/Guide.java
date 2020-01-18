@@ -1,12 +1,14 @@
 package com.firstdeskleft.entities;
 
 import com.firstdeskleft.listeners.GenericListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -34,7 +36,7 @@ public class Guide extends User {
      
      private Integer profits;
      
-     @OneToMany(mappedBy = "guide")
+     @OneToMany(fetch = FetchType.LAZY, mappedBy = "guide")
      @Column (name = "tid")
      private List<Tour> tours;
 

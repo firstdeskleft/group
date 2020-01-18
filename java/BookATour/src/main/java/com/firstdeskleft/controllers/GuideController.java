@@ -1,5 +1,6 @@
 package com.firstdeskleft.controllers;
 
+import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Guide;
 import com.firstdeskleft.service.GuideService;
 import java.util.List;
@@ -23,17 +24,22 @@ public class GuideController {
     public String showGuides(Model m) {
         List<Guide> list = service.getAllGuides();
         m.addAttribute("listOfGuides", list);
-        return "listGuides";
+        return "Guides";
     }
 
    
 
-    @PostMapping("/update")
-    public String createOrUpdateGuide(Guide g) { 
+    @GetMapping("/update")
+    public String UpdateCustomer(Model model) {
+        
+        
+        Integer id=null;
+        Guide g=service.findCustomerById(id);
+//        
+         model.addAttribute("guide", g);
+        
 
-        service.UpdateGuide(g);
-
-        return "profile";
+        return "!!!!!!!formGuide";
     }
 
 }

@@ -34,12 +34,9 @@ public class HomeController {
     }
 
     @GetMapping("/HomeGuide")
-    public String guideHome(HttpSession session, Principal Principal) {
-        String username = Principal.getName();
-        Guide guide = gservice.findByUsername(username);
-        session.setAttribute("guide", guide);
-        System.out.println("$$$$$$ Entered HomeGuide"+guide +" ---  HttpSession  getattribute " +session.getAttribute("guide" ) +" WHOLE SESSION  "+session );
-
+    public String guideHome(Model m) {
+       m.getAttribute("user");
+        System.out.println("----------------------------------Model attribute user" +m.getAttribute("user"));
         return "HomeGuide";
     }
 

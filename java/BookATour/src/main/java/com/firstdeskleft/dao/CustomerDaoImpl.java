@@ -62,6 +62,20 @@ public class CustomerDaoImpl implements CustomerDao{
          getSession().saveOrUpdate(c);
     }
 
+    @Override
+    public Customer findById(Integer id) {
+       return (Customer) getSession().get(Customer.class, id);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        Query q = getSession().createQuery("DELETE FROM Customer  c WHERE c.id=:id");
+        q.setParameter("id", id);
+        int result = q.executeUpdate();
+        
+        
+    }
+
   
     
 }

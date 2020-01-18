@@ -9,10 +9,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author User
- */
 
 
 @Repository
@@ -40,11 +36,23 @@ public class TourDaoImpl implements TourDao{
 
     @Override
     public List<Tour> findByGuideId(Integer Id) {
-       javax.persistence.Query q =getSession().createQuery("SELECT t FROM Tour t WHERE t.guide.id=:id");
+       Query q =getSession().createQuery("SELECT t FROM Tour t WHERE t.guide.id=:id");
        q.setParameter("id", Id);
      List<Tour> list  =  q.getResultList();
         
         return list;
+    }
+
+    @Override
+    public void delete(Integer id) {
+       Query q = getSession().createQuery("DELETE FROM Tour  t WHERE t.tid=:id");
+        q.setParameter("id", id);
+        int result = q.executeUpdate();
+    }
+
+    @Override
+    public Tour findById(Integer id) {
+         return (Tour) getSession().get(Tour.class, id);
     }
     
     
