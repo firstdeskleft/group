@@ -1,5 +1,6 @@
-
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="secutiry" uri="http://www.springframework.org/security/tags" %>
 <html>
 
 <head>
@@ -23,7 +24,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
-                     <li class="nav-item main-item"><a href="/jsp/Home2.html"
+                     <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/"
                             class="nav-link nav-link-hover"><b>Home</b></a></li>
                         <li class="nav-item main-item"><a href="/jsp/Tours2.html"
                             class="nav-link nav-link-hover"><b>Our Tours</b></a></li>
@@ -31,14 +32,18 @@
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
                                 role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-user-circle"></i>
-                                <b>{user.username}</b>
+                                
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/CustomerProfile.html">
-                                    myProfile</a>
-                                <a class="dropdown-item nav-link-hover" href="/jsp/Login.jsp">
-                                    Logout</a>
-                                    </div>
+                                 <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form:form>
+
+                                    <secutiry:authorize access="isAuthenticated()">
+                                        Logged in as:
+                                        <secutiry:authentication property="principal.username" />
+
+                                    </secutiry:authorize>
                         </li>
                     </ul>
                 </div>

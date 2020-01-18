@@ -67,7 +67,7 @@ public class RegistrationController {
         }
         customerService.save(customer);
         
-        return "Login";
+        return "redirect:/Login";
     }
     @PostMapping("/guide")
     public String processGuideRegistration(@Valid @ModelAttribute("guide") Guide guide,
@@ -86,7 +86,7 @@ public class RegistrationController {
         
         guideService.save(guide);
         
-        return "Login";
+        return "redirect:/Login";
     }
     
 
