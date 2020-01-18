@@ -4,8 +4,8 @@
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <br>
     <title>Home</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css">
@@ -21,19 +21,19 @@
             <div class="container">
                 <a id="appTitle" class="navbar-brand nav-link-hover text-primary"><b>Book a Tour</b></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarUtils"
-                    aria-controls="NavbarUtils" aria-expanded="false" aria-label="Toggle navigation">
+                        aria-controls="NavbarUtils" aria-expanded="false" aria-label="Toggle navigation">
                     <span style="font-size:20px;" class="navbar-toggler-icon fas fa-bars">
                     </span>
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item main-item"><a href="/jsp/Home2.html"
-                                class="nav-link nav-link-hover"><b>Home</b></a></li>
+                                                          class="nav-link nav-link-hover"><b>Home</b></a></li>
                         <li class="nav-item  active"><a href="/jsp/Tours2.html" class="nav-link nav-link-hover"><b>Our
                                     Tours</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
-                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-user-circle"></i>
                                 <b>{user.username}</b>
                             </a>
@@ -67,10 +67,23 @@
             </thead>
             <tbody>
                 <tr>
-                    <td class="text-center">${t.location}</td>
-                    <td class="text-center">${t.date}</td>
-                    <td class="text-center">${t.cost}</td>
-                    <td class="text-center">${t.guide}</td>
+                    <c:forEach items="${listOfTours}" var="t">
+                        <c:url var="deletelink" value="/booking/delete">
+                            <c:param name="tid" value="${t.tid}" />
+                        </c:url>
+
+                    <tr>
+                        <td class="text-center">${t.tid}</td>
+                        <td class="text-center">${t.location}</td>
+                        <td class="text-center">${t.tdate}</td>
+                        <td class="text-center">${t.cost}</td>
+                        <td class="text-center">${t.guide.username}</td>                      
+                        <td class="text-center"><a name="deleteBooking" href="${deletelink}" id="deleteBooking" type="submit">
+                                <b class="text-dark"><button
+                                        class="btn btn-primary text-white text-center" id="dltBkngBtn" name="deleteBookingBtn">
+                                        <b id="bookingDeleteTour">Edit</b></button></b></a></td>
+                        </td>
+                    </c:forEach>
                     <td class="text-center"><a name="booking" href="#" id="booking" type="submit">
                             <b class="text-dark">
                                 <button onclick="return tourCancelConfirm(this)"  type="submit" class="btn btn-danger" id="cancelBookButton" name="cancelBookButton">
@@ -83,7 +96,7 @@
             </tbody>
         </table>
     </div>
-    
+
     <!--BOOTSTRAP-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- JavaScript -->
