@@ -33,7 +33,7 @@ public class BookingController {
 
     @GetMapping("/create")
     public String createBooking(
-            @RequestParam("tid") Integer tid) {
+            @RequestParam("tid") Integer tid ) {
         //Model Customer Id or Name
         
         Tour t = tservice.findTourById(tid);
@@ -43,23 +43,10 @@ public class BookingController {
        
         bservice.createBooking(t,c);
         
-        return "Tours";
+        return "Bookings";
     }
     
-    @PostMapping("/create")
-    public String createBookingPost(
-            @RequestParam("tid") Integer tid) {
-        //Model Customer Id or Name
-        
-        Tour t = tservice.findTourById(tid);
-                System.out.println("---------------------------BookingController FindTourByID:" +t);
-          Customer c = cservice.findCustomerById(3);
-                System.out.println("---------------------------Booking Controller FuindCustomer" +c);
-       
-        bservice.createBooking(t,c);
-        
-        return "Tours";
-    }
+    
     
 
 }

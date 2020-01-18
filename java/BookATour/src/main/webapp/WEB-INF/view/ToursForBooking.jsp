@@ -77,12 +77,8 @@
                                                 <td class="text-center">${t.tdate}</td>
                                                 <td class="text-center">${t.cost}</td>
                                                 <td class="text-center">${t.guide.username}</td>                      
-                                                <td class="text-center"><a name="booking" href="${booklink}" id="booking" type="submit">
-                                                        <form onsubmit="return confirmBooking(this);" id="booking" action="" method="POST">
-                                                            <button type="submit" class="btn btn-primary" 
-                                                                    id="bookButton" name="bookButton" value="Submit">
-                                                                Book now
-                                                            </button>
+                                                <td class="text-center"><a name="booking" href="${booklink}">Book Now</a>
+                                                      
                                                         </form>
                                                 </td>
                                             </c:forEach>
