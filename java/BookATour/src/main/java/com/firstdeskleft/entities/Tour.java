@@ -5,12 +5,14 @@
  */
 package com.firstdeskleft.entities;
 
+import com.firstdeskleft.listeners.GenericListener;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,6 +29,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity(name = "Tour")
 @Table(name = "tour")
+@EntityListeners(GenericListener.class)
 public class Tour implements Serializable {
 
     @Id

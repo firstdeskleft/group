@@ -40,7 +40,7 @@ public class BookingController {
         Tour t = tservice.findTourById(tid);
         System.out.println("-----------------------BookingControoler create. | tour= " + t);
         customer.addTour(t);
-        
+        cservice.UpdateCustomer(customer);
         System.out.println("Customer with tours after addition: "+ customer.getTours());
         
        

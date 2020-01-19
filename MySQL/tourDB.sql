@@ -70,8 +70,8 @@ create table booking(
 cid int unsigned,
 tid int unsigned,
 primary key(cid,tid),
-foreign key (cid) references customer(id) on delete cascade on update cascade,
-foreign key (tid) references tour(tid) on delete cascade on update cascade
+constraint bookingcust_fk1 foreign key (cid) references customer(id) on update cascade on delete cascade,
+constraint bookingtour_fk1 foreign key (tid) references tour(tid) on update cascade on delete cascade
 );
 
 
@@ -94,5 +94,5 @@ select * from tour;
 select * from guide;
 select * from certificate;
 select * from booking;
-
-
+insert into booking values(3,1);
+select * from booking;
