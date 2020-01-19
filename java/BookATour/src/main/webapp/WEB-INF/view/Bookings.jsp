@@ -15,7 +15,17 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 
+
+
+
 <body>
+
+    ${user}
+    <hr>
+    ${user.tours}
+
+
+
     <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
@@ -67,7 +77,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <c:forEach items="${listOfTours}" var="t">
+                    <c:forEach items="${user.tours}" var="t">
                         <c:url var="deletelink" value="/booking/delete">
                             <c:param name="tid" value="${t.tid}" />
                         </c:url>
@@ -84,9 +94,9 @@
                                 </button>
                             </a>
                         </td>
-                        
+
                     </c:forEach>
-                    
+
                 </tr>
             </tbody>
         </table>
@@ -96,7 +106,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- JavaScript -->
     <script src="/js/app.js"></script>
-     <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 </body>
 
 </html>

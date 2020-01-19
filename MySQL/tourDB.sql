@@ -66,11 +66,12 @@ foreign key (gid) references guide(id) on delete cascade
 
 drop table if exists booking;
 create table booking(
-bid int unsigned primary key auto_increment,
+
 cid int unsigned,
 tid int unsigned,
-foreign key (cid) references customer(id) ,
-foreign key (tid) references tour(tid) on delete cascade
+primary key(cid,tid),
+foreign key (cid) references customer(id) on delete cascade on update cascade,
+foreign key (tid) references tour(tid) on delete cascade on update cascade
 );
 
 
@@ -88,10 +89,10 @@ insert into user_role (id,rid) values(1,1);
 
 select * from user;
 select * from customer;
-select * from role;
 select * from user_role;
 select * from tour;
 select * from guide;
 select * from certificate;
+select * from booking;
 
 
