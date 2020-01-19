@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    ${tour}
+
     <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
@@ -37,8 +37,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <form:form action="${pageContext.request.contextPath}/logout" method="POST">
-                                        <input type="submit" value="Logout">
-                                    </form:form>
+                                    <input type="submit" value="Logout">
+                                </form:form>
                             </div>
                         </li>
                     </ul>
@@ -66,7 +66,7 @@
                     <tr>
                         <form:hidden path="tid"/>
                         <td class="text-center">
-                            
+
                             <form:input path="location" type="text" id="location" name="location" placeholder="Enter Location"   />
                         </td>
                         <td class="text-center">
@@ -75,7 +75,7 @@
                         <td class="text-center">
                             <p><form:input path="cost" type="number" id="cost" name="cost" placeholder="Enter Price in Euros..."  />  </p>
                         </td>
-                        
+
                     </tr>
                 </tbody>
             </table>

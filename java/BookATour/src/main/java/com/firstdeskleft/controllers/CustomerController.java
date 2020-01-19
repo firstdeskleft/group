@@ -43,6 +43,13 @@ public class CustomerController {
         service.deleteCustomer(id);
         return "redirect:/customer/list";
     }
+    
+    @GetMapping("/bookings")
+    public String showBookings(){
+        
+        return "Bookings";
+    }
+    
     public void printModel(Model model) {
         System.out.println("ModelAttribute.user: {" + model.getAttribute("user") + "}");
     }

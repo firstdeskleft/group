@@ -19,26 +19,26 @@ import javax.persistence.Table;
  *
  * @author User
  */
-@Entity (name = "Guide")
+@Entity(name = "Guide")
 @EntityListeners(GenericListener.class)
 @PrimaryKeyJoinColumn(name = "id")
 @Table(name = "guide")
 public class Guide extends User {
 
     private String firstName;
-     private String lastName;
-     private String subject;
+    private String lastName;
+    private String subject;
 
-    @ManyToOne(cascade ={CascadeType.ALL})
-     @JoinColumn(name = "cert_id")
-    
-     private Certificate certificate ; 
-     
-     private Integer profits;
-     
-     @OneToMany(fetch = FetchType.LAZY, mappedBy = "guide")
-     @Column (name = "tid")
-     private List<Tour> tours;
+    @ManyToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "cert_id")
+
+    private Certificate certificate;
+
+    private Integer profits;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "guide", cascade = CascadeType.ALL)
+    @Column(name = "tid")
+    private List<Tour> tours = new ArrayList();
 
     public Guide() {
     }
@@ -55,7 +55,7 @@ public class Guide extends User {
     }
 
     public Guide(String firstName, String lastName, String subject, Certificate certificate, Integer profits, List<Tour> tours) {
-        
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.subject = subject;
@@ -159,14 +159,10 @@ public class Guide extends User {
 
     @Override
     public String toString() {
-        return "Guide{" + "firstName=" + firstName + ", lastName=" + lastName + ", subject=" + subject + ", certificate=" + certificate + ", profits=" + profits + ", tours=" + tours + '}';
+        return "Guide{" + "firstName=" + firstName + ", lastName=" + lastName
+                + ", subject=" + subject + ", certificate=" + certificate
+                + ", profits=" + profits
+               /* + ", tours=" + tours*/ + '}';
     }
-     
-     
-     
-     
-     
-     
-}
 
-    
+}

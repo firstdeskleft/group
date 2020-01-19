@@ -14,6 +14,7 @@
 </head>
 
 <body>
+   
     <header>
         <secutiry:authorize access="isAuthenticated()">
             Logged in as:
@@ -69,7 +70,7 @@
             </thead>
 
             <tbody>
-                <c:forEach items="${listOfTours}" var="t">
+                <c:forEach items="${user.tours}" var="t">
                     <c:url var="updatelink" value="/tour/update">
                         <c:param name="tid" value="${t.tid}" />
                     </c:url>
@@ -81,7 +82,7 @@
                         <td class="text-center">${t.location}</td>
                         <td class="text-center">${t.tdate}</td>
                         <td class="text-center">${t.cost}</td>
-                        <td class="text-center">${t.guide.username}</td>
+                      
                         <td class="text-center"><a name="editTour" href="${updatelink}" id="editTour" type="submit">
                                 <b class="text-dark"><button
                                         class="btn btn-primary text-white text-center" id="editTourBtn" name="editTourBtn">

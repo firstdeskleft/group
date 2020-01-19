@@ -24,7 +24,6 @@ public class BookingController {
 
 //    @Autowired
 //    BookingService bservice;
-
     @Autowired
     TourService tservice;
 
@@ -35,28 +34,24 @@ public class BookingController {
     public String createBooking(
             @RequestParam("tid") Integer tid, @ModelAttribute("user") Customer customer) {
 
-        System.out.println("-----------------------BookingControoler create. | customer = " + customer);
-
         Tour t = tservice.findTourById(tid);
-        System.out.println("-----------------------BookingControoler create. | tour= " + t);
+
         customer.addTour(t);
         cservice.UpdateCustomer(customer);
-        System.out.println("Customer with tours after addition: "+ customer.getTours());
-        
-       
-        
-        
-//
-//        System.out.println("---------------------------BookingController FindTourByID:" + t);
-//        Customer c = cservice.findCustomerById(3);
-//        System.out.println("---------------------------Booking Controller FuindCustomer" + c);
-//
-//        bservice.createBooking(t, c);
-//
-//        Integer Id = 3;
-//        List<Booking> list = bservice.findByCustomerId(Id);
+
 
         return "Bookings";
     }
-
+    
+    @GetMapping("/delete")
+    public String cancelBooking(  @RequestParam("tid") Integer tid, @ModelAttribute("user") Customer customer){
+          Tour t = tservice.findTourById(tid);
+        System.out.println("--------------------------BookingController before remove tour"+ customer.getTours());
+          customer.removeTour(t);
+       
+        cservice.UpdateCustomer(customer);
+        System.out.println("--------------------------BookingController before remove tour"+ customer.getTours());
+        return "Bookings";
+    }
+    
 }

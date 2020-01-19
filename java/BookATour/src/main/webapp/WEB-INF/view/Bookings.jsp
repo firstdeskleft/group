@@ -52,8 +52,9 @@
                                     myProfile</a>
                                 <a class="dropdown-item nav-link-hover" href="/jsp/Bookings.html">
                                     Bookings</a>
-                                <a class="dropdown-item nav-link-hover" href="/jsp/Login.jsp">
-                                    Logout</a>
+                                <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form:form>
                             </div>
                         </li>
                     </ul>

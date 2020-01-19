@@ -94,5 +94,4 @@ select * from tour;
 select * from guide;
 select * from certificate;
 select * from booking;
-insert into booking values(3,1);
-select * from booking;
+

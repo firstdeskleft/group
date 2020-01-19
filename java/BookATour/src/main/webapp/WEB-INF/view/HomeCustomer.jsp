@@ -28,6 +28,8 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/tour/listforcustomer"
                                                           class="nav-link nav-link-hover"><b>Our Tours</b></a></li>
+                          <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/customer/bookings"
+                                                          class="nav-link nav-link-hover"><b>My Booked Tours</b></a></li>                                 
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
