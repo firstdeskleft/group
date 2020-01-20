@@ -36,6 +36,18 @@ function tourCancelConfirm() {
 };
 
 
+
+
+//==================== Customer Delete Confirm ====================//
+
+function customerDeleteConfirm() {
+  return confirm("Are you sure you want to delete this Customer?");
+};
+
+
+
+
+
 //==================== Tours Filter ====================//
 
 function filterTours(){
@@ -56,7 +68,7 @@ function filterToursCost(){
 }
 
 
-//==================== Tours Cost Filter ====================//
+//==================== Tours Reset Filter ====================//
 
 function performReset() {
   document.getElementById("searchTour").value = "";

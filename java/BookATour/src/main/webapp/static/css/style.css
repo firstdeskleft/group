@@ -251,3 +251,19 @@ a{
     padding-bottom: 23px;
   }
   
+  #deleteCustomerBtn {
+   
+  }
+  
+  #deleteCustomer {
+      margin-bottom: 15px;
+      text-align: center;
+      padding-top: 8px;
+      
+  }
+  
+  #deleteGuide {
+      margin-bottom: 15px;
+      text-align: center;
+      padding-top: 8px;
+  }

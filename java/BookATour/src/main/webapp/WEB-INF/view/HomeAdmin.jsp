@@ -39,27 +39,14 @@
                                 <b>${user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover">
-                                    <p>Logged in as ${user.username}</p>
-
-                                    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/message/inbox">
+                                    my Messages
+                                </a>
+                                    <a class="dropdown-item nav-link-hover">
+                                  <form:form action="${pageContext.request.contextPath}/logout" method="POST">
                                         <input type="submit" value="Logout">
                                     </form:form>
-                                    </p>
                                 </a>
-                                    <secutiry:authorize access="isAuthenticated()">
-                                    Logged in as:
-                                    <secutiry:authentication property="principal.username" />
-
-                                </secutiry:authorize>
-
-                                <div>
-                                    <a href="${pageContext.request.contextPath}/message/inbox">
-                                        My Messages
-                                    </a>
-
-
-                                </div>
                             </div>
                         </li>
                     </ul>

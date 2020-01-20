@@ -12,9 +12,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/fontAwesome/css/all.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 </head>
-
 <body>
-
     <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
@@ -23,26 +21,26 @@
                         aria-controls="NavbarUtils" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a href="${pageContext.request.contextPath}/HomeAdmin"
-                                                class="nav-link nav-link-hover"><b>Home</b></a></li>
-                        <li class="nav-item"><a href="/jsp/ToursAdmin.html"
-                                                class="nav-link nav-link-hover"><b>Tours</b></a></li>
-                        <li class="nav-item"><a href="${pageContext.request.contextPath}/guide/list"
-                                                class="nav-link nav-link-hover"><b>Guides</b></a></li>
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/tour/listforAdmin"
+                                                          class="nav-link nav-link-hover"><b>Tours</b></a></li>
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/guide/list"
+                                                          class="nav-link nav-link-hover"><b>Guides</b></a></li>
                         <li class="nav-item"><a href="${pageContext.request.contextPath}/customer/list"
                                                 class="nav-link nav-link-hover"><b>Customers</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-user-circle"></i>
-                                <b>{user.username}</b>
+                                <b>${user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/message/inbox">
+                                    my Messages
+                                </a>
                                 <a class="dropdown-item nav-link-hover">
-                                  <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
                                         <input type="submit" value="Logout">
                                     </form:form>
                                 </a>
@@ -60,7 +58,7 @@
         <table id="tourTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
             <thead>
                 <tr class="bg-info">
-                    <th class="text-center" scope="col">Customer Id</th>
+                    <th class="text-center" scope="col">Customer ID#</th>
                     <th class="text-center" scope="col">First Name</th>
                     <th class="text-center" scope="col">Last Name</th>
                     <th class="text-center" scope="col">Credits</th>
@@ -68,66 +66,43 @@
                 </tr>
             </thead>
             <tbody>
-
                 <c:forEach items="${listOfCustomers}" var="c">
 
                     <c:url value="/customer/delete" var="deletelink" >
                         <c:param name="id" value="${c.id}" />
                     </c:url>
-                    
+
                     <c:url value="/message/send" var="messagelink" >
                         <c:param name="gid" value="${c.id}" />
                     </c:url>
-                    
-                    
                     <tr>
                         <td class="text-center">${c.id}</td>
                         <td class="text-center">${c.firstName}</td>
                         <td class="text-center">${c.lastName}</td>
                         <td class="text-center">${c.credits}</td>
-
-
-                        
-                        
                         <td class="text-center">
-
                             <a 
                                 href="${messagelink}" 
                                 class="nav-link nav-link-hover">
-                                <button>
+                                <button class="btn btn-primary text-center">
                                     Send message
                                 </button
                             </a>
                         </td>
-
-
-
-
-
-
                         <td class="text-center">
                             <a name="deleteCustomer" href="${deletelink}" id="deleteCustomer" type="submit">
                                 <b class="text-dark">
                                     <button 
-                                        onclick="alert('Are you sure you want to delete this Customer?')"
+                                        onclick="return customerDeleteConfirm(this);"
                                         class="btn btn-danger text-center" id="deleteCustomerBtn" name="deleteCustomerBtn">
-
                                         <b id="adminDeleteCustomer">
                                             Delete
                                         </b>
                                     </button>
-
                                 </b>
                             </a>
                         </td>
                     </c:forEach>
-
-                        <td class="text-center"><a name="deleteCustomer" href="${deletelink}" id="deleteCustomer" type="submit">
-                                <b class="text-dark"><button onclick="confirm('Are you sure you want to delete this Customer?')"
-                                                             class="btn btn-danger text-center" id="deleteCustomerBtn" name="deleteCustomerBtn">
-                                        <b id="adminDeleteCustomer">Delete</b></button></b></a></td>
-                                  
-
                 </tr>
             </tbody>
         </table>
@@ -140,7 +115,7 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!--BOOTSTRAP-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 </body>
 
 </html>

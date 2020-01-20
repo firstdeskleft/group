@@ -26,11 +26,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeCustomer.jsp"
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeCustomer"
                             class="nav-link nav-link-hover"><b>Home</b></a></li>
-                            <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeGuide.jsp"
+                            <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeGuide"
                                 class="nav-link nav-link-hover"><b>Home</b></a></li>
-                                <li class="nav-item"><a href="${pageContext.request.contextPath}/HomeAdmin.jsp"
+                                <li class="nav-item"><a href="${pageContext.request.contextPath}/HomeAdmin"
                                     class="nav-link nav-link-hover"><b>Home</b></a></li>
                     </ul>
                 </div>
