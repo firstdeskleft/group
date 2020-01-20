@@ -18,20 +18,24 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @RequestMapping("/")
 @SessionAttributes("user")
 public class HomeController {
-
+    
     @Autowired
     UserService userService;
     @Autowired
     GuideService guideService;
     @Autowired
     CustomerService customerService;
-
+    
     @GetMapping
-    public String home() {
-        System.out.println("$$$$$ entered home()");
+    public String home(Model model) {
+        
+        if (model.getAttribute("user") != null) {
+            model.addAttribute("user", null);
+        }
+        
         return "Home";
     }
-
+    
     @GetMapping("/HomeAdmin")
     public String adminHome(Principal principal, Model model) {
         String username = principal.getName();
@@ -40,7 +44,7 @@ public class HomeController {
         printModel(model);
         return "HomeAdmin";
     }
-
+    
     @GetMapping("/HomeGuide")
     public String guideHome(Principal principal, Model model) {
         String username = principal.getName();
@@ -49,6 +53,7 @@ public class HomeController {
         printModel(model);
         return "HomeGuide";
     }
+
     @GetMapping("/HomeCustomer")
     public String customerHome(Principal principal, Model model) {
         String username = principal.getName();
@@ -57,8 +62,9 @@ public class HomeController {
         printModel(model);
         return "HomeCustomer";
     }
+
     public void printModel(Model model) {
         System.out.println("ModelAttribute.user: {" + model.getAttribute("user") + "}");
     }
-
+    
 }

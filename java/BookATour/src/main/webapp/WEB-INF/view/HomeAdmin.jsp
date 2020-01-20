@@ -51,6 +51,14 @@
                                     <secutiry:authentication property="principal.username" />
 
                                 </secutiry:authorize>
+
+                                <div>
+                                    <a href="${pageContext.request.contextPath}/message/inbox">
+                                        My Messages
+                                    </a>
+
+
+                                </div>
                             </div>
                         </li>
                     </ul>

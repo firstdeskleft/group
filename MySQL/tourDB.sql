@@ -74,6 +74,14 @@ constraint bookingcust_fk1 foreign key (cid) references customer(id) on update c
 constraint bookingtour_fk1 foreign key (tid) references tour(tid) on update cascade on delete cascade
 );
 
+drop table if exists message;
+create table message(
+id int unsigned primary key auto_increment,
+source_id int unsigned not null, 
+target_id int unsigned not null, 
+body varchar(100) not null
+);
+
 
 insert into role(rname) values('ROLE_ADMIN');
 insert into role(rname) values ('ROLE_GUIDE');

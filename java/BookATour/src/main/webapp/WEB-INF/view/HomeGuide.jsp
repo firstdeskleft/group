@@ -40,12 +40,20 @@
                                         <form:form action="${pageContext.request.contextPath}/logout" method="POST">
                                             <input type="submit" value="Logout">
                                         </form:form>
-                                    <secutiry:authorize access="isAuthenticated()">
-                                        Logged in as:
-                                        <secutiry:authentication property="principal.username" />
+                                        <secutiry:authorize access="isAuthenticated()">
+                                            Logged in as:
+                                            <secutiry:authentication property="principal.username" />
 
-                                    </secutiry:authorize>
+                                        </secutiry:authorize>
                                     </p></a>
+                            </div>
+
+                            <div>
+                                <a href="${pageContext.request.contextPath}/message/inbox">
+                                    My Messages
+                                </a>
+
+
                             </div>
                         </li>
                     </ul>
