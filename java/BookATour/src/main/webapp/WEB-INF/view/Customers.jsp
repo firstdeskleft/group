@@ -85,7 +85,7 @@
                         <td class="text-center">${c.firstName}</td>
                         <td class="text-center">${c.lastName}</td>
                         <td class="text-center">${c.credits}</td>
-<<<<<<< HEAD
+
 
                         
                         
@@ -121,13 +121,13 @@
                             </a>
                         </td>
                     </c:forEach>
-=======
+
                         <td class="text-center"><a name="deleteCustomer" href="${deletelink}" id="deleteCustomer" type="submit">
                                 <b class="text-dark"><button onclick="confirm('Are you sure you want to delete this Customer?')"
                                                              class="btn btn-danger text-center" id="deleteCustomerBtn" name="deleteCustomerBtn">
                                         <b id="adminDeleteCustomer">Delete</b></button></b></a></td>
-                                    </c:forEach>
->>>>>>> 23bd195a04e72b4450356d333bad580b33fd4182
+                                  
+
                 </tr>
             </tbody>
         </table>

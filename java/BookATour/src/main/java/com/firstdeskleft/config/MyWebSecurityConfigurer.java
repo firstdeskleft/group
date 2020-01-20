@@ -54,6 +54,7 @@ public class MyWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .antMatchers("/guide/list","/guide/delete").hasRole("ADMIN")
                 .antMatchers("/guide/update").hasRole("GUIDE")
                 .antMatchers("/booking/create","/booking/delete").hasRole("CUSTOMER")
+                .antMatchers("/message/send","/message/inbox").authenticated()
                 .and().formLogin()
                 .loginPage("/Login")
                 .loginProcessingUrl("/authenticate")

@@ -14,7 +14,6 @@
 </head>
 
 <body>
-
     <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
@@ -53,6 +52,9 @@
                             </header>
                             <div class="image"></div>
                             <h3 class="text-left"><b>Available Tours</b></h3>
+                            <c:if test="${isNegative}">
+                                <p>Sorry not enough credits</p>
+                            </c:if>
                             <div class="row padding">
                                 <table id="tourTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
                                     <thead>
@@ -65,9 +67,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:if test="${bookingController.}">
-                                            
-                                        </c:if>
+
                                         <tr>
                                             <c:forEach items="${listOfTours}" var="t">
                                                 <c:url var="booklink" value="/booking/create">
@@ -82,11 +82,11 @@
                                                 <td class="text-center">${t.guide.username}</td>                      
                                                 <td class="text-center">
                                                     <a href="${booklink}">
-                                                    <button onclick="return confirmBooking(this);" type="submit" class="btn btn-primary" 
-                                                            id="bookButton" name="bookButton">
-                                                        Book now
-                                                    </button>
-                                                        </a>
+                                                        <button onclick="return confirmBooking(this);" type="submit" class="btn btn-primary" 
+                                                                id="bookButton" name="bookButton">
+                                                            Book now
+                                                        </button>
+                                                    </a>
                                                 </td>
                                             </c:forEach>
                                         </tr>   
