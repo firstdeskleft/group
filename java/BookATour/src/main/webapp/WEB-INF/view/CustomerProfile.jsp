@@ -45,34 +45,7 @@
             </div>
         </nav>
     </header>
-    <div class="image"></div>
-    <h3 class="text-left"><b>Booked Tours</b></h3>
-    <br>
-    <div class="row padding">
-        <table id="BookedToursTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
-            <thead>
-                <tr class="bg-info">
-                    <th class="text-center" scope="col">Location</th>
-                    <th class="text-center" scope="col">Date</th>
-                    <th class="text-center" scope="col">Cost</th>
-                    <th class="text-center" scope="col">Guide</th>
-                    <th colspan="2" class="text-center" scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="text-center">${t.location}</td>
-                    <td class="text-center">${t.date}</td>
-                    <td class="text-center">${t.cost}</td>
-                    <td class="text-center">${t.guide}</td>
-                    <td class="text-center"><a name="booking" href="#" id="booking" type="submit">
-                        <b class="text-dark"><button
-                            class="btn btn-danger" id="bookButton" name="bookButton">
-                            Cancel</button></b></a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+   
     <h3 class="text-left"><b>Personal Info</b></h3>
         <br>
         <form:form method="POST" action="${pageContext.request.contextPath}/customer/update" modelAttribute="user">
@@ -94,11 +67,8 @@
                             <form:input path="lastName" type="text" id="lastName" name="lastName" class="input-xlarge"/>
                         </td>
                         <td class="text-center">
-                            <form:input path="credits" type="text" id="date" name="credits" class="input-xlarge"/>
-                        </td>
-                        <td class="text-center">
-                            <form:input path="booking" type="text" id="date" name="credits" class="input-xlarge"/>
-                        </td>
+                            <form:input path="credits" type="text" id="credits" name="credits" class="input-xlarge"/>
+                        </td>                     
                     </tr>
                 </tbody>
             </table>
