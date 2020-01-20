@@ -7,7 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <br>
-    <title>Home</title>
+    <title>BookATour</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/fontAwesome/css/all.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
@@ -37,9 +37,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item main-item"><a href="/jsp/Home2.html"
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeCustomer"
                                                           class="nav-link nav-link-hover"><b>Home</b></a></li>
-                        <li class="nav-item  active"><a href="/jsp/Tours2.html" class="nav-link nav-link-hover"><b>Our
+                        <li class="nav-item  active"><a href="${pageContext.request.contextPath}/tour/listforcustomer" class="nav-link nav-link-hover"><b>Our
                                     Tours</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
@@ -48,9 +48,9 @@
                                 <b>{user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/CustomerProfile.html">
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/customer/update">
                                     myProfile</a>
-                                <a class="dropdown-item nav-link-hover" href="/jsp/Bookings.html">
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}customer/bookings">
                                     Bookings</a>
                                 <form:form action="${pageContext.request.contextPath}/logout" method="POST">
                                         <input type="submit" value="Logout">

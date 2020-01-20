@@ -211,3 +211,43 @@ a{
 #BookedToursTable{
     margin-left: 2.1rem;
 }
+
+
+#filters {
+
+    margin-left: 35px;
+
+}
+
+#searchTour {
+    background-image: url("static/css/searchicon.png");
+    background-position: left;
+    background-repeat: no-repeat; 
+    background-size: 35px;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 10px 10px 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    padding-left: 12px;
+  }
+
+  #searchTourCost {
+    padding: 10px 10px 10px 15px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    margin-left: 35px;
+    
+  }
+
+  #buttonReset {
+
+    margin-left: 10px;
+    border-radius: 12px;
+  }
+
+
+  #filterSelection #filtering {
+    padding-bottom: 23px;
+  }
+  

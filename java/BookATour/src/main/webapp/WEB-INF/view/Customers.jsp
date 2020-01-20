@@ -41,8 +41,11 @@
                                 <b>{user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/Login.jsp">
-                                    Logout</a>
+                                <a class="dropdown-item nav-link-hover">
+                                  <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form:form>
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -77,7 +80,7 @@
                         <td class="text-center">${c.lastName}</td>
                         <td class="text-center">${c.credits}</td>
                         <td class="text-center"><a name="deleteCustomer" href="${deletelink}" id="deleteCustomer" type="submit">
-                                <b class="text-dark"><button onclick="alert('Are you sure you want to delete this Customer?')"
+                                <b class="text-dark"><button onclick="confirm('Are you sure you want to delete this Customer?')"
                                                              class="btn btn-danger text-center" id="deleteCustomerBtn" name="deleteCustomerBtn">
                                         <b id="adminDeleteCustomer">Delete</b></button></b></a></td>
                                     </c:forEach>
