@@ -1,5 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="secutiry" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html>
 
@@ -27,11 +30,11 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item"><a href="${pageContext.request.contextPath}/HomeAdmin"
                                                 class="nav-link nav-link-hover"><b>Home</b></a></li>
-                        <li class="nav-item"><a href="${pageContext.request.contextPath}"
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/tour/listforAdmin"
                                                 class="nav-link nav-link-hover"><b>Tours</b></a></li>
                         <li class="nav-item"><a href="${pageContext.request.contextPath}/guide/list"
                                                 class="nav-link nav-link-hover"><b>Guides</b></a></li>
-                        <li class="nav-item"><a href="${pageContext.request.contextPath}"
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/customer/list"
                                                 class="nav-link nav-link-hover"><b>Customers</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
@@ -40,8 +43,11 @@
                                 <b>${user}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/Login.jsp">
-                                    Logout</a>
+                                <a class="dropdown-item nav-link-hover" href="#">
+                                    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form:form>
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -134,7 +140,7 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!--BOOTSTRAP-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 </body>
 
 </html>

@@ -45,7 +45,8 @@
                                     <form:form action="${pageContext.request.contextPath}/logout" method="POST">
                                         <input type="submit" value="Logout">
                                     </form:form>
-                                    </p></a>
+                                    </p>
+                                </a>
                                     <secutiry:authorize access="isAuthenticated()">
                                     Logged in as:
                                     <secutiry:authentication property="principal.username" />
@@ -82,7 +83,7 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!--BOOTSTRAP-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 </body>
 
 </html>

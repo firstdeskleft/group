@@ -66,6 +66,15 @@
     </header>
     <div class="image"></div>
     <h3 class="text-left"><b>Available Tours</b></h3>
+    <br>
+    <br>
+     <section class="row" id="filters">
+        <p class="row col-2"><button id="buttonReset" onclick="performReset()" class="btn btn-primary">Reset Filters</button></p>
+        <input class="data-filter row col-2 text-center" type="text" id="searchTour" onkeyup="filterTours();"
+            placeholder="Search for Locations..." title="Type in a Location">
+        <input class="data-filter row col-1" type="number" id="searchTourCost" onkeyup="filterToursCost()"
+            placeholder="Tour Price">
+    </section>
     <div class="row padding">
         <table id="tourTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
             <thead>
@@ -101,7 +110,7 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!--BOOTSTRAP-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 </body>
 
 </html>

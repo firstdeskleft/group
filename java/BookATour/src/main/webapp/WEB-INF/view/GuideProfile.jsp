@@ -19,23 +19,31 @@
             <div class="container">
                 <a id="appTitle" class="navbar-brand nav-link-hover text-primary"><b>Book a Tour</b></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarUtils"
-                    aria-controls="NavbarUtils" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                        aria-controls="NavbarUtils" aria-expanded="false" aria-label="Toggle navigation">
+                    <span style="font-size:20px;" class="navbar-toggler-icon fas fa-bars">
+                    </span>
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item main-item"><a href="/jsp/Tours-Guide.html"
-                            class="nav-link nav-link-hover"><b>myTours</b></a></li>
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeGuide"
+                                                          class="nav-link nav-link-hover"><b>Home</b></a></li>
+                        <li class="nav-item  active"><a href="${pageContext.request.contextPath}/tour/guidetours"
+                                                        class="nav-link nav-link-hover"><b>myTours</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
-                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-user-circle"></i>
                                 <b>{user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/Login.jsp">
-                                    Logout</a>
-                                    </div>
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/guide/update">
+                                    myProfile</a>
+                                <a class="dropdown-item nav-link-hover">
+                                    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form:form>
+                                </a>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -96,7 +104,7 @@
     <!--BOOTSTRAP-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- JavaScript -->
-    <script src="/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 </body>
 
 </html>

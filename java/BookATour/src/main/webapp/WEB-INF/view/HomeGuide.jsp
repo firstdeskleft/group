@@ -35,8 +35,10 @@
                                 <b>${user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                 <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/guide/update">
-                                    myProfile</a>
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/guide/update">
+                                    myProfile
+                                </a>
+                                <a class="dropdown-item nav-link-hover">
                                     <p>Logged in as :${user.username} 
                                         <form:form action="${pageContext.request.contextPath}/logout" method="POST">
                                             <input type="submit" value="Logout">
@@ -46,7 +48,8 @@
                                             <secutiry:authentication property="principal.username" />
 
                                         </secutiry:authorize>
-                                    </p></a>
+                                    </p>
+                                </a>
                             </div>
 
                             <div>
@@ -81,7 +84,7 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!--BOOTSTRAP-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 </body>
 
 </html>
