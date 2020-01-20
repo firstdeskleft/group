@@ -57,7 +57,7 @@
                         <th class="text-center" scope="col">Date</th>
                         <th class="text-center" scope="col">Cost</th>
                         <th class="text-center" scope="col">Guide</th>
-                        <th colspan="2" class="text-center" scope="col">Actions</th>
+               
                     </tr>
                 </thead>
                 <tbody>
@@ -66,10 +66,7 @@
                         <td class="text-center">${t.date}</td>
                         <td class="text-center">${t.cost}</td>
                         <td class="text-center">${t.guide}</td>
-                        <td class="text-center"><a name="booking" href="#" id="booking" type="submit">
-                            <b class="text-dark"><button
-                                class="btn btn-primary" id="bookButton" name="bookButton">
-                                </button></b></a></td>
+                  
                     </tr>
                 </tbody>
             </table>

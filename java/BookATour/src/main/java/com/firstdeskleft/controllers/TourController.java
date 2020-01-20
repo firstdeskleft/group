@@ -41,6 +41,13 @@ public class TourController {
 
         return "Tours";
     }
+    
+    @GetMapping("/listforAdmin")
+    public String showToursforAdmin(Model m){
+        List<Tour> list = tservice.getAllTours();
+        m.addAttribute("listOfTours", list);
+        return "ToursAdmin";
+    }
 
     @GetMapping("/listforcustomer")
     public String showToursforCustomer(Model m) {

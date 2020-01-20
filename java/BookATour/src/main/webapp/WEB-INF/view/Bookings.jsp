@@ -69,6 +69,7 @@
         <table id="BookedToursTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
             <thead>
                 <tr class="bg-info">
+                     <th class="text-center" scope="col">Boooking ID</th>
                     <th class="text-center" scope="col">Location</th>
                     <th class="text-center" scope="col">Date</th>
                     <th class="text-center" scope="col">Cost</th>
