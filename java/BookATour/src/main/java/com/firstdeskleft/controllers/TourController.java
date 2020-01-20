@@ -95,7 +95,7 @@ public class TourController {
     ) {
         Tour t = tservice.findTourById(id);
         model.addAttribute("tour", t);
-        return "CreateTour";
+        return "EditTour";
     }
 
 }

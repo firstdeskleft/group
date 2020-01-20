@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <header>
+   <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
                 <a id="appTitle" class="navbar-brand nav-link-hover text-primary"><b>Book a Tour</b></a>
@@ -33,15 +33,19 @@
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-user-circle"></i>
-                                <b>{user.username}</b>
+                                <b>${user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/guide/update">
-                                    myProfile</a>
+                                    myProfile
+                                </a>
+                                    <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/message/inbox">
+                                    My Messages
+                                </a>
                                 <a class="dropdown-item nav-link-hover">
-                                    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
-                                        <input type="submit" value="Logout">
-                                    </form:form>
+                                        <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                            <input type="submit" value="Logout">
+                                        </form:form>
                                 </a>
                             </div>
                         </li>
@@ -61,22 +65,22 @@
                     <tr class="bg-dark text-white">
                         <label for="firstName">
                             <th class="text-center" scope="col">
-                                <h5>{user.firstName}</h5>
+                                <h5>First Name</h5>
                             </th>
                         </label>
                         <label for="lastName">
                             <th class="text-center" scope="col">
-                                <h5>{user.lastName}</h5>
+                                <h5>Last Name</h5>
                             </th>
                         </label>
                         <label for="credits">
                             <th class="text-center" scope="col">
-                                <h5>{user.subject} $</h5>
+                                <h5>Subject</h5>
                             </th>
                         </label>
                         <label for="credits">
                             <th class="text-center" scope="col">
-                                <h5>{user.profits} $</h5>
+                                <h5>Profits</h5>
                             </th>
                         </label>
                     </tr>

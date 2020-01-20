@@ -12,10 +12,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/fontAwesome/css/all.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 </head>
-
 <body>
-    ${guide}
-    ${guide.username}
     <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
@@ -38,26 +35,14 @@
                                 <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/guide/update">
                                     myProfile
                                 </a>
+                                    <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/message/inbox">
+                                    My Messages
+                                </a>
                                 <a class="dropdown-item nav-link-hover">
-                                    <p>Logged in as :${user.username} 
                                         <form:form action="${pageContext.request.contextPath}/logout" method="POST">
                                             <input type="submit" value="Logout">
                                         </form:form>
-                                        <secutiry:authorize access="isAuthenticated()">
-                                            Logged in as:
-                                            <secutiry:authentication property="principal.username" />
-
-                                        </secutiry:authorize>
-                                    </p>
                                 </a>
-                            </div>
-
-                            <div>
-                                <a href="${pageContext.request.contextPath}/message/inbox">
-                                    My Messages
-                                </a>
-
-
                             </div>
                         </li>
                     </ul>
@@ -66,7 +51,6 @@
         </nav>
     </header>
     <main>
-        <div class="image"></div>
         <div class="jumbotron jumbotron-fix">
             <div class="container">
                 <div class="row">

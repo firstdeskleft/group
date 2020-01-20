@@ -1,4 +1,7 @@
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@taglib prefix="secutiry" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +14,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 </head>
 <body>
-    <header>
+  <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
                 <a id="appTitle" class="navbar-brand nav-link-hover text-primary"><b>Book a Tour</b></a>
@@ -30,15 +33,19 @@
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-user-circle"></i>
-                                <b>{user.username}</b>
+                                <b>${user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/guide/update">
-                                    myProfile</a>
+                                    myProfile
+                                </a>
+                                    <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/message/inbox">
+                                    My Messages
+                                </a>
                                 <a class="dropdown-item nav-link-hover">
-                                    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
-                                        <input type="submit" value="Logout">
-                                    </form:form>
+                                        <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                            <input type="submit" value="Logout">
+                                        </form:form>
                                 </a>
                             </div>
                         </li>
@@ -51,7 +58,7 @@
     <h3 class="text-left"><b>Edit Tour</b></h3>
     <br>
     <form method="POST">
-        <button type="submit" id="editTourBtn" class="btn btn-primary"><a name="editTour" id="editTour">
+        <button type="submit" id="updateTourBtn" class="btn btn-primary"><a name="editTour" id="editTour">
                 Update</a></button>
         <div class="row padding">
             <table id="EditTourTable" class="bg-info table table-hover table-striped table-bordered col-4 border border-dark">

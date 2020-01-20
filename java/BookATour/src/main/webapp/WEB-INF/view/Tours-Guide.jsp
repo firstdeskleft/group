@@ -12,15 +12,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/fontAwesome/css/all.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 </head>
-
 <body>
-   
     <header>
-        <secutiry:authorize access="isAuthenticated()">
-            Logged in as:
-            <secutiry:authentication property="principal.username" />
-
-        </secutiry:authorize>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
                 <a id="appTitle" class="navbar-brand nav-link-hover text-primary"><b>Book a Tour</b></a>
@@ -34,17 +27,25 @@
                         <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeGuide"
                                                           class="nav-link nav-link-hover"><b>Home</b></a></li>
                         <li class="nav-item  active"><a href="${pageContext.request.contextPath}/tour/guidetours"
-                                                        class="nav-link nav-link-hover sr-only"><b>myTours</b></a></li>
+                                                        class="nav-link nav-link-hover"><b>myTours</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-user-circle"></i>
-                                <b>{user.username}</b>
+                                <b>${user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <form:form action="${pageContext.request.contextPath}/logout" method="POST">
-                                    <input type="submit" value="Logout">
-                                </form:form>
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/guide/update">
+                                    myProfile
+                                </a>
+                                    <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/message/inbox">
+                                    My Messages
+                                </a>
+                                <a class="dropdown-item nav-link-hover">
+                                        <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                            <input type="submit" value="Logout">
+                                        </form:form>
+                                </a>
                             </div>
                         </li>
                     </ul>
