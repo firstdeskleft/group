@@ -13,11 +13,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/fontAwesome/css/all.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
 </head>
-
 <body>
-   [ ${customer} ]
-   [ ${customer.username}]
-   [${user} ]
     <header>
         <nav class="navbar navbar-expand-lg navbar-info bg-dark">
             <div class="container">
@@ -30,8 +26,6 @@
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/tour/listforcustomer"
                                                           class="nav-link nav-link-hover"><b>Our Tours</b></a></li>
-                          <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/customer/bookings"
-                                                          class="nav-link nav-link-hover"><b>My Booked Tours</b></a></li>                                 
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -40,26 +34,16 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/customer/update">
-                                    myProfile</a>
-                                <p>Logged in as :${user.username} |
+                                    my Profile</a>
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/customer/bookings">
+                                    my Bookings</a>
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/message/inbox">
+                                    my Messages</a>
+                                 <a class="dropdown-item nav-link-hover">
                                     <form:form action="${pageContext.request.contextPath}/logout" method="POST">
                                         <input type="submit" value="Logout">
                                     </form:form>
-
-                                    <secutiry:authorize access="isAuthenticated()">
-                                        Logged in as:
-                                        <secutiry:authentication property="principal.username" />
-
-                                    </secutiry:authorize>
-                                </p>
-                                
-                                 <div>
-                                    <a href="${pageContext.request.contextPath}/message/inbox">
-                                        My Messages
-                                    </a>
-
-
-                                </div>
+                                 </a>
                             </div>
                         </li>
                     </ul>

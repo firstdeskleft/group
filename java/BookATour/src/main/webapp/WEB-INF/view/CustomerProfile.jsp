@@ -20,30 +20,31 @@
                 <a id="appTitle" class="navbar-brand nav-link-hover text-primary"><b>Book a Tour</b></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarUtils"
                         aria-controls="NavbarUtils" aria-expanded="false" aria-label="Toggle navigation">
-                    <span style="font-size:20px;" class="navbar-toggler-icon fas fa-bars">
-                    </span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeCustomer"
                                                           class="nav-link nav-link-hover"><b>Home</b></a></li>
-                        <li class="nav-item  active"><a href="${pageContext.request.contextPath}/tour/listforcustomer"
-                                                        class="nav-link nav-link-hover"><b>Our Tours</b></a></li>
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/tour/listforcustomer"
+                                                          class="nav-link nav-link-hover"><b>Our Tours</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-user-circle"></i>
-                                <b>{user.username}</b>
+                                <b>${user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/customer/update">
-                                    myProfile</a>
-                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}customer/bookings">
-                                    Bookings</a>
-                                <a class="dropdown-item nav-link-hover"
-                                   <form:form action="${pageContext.request.contextPath}/logout" method="POST">
-                                       <input type="submit" value="Logout">
-                                   </form:form>
+                                    my Profile</a>
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/customer/bookings">
+                                    my Bookings</a>
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/message/inbox">
+                                    my Messages</a>
+                                <a class="dropdown-item nav-link-hover">
+                                    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form:form>
                                 </a>
                             </div>
                         </li>
@@ -60,9 +61,9 @@
             <table id="customerInfoTable" class="bg-info table table-hover table-striped table-bordered col-4 border border-dark">
                 <thead>
                     <tr class="bg-dark text-white">
-                <label for="firstName"><th class="text-center" scope="col"><h5>userrn</h5></th></label>  
-                <label for="lastName"><th class="text-center" scope="col"><h5>UserLastName</h5></th></label>  
-                <label for="credits"><th class="text-center" scope="col"><h5>UserCredits </h5></th></label>  
+                <label for="firstName"><th class="text-center" scope="col"><h5>First Name</h5></th></label>  
+                <label for="lastName"><th class="text-center" scope="col"><h5>Last Name</h5></th></label>  
+                <label for="credits"><th class="text-center" scope="col"><h5>Credits</h5></th></label>  
                 </tr>
                 </thead>
                 <tbody>
@@ -81,7 +82,7 @@
             </table>
         </div>
         <button type="submit" id="editCustomerBtn" class="btn btn-primary"><a name="editCustomer" id="editCustomer">
-                Submit Changes
+                Update 
             </a>
         </button>
     </form:form>

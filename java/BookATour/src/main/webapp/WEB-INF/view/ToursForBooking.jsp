@@ -24,84 +24,95 @@
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/"
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeCustomer"
                                                           class="nav-link nav-link-hover"><b>Home</b></a></li>
-                        <li class="nav-item main-item"><a href="/jsp/Tours2.html"
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/tour/listforcustomer"
                                                           class="nav-link nav-link-hover"><b>Our Tours</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
                                role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-user-circle"></i>
-
+                                <b>${user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <form:form action="${pageContext.request.contextPath}/logout" method="POST">
-                                    <input type="submit" value="Logout">
-                                </form:form>
-
-                                <secutiry:authorize access="isAuthenticated()">
-                                    Logged in as:
-                                    <secutiry:authentication property="principal.username" />
-
-                                </secutiry:authorize>
-                                </li>
-                                </ul>
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/customer/update">
+                                    my Profile</a>
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/customer/bookings">
+                                    my Bookings</a>
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/message/inbox">
+                                    my Messages</a>
+                                <a class="dropdown-item nav-link-hover">
+                                    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form:form>
+                                </a>
                             </div>
-                            </div>
-                            </nav>
-                            </header>
-                            <div class="image"></div>
-                            <h3 class="text-left"><b>Available Tours</b></h3>
-                            <c:if test="${isNegative}">
-                                <p>Sorry not enough credits</p>
-                            </c:if>
-                            <div class="row padding">
-                                <table id="tourTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
-                                    <thead>
-                                        <tr class="bg-info">
-                                            <th class="text-center" scope="col">Location</th>
-                                            <th class="text-center" scope="col">Date</th>
-                                            <th class="text-center" scope="col">Cost</th>
-                                            <th class="text-center" scope="col">Guide</th>
-                                            <th colspan="2" class="text-center" scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <h3 class="text-left"><b>Available Tours</b></h3>
+    <c:if test="${isNegative}">
+        <p>Sorry not enough credits</p>
+    </c:if>
+    <br>
+    <br>
+    <section class="row" id="filters">
+        <p class="row col-2"><button id="buttonReset" onclick="performReset()" class="btn btn-primary">Reset Filters</button></p>
+        <input class="data-filter row col-2 text-center" type="text" id="searchTour" onkeyup="filterTours();"
+               placeholder="Search for Locations..." title="Type in a Location">
+        <input class="data-filter row col-1" type="number" id="searchTourCost" onkeyup="filterToursCost()"
+               placeholder="Tour Price">
+    </section>
+    <div class="row padding">
+        <table id="tourTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
+            <thead>
+                <tr class="bg-info data-tourInfo">
+                    <th class="text-center" scope="col">Location</th>
+                    <th class="text-center" scope="col">Date</th>
+                    <th class="text-center" scope="col">Cost</th>
+                    <th class="text-center" scope="col">Guide</th>
+                    <th colspan="2" class="text-center" scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
 
-                                        <tr>
-                                            <c:forEach items="${listOfTours}" var="t">
-                                                <c:url var="booklink" value="/booking/create">
-                                                    <c:param name="tid" value="${t.tid}" />
-                                                </c:url>
+                <tr>
+                    <c:forEach items="${listOfTours}" var="t">
+                        <c:url var="booklink" value="/booking/create">
+                            <c:param name="tid" value="${t.tid}" />
+                        </c:url>
 
-                                            <tr>
-                                                <td class="text-center">${t.tid}</td>
-                                                <td class="text-center">${t.location}</td>
-                                                <td class="text-center">${t.tdate}</td>
-                                                <td class="text-center">${t.cost}</td>
-                                                <td class="text-center">${t.guide.username}</td>                      
-                                                <td class="text-center">
-                                                    <a href="${booklink}">
-                                                        <button onclick="return confirmBooking(this);" type="submit" class="btn btn-primary" 
-                                                                id="bookButton" name="bookButton">
-                                                            Book now
-                                                        </button>
-                                                    </a>
-                                                </td>
-                                            </c:forEach>
-                                        </tr>   
-                                    </tbody>
-                                </table>
-                            </div>
+                    <tr>
+                        <td class="text-center">${t.tid}</td>
+                        <td class="text-center">${t.location}</td>
+                        <td class="text-center">${t.tdate}</td>
+                        <td class="text-center">${t.cost}</td>
+                        <td class="text-center">${t.guide.username}</td>                      
+                        <td class="text-center">
+                            <a href="${booklink}">
+                                <button onclick="return confirmBooking(this);" type="submit" class="btn btn-primary" 
+                                        id="bookButton" name="bookButton">
+                                    Book now
+                                </button>
+                            </a>
+                        </td>
+                    </c:forEach>
+                </tr>   
+            </tbody>
+        </table>
+    </div>
 
 
 
-                            <!--JQUERY-->
-                            <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-                            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-                            <!--BOOTSTRAP-->
-                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-                            <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
-                            </body>
+    <!--JQUERY-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!--BOOTSTRAP-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
+</body>
 
-                            </html>
+</html>

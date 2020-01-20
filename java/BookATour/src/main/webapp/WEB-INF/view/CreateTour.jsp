@@ -39,10 +39,10 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/guide/update">
-                                    myProfile
+                                    my Profile
                                 </a>
                                     <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/message/inbox">
-                                    My Messages
+                                    my Messages
                                 </a>
                                 <a class="dropdown-item nav-link-hover">
                                         <form:form action="${pageContext.request.contextPath}/logout" method="POST">

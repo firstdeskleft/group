@@ -33,15 +33,15 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/guide/update">
-                                    myProfile
-                                </a>
-                                    <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/message/inbox">
-                                    My Messages
+                                    my Profile</a>
+                                
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/message/inbox">
+                                    my Messages
                                 </a>
                                 <a class="dropdown-item nav-link-hover">
-                                        <form:form action="${pageContext.request.contextPath}/logout" method="POST">
-                                            <input type="submit" value="Logout">
-                                        </form:form>
+                                    <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form:form>
                                 </a>
                             </div>
                         </li>
@@ -51,6 +51,7 @@
         </nav>
     </header>
     <main>
+        <div></div>
         <div class="jumbotron jumbotron-fix">
             <div class="container">
                 <div class="row">
@@ -59,9 +60,6 @@
             </div>
         </div>
     </main>
-
-
-
 
     <!--JQUERY-->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
