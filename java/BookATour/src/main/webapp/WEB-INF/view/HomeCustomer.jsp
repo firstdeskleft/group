@@ -50,6 +50,14 @@
 
                                     </secutiry:authorize>
                                 </p>
+                                
+                                 <div>
+                                    <a href="${pageContext.request.contextPath}/message/inbox">
+                                        My Messages
+                                    </a>
+
+
+                                </div>
                             </div>
                         </li>
                     </ul>

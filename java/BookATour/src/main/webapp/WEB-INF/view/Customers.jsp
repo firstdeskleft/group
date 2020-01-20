@@ -41,8 +41,11 @@
                                 <b>{user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/Login.jsp">
-                                    Logout</a>
+                                <a class="dropdown-item nav-link-hover">
+                                  <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form:form>
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -71,16 +74,60 @@
                     <c:url value="/customer/delete" var="deletelink" >
                         <c:param name="id" value="${c.id}" />
                     </c:url>
+                    
+                    <c:url value="/message/send" var="messagelink" >
+                        <c:param name="gid" value="${c.id}" />
+                    </c:url>
+                    
+                    
                     <tr>
                         <td class="text-center">${c.id}</td>
                         <td class="text-center">${c.firstName}</td>
                         <td class="text-center">${c.lastName}</td>
                         <td class="text-center">${c.credits}</td>
+<<<<<<< HEAD
+
+                        
+                        
+                        <td class="text-center">
+
+                            <a 
+                                href="${messagelink}" 
+                                class="nav-link nav-link-hover">
+                                <button>
+                                    Send message
+                                </button
+                            </a>
+                        </td>
+
+
+
+
+
+
+                        <td class="text-center">
+                            <a name="deleteCustomer" href="${deletelink}" id="deleteCustomer" type="submit">
+                                <b class="text-dark">
+                                    <button 
+                                        onclick="alert('Are you sure you want to delete this Customer?')"
+                                        class="btn btn-danger text-center" id="deleteCustomerBtn" name="deleteCustomerBtn">
+
+                                        <b id="adminDeleteCustomer">
+                                            Delete
+                                        </b>
+                                    </button>
+
+                                </b>
+                            </a>
+                        </td>
+                    </c:forEach>
+=======
                         <td class="text-center"><a name="deleteCustomer" href="${deletelink}" id="deleteCustomer" type="submit">
-                                <b class="text-dark"><button onclick="alert('Are you sure you want to delete this Customer?')"
+                                <b class="text-dark"><button onclick="confirm('Are you sure you want to delete this Customer?')"
                                                              class="btn btn-danger text-center" id="deleteCustomerBtn" name="deleteCustomerBtn">
                                         <b id="adminDeleteCustomer">Delete</b></button></b></a></td>
                                     </c:forEach>
+>>>>>>> 23bd195a04e72b4450356d333bad580b33fd4182
                 </tr>
             </tbody>
         </table>
