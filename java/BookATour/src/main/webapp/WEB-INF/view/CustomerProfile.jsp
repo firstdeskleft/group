@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@taglib prefix="secutiry" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <html>
 
 <head>
@@ -23,9 +25,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
-                     <li class="nav-item main-item"><a href="/jsp/Home2.html"
+                     <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeCustomer"
                             class="nav-link nav-link-hover"><b>Home</b></a></li>
-                        <li class="nav-item  active"><a href="/jsp/Tours2.html"
+                        <li class="nav-item  active"><a href="${pageContext.request.contextPath}/tour/listforcustomer"
                             class="nav-link nav-link-hover"><b>Our Tours</b></a></li>
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle nav-link-hover" id="navbarDropdown1"
@@ -33,46 +35,22 @@
                                 <i class="far fa-user-circle"></i>
                                 <b>{user.username}</b>
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/CustomerProfile.html">
+                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/customer/update">
                                     myProfile</a>
-                                <a class="dropdown-item nav-link-hover" href="/jsp/Login.jsp">
-                                    Logout</a>
-                                    </div>
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}customer/bookings">
+                                    Bookings</a>
+                                <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+                                        <input type="submit" value="Logout">
+                                    </form:form>
+                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="image"></div>
-    <h3 class="text-left"><b>Booked Tours</b></h3>
-    <br>
-    <div class="row padding">
-        <table id="BookedToursTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
-            <thead>
-                <tr class="bg-info">
-                    <th class="text-center" scope="col">Location</th>
-                    <th class="text-center" scope="col">Date</th>
-                    <th class="text-center" scope="col">Cost</th>
-                    <th class="text-center" scope="col">Guide</th>
-                    <th colspan="2" class="text-center" scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="text-center">${t.location}</td>
-                    <td class="text-center">${t.date}</td>
-                    <td class="text-center">${t.cost}</td>
-                    <td class="text-center">${t.guide}</td>
-                    <td class="text-center"><a name="booking" href="#" id="booking" type="submit">
-                        <b class="text-dark"><button
-                            class="btn btn-danger" id="bookButton" name="bookButton">
-                            Cancel</button></b></a></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+   
     <h3 class="text-left"><b>Personal Info</b></h3>
         <br>
         <form:form method="POST" action="${pageContext.request.contextPath}/customer/update" modelAttribute="user">
@@ -94,11 +72,8 @@
                             <form:input path="lastName" type="text" id="lastName" name="lastName" class="input-xlarge"/>
                         </td>
                         <td class="text-center">
-                            <form:input path="credits" type="text" id="date" name="credits" class="input-xlarge"/>
-                        </td>
-                        <td class="text-center">
-                            <form:input path="booking" type="text" id="date" name="credits" class="input-xlarge"/>
-                        </td>
+                            <form:input path="credits" type="text" id="credits" name="credits" class="input-xlarge"/>
+                        </td>                     
                     </tr>
                 </tbody>
             </table>
@@ -116,7 +91,7 @@
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!--BOOTSTRAP-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 </body>
 
 </html>

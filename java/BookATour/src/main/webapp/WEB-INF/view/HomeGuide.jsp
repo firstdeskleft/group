@@ -35,7 +35,8 @@
                                 <b>${user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover">
+                                 <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/guide/update">
+                                    myProfile</a>
                                     <p>Logged in as :${user.username} 
                                         <form:form action="${pageContext.request.contextPath}/logout" method="POST">
                                             <input type="submit" value="Logout">

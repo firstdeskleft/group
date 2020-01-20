@@ -25,9 +25,10 @@ public class CustomerController {
         return "Customers";
     }
     @GetMapping("/update")
-    public String UpdateCustomer(Model model) {
-        System.out.println("In CustomerController, GET");
-        printModel(model);
+    public String UpdateCustomer(Model model,@ModelAttribute("user") Customer customer) {
+//        System.out.println("In CustomerController, GET");
+//        printModel(model);
+//        model.addAttribute(service)
         return "CustomerProfile";
     }
     @PostMapping("/update")
