@@ -37,7 +37,7 @@
                                 <b>${user.username}</b>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item nav-link-hover" href="/jsp/CustomerProfile.html">
+                                <a class="dropdown-item nav-link-hover" href="${pageContext.request.contextPath}/customer/update">
                                     myProfile</a>
                                 <p>Logged in as :${user.username} |
                                     <form:form action="${pageContext.request.contextPath}/logout" method="POST">
