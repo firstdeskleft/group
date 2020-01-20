@@ -27,5 +27,7 @@ public interface CustomerService {
     public Customer findCustomerById(Integer id);
 
     public void deleteCustomer(Integer id);
+
+    public void saveWithBonusCredits(Customer customer, Integer bonus);
     
 }

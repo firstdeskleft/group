@@ -98,6 +98,9 @@ public class Customer extends User implements Serializable {
     public void setTours(List<Tour> tours) {
         this.tours = tours;
     }
+    public void addCredits(Integer credits){
+        this.credits= credits;
+    }
 
     @Override
     public int hashCode() {

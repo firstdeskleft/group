@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("/guide")
+@SessionAttributes("user")
 public class GuideController {
 
     @Autowired
@@ -28,27 +30,28 @@ public class GuideController {
         return "Guides";
     }
 
-   
-
     @GetMapping("/update")
-    public String UpdateCustomer(Model model) {
-        
-        
-        Integer id=null;
-        Guide g=service.findCustomerById(id);
-//        
-         model.addAttribute("guide", g);
-        
+    public String UpdateGuide(Model model, @ModelAttribute("user") Guide guide) {
 
-        return "!!!!!!!formGuide";
+        return "GuideProfile";
+    }
+
+     @PostMapping("/update")
+    public String editGuidePost(@ModelAttribute("user") Guide guide) {
+        
+    
+        service.UpdateGuide(guide);
+        
+        return "redirect:/HomeGuide";
     }
     
+    
+    
     @GetMapping("/delete")
-    public String deleteGuide(@RequestParam("id") Integer  id) {
+    public String deleteGuide(@RequestParam("id") Integer id) {
         service.deleteGuide(id);
 
         return "redirect:/guide/list";
     }
-    
 
 }

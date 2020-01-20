@@ -1,8 +1,4 @@
-
 package com.firstdeskleft.controllers;
-
-
-
 
 import com.firstdeskleft.entities.Certificate;
 import com.firstdeskleft.entities.Customer;
@@ -24,72 +20,65 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/register")
 public class RegistrationController {
-    
+
     @Autowired
     CustomerService customerService;
     @Autowired
     GuideService guideService;
-    
 
-    
     @GetMapping("/customer")
-    public String showCustomerRegistrationForm(Model m){
-        
+    public String showCustomerRegistrationForm(Model m) {
+
         m.addAttribute("customer", new Customer());
-       
+
         return "CustomerRegister";
     }
-    
+
     @GetMapping("/guide")
-    public String ShowGuideRegistrationForm(Model m){
-        m.addAttribute("guide",new Guide());
+    public String ShowGuideRegistrationForm(Model m) {
+        m.addAttribute("guide", new Guide());
         return "GuideRegister";
     }
-    
-  
-    
+
     @PostMapping("/customer")
     public String processCustomerRegistration(@Valid @ModelAttribute("customer") Customer customer,
-          
-            BindingResult result,Model m){
-        
-        System.out.println("------------------------POST REGISTRATION CUSTOMER"+customer);
-        
-        if(result.hasErrors()){
-            
+            BindingResult result, Model m) {
+        Integer bonus = 500;
+        System.out.println("------------------------POST REGISTRATION CUSTOMER" + customer);
+
+        if (result.hasErrors()) {
+
             return "CustomerRegister";
         }
         Customer existing = customerService.findByUsername(customer.getUsername());
-        if(existing !=null){
-            m.addAttribute("customer",new Customer());
-            m.addAttribute("customerExistsError","Username already exists");
+        if (existing != null) {
+            m.addAttribute("customer", new Customer());
+            m.addAttribute("customerExistsError", "Username already exists");
             return "CustomerRegister";
         }
-        customerService.save(customer);
-        
+        customerService.saveWithBonusCredits(customer, bonus);
+
         return "redirect:/Login";
     }
+
     @PostMapping("/guide")
     public String processGuideRegistration(@Valid @ModelAttribute("guide") Guide guide,
-            BindingResult result,Model m){
-        
-        if(result.hasErrors()){
-            
+            BindingResult result, Model m) {
+
+        if (result.hasErrors()) {
+
             return "GuideRegister";
         }
         Guide existing = guideService.findByUsername(guide.getUsername());
-        if(existing !=null){
-            m.addAttribute("guide",new Guide());
-            m.addAttribute("guideExistsError","Username already exists");
+        if (existing != null) {
+            m.addAttribute("guide", new Guide());
+            m.addAttribute("guideExistsError", "Username already exists");
             return "GuideRegister";
         }
-        
+
         guideService.save(guide);
-        
+
         return "redirect:/Login";
     }
-    
 
-    
-    
 }

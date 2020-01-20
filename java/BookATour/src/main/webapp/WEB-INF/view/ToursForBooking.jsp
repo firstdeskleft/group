@@ -65,6 +65,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <c:if test="${bookingController.}">
+                                            
+                                        </c:if>
                                         <tr>
                                             <c:forEach items="${listOfTours}" var="t">
                                                 <c:url var="booklink" value="/booking/create">

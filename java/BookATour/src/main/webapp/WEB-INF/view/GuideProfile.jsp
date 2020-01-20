@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 
 <head>
@@ -43,7 +44,7 @@
     </header>
     <h3 class="text-left"><b>Personal Info</b></h3>
     <br>
-    <form action="" method="POST">
+    <form:form action="${pageContext.request.contextPath}/guide/update" method="POST" modelAttribute="user">
 
         <div class="row padding">
             <table id="customerInfoTable"
@@ -75,16 +76,13 @@
                 <tbody>
                     <tr>
                         <td class="text-center">
-                            <input type="text" id="firstName" name="firstName" placeholder="Edit here...">
+                            <form:input path="firstName" type="text" id="firstName" name="firstName" placeholder="Edit here..." />
                         </td>
                         <td class="text-center">
-                            <input type="text" id="lastName" name="lastName" placeholder="Edit here...">
+                            <form:input path="lastName" type="text" id="lastName" name="lastName" placeholder="Edit here..."/>
                         </td>
                         <td class="text-center">
-                            <input type="text" id="subject" name="subject" placeholder="Edit here...">
-                        </td>
-                        <td class="text-center">
-                            <input type="number" id="profits" name="profits" placeholder="Edit here...">
+                            <form:input path="subject" type="text" id="subject" name="subject" placeholder="Edit here..."/>
                         </td>
                     </tr>
                 </tbody>
@@ -93,7 +91,7 @@
         </div>
         <button type="submit" id="editCustomerBtn" class="btn btn-primary"><a name="editCustomer" id="editCustomer">
                 Submit Changes</a></button>
-    </form>
+    </form:form>
 
     <!--BOOTSTRAP-->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

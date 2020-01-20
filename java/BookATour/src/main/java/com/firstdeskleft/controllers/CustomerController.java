@@ -26,9 +26,7 @@ public class CustomerController {
     }
     @GetMapping("/update")
     public String UpdateCustomer(Model model,@ModelAttribute("user") Customer customer) {
-//        System.out.println("In CustomerController, GET");
-//        printModel(model);
-//        model.addAttribute(service)
+
         return "CustomerProfile";
     }
     @PostMapping("/update")
@@ -37,7 +35,7 @@ public class CustomerController {
         System.out.println("In CustomerController, POST");
         service.UpdateCustomer(c);
         
-        return "CustomerProfile";
+        return "HomeCustomer";
     }
     @GetMapping("/delete")
     public String deleteCustomer(@RequestParam("id") Integer id) {

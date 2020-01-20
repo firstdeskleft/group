@@ -100,7 +100,7 @@
               <p class="help-block">Password should be at least 4 characters</p>
             </div>
           </div>
-       
+
           
        
           <div class="control-group">

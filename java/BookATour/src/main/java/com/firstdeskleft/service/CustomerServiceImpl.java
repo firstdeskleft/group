@@ -18,11 +18,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
-    
-     @Autowired
+
+    @Autowired
     CustomerDao cdao;
-     @Autowired
-     RoleService roleService;
+    @Autowired
+    RoleService roleService;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -32,22 +32,32 @@ public class CustomerServiceImpl implements CustomerService {
         return cdao.findAll();
     }
 
-   
-
     @Override
     public Customer findByUsername(String username) {
-         return  cdao.findByUsername(username);
+        return cdao.findByUsername(username);
+    }
+
+    public void saveWithBonusCredits(Customer customer,Integer bonus) {
+
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+
+        List<Role> list = new ArrayList();
+        Role role = roleService.findByName("ROLE_CUSTOMER");
+        list.add(role);
+        customer.setRoles(list);
+        customer.addCredits(bonus);
+        cdao.save(customer);
     }
 
     @Override
     public void save(Customer customer) {
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-       
+
         List<Role> list = new ArrayList();
-       Role role = roleService.findByName("ROLE_CUSTOMER");
-       list.add(role);
-       customer.setRoles(list);
-       
+        Role role = roleService.findByName("ROLE_CUSTOMER");
+        list.add(role);
+        customer.setRoles(list);
+
         cdao.save(customer);
     }
 
@@ -64,11 +74,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void deleteCustomer(Integer id) {
         cdao.delete(id);
-        
+
     }
 
-  
-
-    
-    
 }

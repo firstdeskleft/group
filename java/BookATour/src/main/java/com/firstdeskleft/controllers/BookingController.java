@@ -26,6 +26,8 @@ public class BookingController {
 //    BookingService bservice;
     @Autowired
     TourService tservice;
+    Boolean isNegative;
+    
 
     @Autowired
     CustomerService cservice;
@@ -33,9 +35,17 @@ public class BookingController {
     @GetMapping("/create")
     public String createBooking(
             @RequestParam("tid") Integer tid, @ModelAttribute("user") Customer customer) {
-
+        
         Tour t = tservice.findTourById(tid);
-
+        if(t.getCost()>customer.getCredits()){
+            isNegative=true;
+            return "ToursForBooking";
+        }else{
+       Integer Credits =  customer.getCredits() - t.getCost();
+       customer.setCredits(Credits);
+       
+        }
+        
         customer.addTour(t);
         cservice.UpdateCustomer(customer);
 
