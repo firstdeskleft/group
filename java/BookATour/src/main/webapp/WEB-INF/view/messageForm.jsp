@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
     </head>
     <body>
+        <br>
         <security:authorize access="hasRole('ADMIN')">
             <%@include file="AdminHeader.jsp" %>
         </security:authorize>

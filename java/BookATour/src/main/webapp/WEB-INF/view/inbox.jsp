@@ -11,13 +11,13 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/fontAwesome/css/all.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
     </head>
-
     <style>
         table, .tr{
             border: 1px solid black;
         }
     </style>
 <body>
+    <br>
     <security:authorize access="hasRole('ADMIN')">
         <%@include file="AdminHeader.jsp" %>
     </security:authorize>

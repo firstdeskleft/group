@@ -64,7 +64,7 @@
                     <tr class="bg-dark text-white">
                 <label for="firstName"><th class="text-center" scope="col"><h5>First Name</h5></th></label>  
                 <label for="lastName"><th class="text-center" scope="col"><h5>Last Name</h5></th></label>  
-                <label for="credits"><th class="text-center" scope="col"><h5>Credits</h5></th></label>  
+                <label for="credits"><th class="text-center" scope="col"><h5>Credits $</h5></th></label>  
                 </tr>
                 </thead>
                 <tbody>

@@ -80,7 +80,7 @@
                         </label>
                         <label for="credits">
                             <th class="text-center" scope="col">
-                                <h5>Profits</h5>
+                                <h5>Profits $</h5>
                             </th>
                         </label>
                     </tr>
