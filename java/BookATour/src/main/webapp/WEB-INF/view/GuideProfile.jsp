@@ -60,7 +60,7 @@
 
         <div class="row padding">
             <table id="customerInfoTable"
-                class="bg-info table table-hover table-striped table-bordered col-4 border border-dark">
+                class="bg-info table table-hover table-striped table-bordered col-4 border">
                 <thead>
                     <tr class="bg-dark text-white">
                         <label for="firstName">
@@ -95,6 +95,9 @@
                         </td>
                         <td class="text-center">
                             <form:input path="subject" type="text" id="subject" name="subject" placeholder="Edit here..."/>
+                        </td>
+                        <td class="text-center">
+                            <form:input path="profits" type="number" id="profits" name="profits" readonly="true"/>
                         </td>
                     </tr>
                 </tbody>

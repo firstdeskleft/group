@@ -91,13 +91,14 @@
                                     <c:param name="gid" value="${tc.id}" />
                                 </c:url>
                                 <ul class="col">
-                                    <li><b>${tc.lastName}</b>
+                                    <li><b>${tc.firstName}, ${tc.lastName}</b>
                                         <a 
                                             href="${messagelink}" 
                                             class="nav-link nav-link-hover">
-                                            <button class="btn btn-primary text-center">
-                                                Send message <<${tc.id}>>
+                                            <button class="customerMSG btn btn-primary">
+                                                Send message
                                             </button>
+                                        </li>
                                         </a>
                                 </ul>
                             </c:forEach>

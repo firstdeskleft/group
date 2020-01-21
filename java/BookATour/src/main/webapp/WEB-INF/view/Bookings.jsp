@@ -58,7 +58,7 @@
 <h3 class="text-left"><b>Booked Tours</b></h3>
 <br>
 <div class="row padding">
-    <table id="BookedToursTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
+    <table id="BookedToursTable" class="table table-hover table-striped table-bordered col-8">
         <thead>
             <tr class="bg-info">
                 <th class="text-center" scope="col">Booking ID#</th>

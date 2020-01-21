@@ -74,7 +74,7 @@
                         </div>
                     </c:if>
                     <div class="row padding">
-                        <table id="tourTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
+                        <table id="tourTable" class="table table-hover table-striped col-8 border">
                             <thead>
                                 <tr class="bg-info data-tourInfo">
                                     <th class="text-center" scope="col">Tour ID#</th>

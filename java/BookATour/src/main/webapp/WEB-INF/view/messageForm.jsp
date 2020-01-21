@@ -31,7 +31,8 @@
         <br>
         <h1 class="SendMsg">Send a Message</h1>
         <form:form action="${pageContext.request.contextPath}/message/send" 
-                   id="registerForm" 
+                   id="sendMsgForm" 
+                   name="sendMsgForm" 
                    class="form-horizontal Register" 
                    method="POST" 
                    modelAttribute="message">
@@ -40,7 +41,7 @@
                     <!-- First name -->
                     <label class="control-label"  for="sendMsg"></label>
                     <div class="controls">
-                        <textarea name="message" rows="5" cols="30"></textarea>
+                        <form:textarea path="body" id="msgBody" name="msgBody" class="text" form="sendMsgForm" rows="5" cols="30"/>
                     </div>
                 </div>
                 <br>
