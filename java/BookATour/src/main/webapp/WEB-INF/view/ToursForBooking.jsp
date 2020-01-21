@@ -20,7 +20,8 @@
                 <a id="appTitle" class="navbar-brand nav-link-hover text-primary"><b>Book a Tour</b></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarUtils"
                         aria-controls="NavbarUtils" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                     <span style="font-size:20px;" class="text-primary navbar-toggler-icon fas fa-bars">
+                    </span>
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
@@ -54,9 +55,7 @@
         </nav>
     </header>
     <h3 class="text-left"><b>Available Tours</b></h3>
-    <c:if test="${hasError}">
-        <p>${errorMessage}</p>
-    </c:if>
+
     <br>
     <br>
     <section class="row" id="filters">
@@ -69,67 +68,67 @@
     <div class="row data-credits">
         <h4 id="showCredits"><b>Your Credits: ${user.credits}$</b></h4>
     </div>
-    <div class="row padding">
-        <table id="tourTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
-            <thead>
-                <tr class="bg-info data-tourInfo">
-                    <th class="text-center" scope="col">Tour ID#</th>
-                    <th class="text-center" scope="col">Location</th>
-                    <th class="text-center" scope="col">Date</th>
-                    <th class="text-center" scope="col">Cost</th>
-                    <th class="text-center" scope="col">Guide</th>
-                    <th colspan="2" class="text-center" scope="col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
+    <c:if test="${hasError}">
+        <div id="errorDiv" class="alert alert-dark alert-dismissible text-center row data-lowCredits" role="alert">
+            <button id="errBtn" class="btn btn-danger text-left err" data-dismiss="alert" aria-label="Close" ><b>${errorMessage}<b></button>
+                        </div>
+                    </c:if>
+                    <div class="row padding">
+                        <table id="tourTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
+                            <thead>
+                                <tr class="bg-info data-tourInfo">
+                                    <th class="text-center" scope="col">Tour ID#</th>
+                                    <th class="text-center" scope="col">Location</th>
+                                    <th class="text-center" scope="col">Date</th>
+                                    <th class="text-center" scope="col">Cost</th>
+                                    <th class="text-center" scope="col">Guide</th>
+                                    <th colspan="2" class="text-center" scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                <tr>
-                    <c:forEach items="${listOfTours}" var="t">
-                        <c:url var="booklink" value="/booking/create">
-                            <c:param name="tid" value="${t.tid}" />
-                        </c:url>
+                                <tr>
+                                    <c:forEach items="${listOfTours}" var="t">
+                                        <c:url var="booklink" value="/booking/create">
+                                            <c:param name="tid" value="${t.tid}" />
+                                        </c:url>
 
-                    <tr>
-                        <td class="text-center">${t.tid}</td>
-                        <td class="text-center">${t.location}</td>
-                        <td class="text-center">${t.tdate}</td>
-                        <td id="tourCost" class="text-center"><b>${t.cost}$</b></td>
-                        <td class="text-center">${t.guide.username}</td>                      
-                        <td class="text-center">
-                            <a href="${booklink}">
-                                <button onclick="return confirmBooking(this);" type="submit" class="btn btn-primary" 
-                                        id="bookButton" name="bookButton">
-                                    Book now
-                                </button>
-                            </a>
-                        </td>
-                    </c:forEach>
-                </tr>   
-            </tbody>
-        </table>
-    </div>
+                                    <tr>
+                                        <td class="text-center">${t.tid}</td>
+                                        <td class="text-center">${t.location}</td>
+                                        <td class="text-center">${t.tdate}</td>
+                                        <td id="tourCost" class="text-center"><b>${t.cost}$</b></td>
+                                        <td class="text-center">${t.guide.username}</td>                      
+                                        <td class="text-center">
+                                            <a href="${booklink}">
+                                                <button onclick="return confirmBooking(this);" type="submit" class="btn btn-primary" 
+                                                        id="bookButton" name="bookButton">
+                                                    Book now
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </c:forEach>
+                                </tr>   
+                            </tbody>
+                        </table>
+                    </div>
 
-    <script>
-        
-        function confirmBooking() {
-            return confirm("Are you sure you want to book this Tour?");
-        }
-        ;
+                    <!--JQUERY-->
+                    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+                    <!--BOOTSTRAP-->
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+                    <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
 
-        const btn = document.getElementById('bookButton')
-        btn.addEventListener('click', () => {
-            if (${user.credits} < ${t.cost}) {
-                alert('Sorry, not enough money');
-            }
-        })
-    </script>
+                    <script>
+                                                    const btn = document.getElementById('errBtn');
+                                                    btn.addEventListener('click', () => {
+                                                     
+                                                      error = ${hasError};
+                                                      error = !error;
+                                                     console.log(error);
+                                                  });
+                    </script>
+                    </body>
 
-    <!--JQUERY-->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <!--BOOTSTRAP-->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/js/app.js"></script>
-</body>
-
-</html>
+                    </html>

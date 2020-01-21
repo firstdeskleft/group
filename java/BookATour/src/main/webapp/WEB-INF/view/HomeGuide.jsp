@@ -19,7 +19,8 @@
                 <a id="appTitle" class="navbar-brand nav-link-hover text-primary"><b>Book a Tour</b></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarUtils"
                         aria-controls="NavbarUtils" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                   <span style="font-size:20px;" class="text-primary navbar-toggler-icon fas fa-bars">
+                    </span>
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
