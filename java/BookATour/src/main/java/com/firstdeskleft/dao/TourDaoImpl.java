@@ -5,6 +5,7 @@ import com.firstdeskleft.entities.Tour;
 import static java.util.Collections.list;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.criteria.Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,10 +56,18 @@ public class TourDaoImpl implements TourDao {
 
     @Override
     public List<Tour> getUnbookedToursByGuideId(Integer id) {
-        Query q = getSession().createQuery("SELECT t FROM Tour t WHERE t.tid NOT IN(SELECT b.tid FROM booking b WHERE b.cid =:id)");
-               
+        
+        
+        Query q = getSession().createQuery("");
+      
+        
+        getSession().createQuery("SELECT t FROM Tour t" +
+"JOIN t.customers customers" +
+"WHERE customers.id NOT IN :id");
+//     select o from User u inner join u.organizations o where u.id = :userId  
         q.setParameter("id", id);
         List<Tour> list = q.getResultList();
+        System.out.println("-------------------------------------------------------------TOURDAO UNBOOKED LIST" +list);
         return list;
     }
 

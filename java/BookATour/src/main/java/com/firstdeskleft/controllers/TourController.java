@@ -5,7 +5,10 @@ import com.firstdeskleft.entities.Guide;
 import com.firstdeskleft.entities.Tour;
 import com.firstdeskleft.service.GuideService;
 import com.firstdeskleft.service.TourService;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,10 +62,30 @@ public class TourController {
 //    }
     @GetMapping("/listforcustomer")
     public String showToursforCustomer(Model m) {
-       Customer customer = (Customer)  m.getAttribute("user");
-        List<Tour> list = tservice.getUnbookedTours(customer.getId());
-      
-        m.addAttribute("listOfTours", list);
+
+        Customer customer = (Customer) m.getAttribute("user");
+        List<Tour> customerToursList = customer.getTours();
+        Set<Tour> customerToursSet = new HashSet(customerToursList);
+
+        List<Tour> allToursList = tservice.getAllTours();
+        Set<Tour> allToursSet = new HashSet(allToursList);
+
+        System.out.println("rawSet before filtering:" + allToursSet);
+        System.out.println("excludeSet:" + customerToursSet);
+
+        for (Tour tour : customerToursList) {
+            for (Tour tourToDelete : allToursList) {
+                if (tour.getTid().equals(tourToDelete.getTid())) {
+                    allToursList.remove(tour);
+                }
+            }
+        }
+
+        System.out.println("rawSet after filtering:" + allToursSet);
+
+        List<Tour> filteredList = new ArrayList(allToursSet);
+
+        m.addAttribute("listOfTours", allToursList);
 
         return "ToursForBooking";
     }
@@ -94,7 +117,7 @@ public class TourController {
 
     @GetMapping("/delete")
     public String deleteTour(@RequestParam("tid") Integer id) {
-        System.out.println("----------------------------------------GETMAPPING DELETE TOUR" );
+        System.out.println("----------------------------------------GETMAPPING DELETE TOUR");
         tservice.deleteTour(id);
 
         return "redirect:/tour/guidetours";
