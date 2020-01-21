@@ -23,7 +23,7 @@ public class Customer extends User implements Serializable {
 
     private String firstName;
     private String lastName;
-    private Integer credits=0;
+    private Integer credits = 0;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -91,16 +91,16 @@ public class Customer extends User implements Serializable {
     }
 
     protected boolean ammountIsPositive(Integer ammount) {
-        return ammount >= 0;        
+        return ammount >= 0;
     }
-    
+
     public boolean deposit(Integer ammount) {
 
         if (!ammountIsPositive(ammount)) {
             System.err.println("Error. Ammount is not positive.");
             return false;
         }
-        
+
         credits += ammount;
         return true;
     }
@@ -111,8 +111,8 @@ public class Customer extends User implements Serializable {
             System.err.println("Error. Ammount not positive");
             return false;
         }
-        
-        if (creditsLessThanAmmount(ammount)){
+
+        if (creditsLessThanAmmount(ammount)) {
             System.err.println("Error. Insufficient credits");
             return false;
         }
@@ -124,7 +124,7 @@ public class Customer extends User implements Serializable {
     public boolean creditsLessThanAmmount(Integer ammount) {
         return credits < ammount;
     }
-   
+
     public boolean addTour(Tour tour) {
         if (tours == null) {
             tours = new ArrayList();
@@ -137,30 +137,48 @@ public class Customer extends User implements Serializable {
         return addedTour && addedCustomer;
     }
 
-    public boolean removeTour(Tour tour) {
+    public boolean removeTour(Tour removeTour) {
 
         if (tours == null) {
             tours = new ArrayList();
         }
 
-        boolean removedTour, removedCustomer;
 
-        System.out.println("-------------------------------------------------Customer ENtity Before tours.remove    tours =  "   +tours);
-        removedTour = tours.remove(tour);
-        System.out.println("-------------------------------------------------Customer ENtity after tours.remove     tours  =  "   +tours);
-        removedCustomer = tour.getCustomers().remove(this);
-
-        return removedTour && removedCustomer;
-
+        for (Tour tour : tours) {
+            if (tour.getTid().equals(removeTour.getTid())) {
+                tours.remove(tour);
+                return true;
+            }
+        }
+        return false;
     }
 
+//    public boolean removeTour(Tour tour) {
+//
+//        if (tours == null) {
+//            tours = new ArrayList();
+//        }
+//
+//        boolean removedTour, removedCustomer;
+//
+//        
+//        System.out.println("-------------------------------------------------Customer ENtity Before tours.remove    tours =  "   +tours);
+//       
+//        
+//        removedTour = tours.remove(tour);
+//        System.out.println("-------------------------------------------------Customer ENtity after tours.remove     tours  =  "   +tours);
+//        removedCustomer = tour.getCustomers().remove(this);
+//
+//        return removedTour && removedCustomer;
+//
+//    }
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.firstName);
-        hash = 67 * hash + Objects.hashCode(this.lastName);
-        hash = 67 * hash + Objects.hashCode(this.credits);
-        hash = 67 * hash + Objects.hashCode(this.tours);
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.firstName);
+        hash = 89 * hash + Objects.hashCode(this.lastName);
+        hash = 89 * hash + Objects.hashCode(this.credits);
+        hash = 89 * hash + Objects.hashCode(this.tours);
         return hash;
     }
 

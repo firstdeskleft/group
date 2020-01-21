@@ -61,15 +61,23 @@ public class BookingController {
     }
 
     @GetMapping("/delete")
-    public String cancelBooking(@RequestParam("tid") Integer tid, @ModelAttribute("user") Customer customer) {
-        System.out.println("--------------------------------------------------------------------Tour id =" +tid);
-        Tour t = tourService.findTourById(tid);
-        System.out.println("--------------------------------------------------------------------Tour is= "  +t);
-        System.out.println("--------------------------BookingController before remove tour" + customer.getTours());
-        customer.removeTour(t);
-        System.out.println("---------------------------");
+    public String cancelBooking(Model model,@RequestParam("tid") Integer tid, @ModelAttribute("user") Customer customer) {
+
+        Tour tour = tourService.findTourById(tid);
+
+//        String resultCancel = bookingService.attempCancelBooking(tid, customer);
+        
+        
+        System.out.println("Tour removed: " + customer.removeTour(tour));
+        
+        System.out.println("Tour customer list before cancel:"+ tour.getCustomers());
+        
+        tour.removeCustomer(customer);
+        
+        System.out.println("Tour customer list after cancel:"+ tour.getCustomers());
+
         customerService.UpdateCustomer(customer);
-        System.out.println("--------------------------BookingController after  remove tour" + customer.getTours());
+        
         return "Bookings";
     }
 
