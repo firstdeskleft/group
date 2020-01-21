@@ -54,11 +54,14 @@ public class CustomerDaoImpl implements CustomerDao{
 
     @Override
     public void save(Customer customer) {
+      
          getSession().saveOrUpdate(customer);
     }
 
     @Override
     public void update(Customer c) {
+    
+        System.out.println("------------------------------CUSTOMERDAO SAVEORUPDATE Customer: " +c);
          getSession().saveOrUpdate(c);
     }
 

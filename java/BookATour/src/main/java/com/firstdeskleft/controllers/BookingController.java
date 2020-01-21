@@ -39,6 +39,12 @@ public class BookingController {
 
         if (resultBooking.equals("success")) {
 
+            System.out.println("BookingContoller after success. Before updating customer:" + customer);
+
+            customerService.UpdateCustomer(customer);
+
+            System.out.println("BookingContoller after updating customer:" + customer);
+
             System.out.println("Transaction completed successfully");
 
             return "Bookings";

@@ -14,9 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Service
 @Transactional
+@SessionAttributes("user")
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
@@ -64,7 +67,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void UpdateCustomer(Customer c) {
+    public void UpdateCustomer(@ModelAttribute("user") Customer c) {
+        System.out.println("-------------------------------------CUSTOMERSERVICE : cutomer= "+c);
+        
         cdao.update(c);
     }
 

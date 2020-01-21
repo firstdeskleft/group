@@ -33,7 +33,7 @@ public class BookingServiceImpl implements BookingService {
     GuideService guideService;
 
     @Override
-    public String attempBooking(Integer tourId,@ModelAttribute("user") Customer customer) {
+    public String attempBooking(Integer tourId, @ModelAttribute("user") Customer customer) {
 
         Tour tour = tourService.findTourById(tourId);
 
@@ -87,12 +87,17 @@ public class BookingServiceImpl implements BookingService {
             return "Error linking customer to tour. Cancelling transaction";
 
         }
-        
-        System.out.println("----------------------------------------------------SUCCESS");
-        customerService.UpdateCustomer(customer);
-        System.out.println("------------------------------AfterCUstomerUpdate");
+
+//        System.out.println("----------------------------------------------------SUCCESS");
+//        customerService.UpdateCustomer(customer);
+//        System.out.println("------------------------------AfterCUstomerUpdate");
+//
+        System.out.println("Passed errors. Before updating guide:" + guide);
 
         guideService.UpdateGuide(guide);
+        
+        System.out.println("After updating guide:" + guide);
+        System.out.println("Returning to BookingController");
 
         return "success";
 
