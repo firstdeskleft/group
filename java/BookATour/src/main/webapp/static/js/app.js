@@ -17,10 +17,7 @@
 
 // ********* Booking Confirmation (Customer Role) **********
 
-function confirmBooking() {
-  return confirm("Are you sure you want to book this Tour?");
 
-};
 
 // ******** Tour Delete Confirm (Guide Role) **********
 
