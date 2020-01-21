@@ -126,29 +126,31 @@ public class Tour implements Serializable {
         
     }
     
-    public boolean removeCustomer(Customer customer){
+    public boolean removeCustomer(Customer removeCustomer){
         if(customers == null ){
             customers = new ArrayList();
         }
-        boolean removedCustomer, removedTour;
         
-        removedCustomer = customers.remove(customer);
-        removedTour = customer.getTours().remove(this);
+        for (Customer customer : customers) {
+            if (customer.getId().equals(removeCustomer.getId())) {
+                customers.remove(customer);
+                return true;
+            }
+        }
         
-        
-        return removedCustomer && removedTour;
+        return false;         
+      
     }
-    
-    
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.tid);
-        hash = 97 * hash + Objects.hashCode(this.location);
-        hash = 97 * hash + Objects.hashCode(this.cost);
-        hash = 97 * hash + Objects.hashCode(this.tdate);
-        hash = 97 * hash + Objects.hashCode(this.guide);
-        hash = 97 * hash + Objects.hashCode(this.customers);
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.tid);
+        hash = 17 * hash + Objects.hashCode(this.location);
+        hash = 17 * hash + Objects.hashCode(this.cost);
+        hash = 17 * hash + Objects.hashCode(this.tdate);
+        hash = 17 * hash + Objects.hashCode(this.guide);
+        hash = 17 * hash + Objects.hashCode(this.customers);
         return hash;
     }
 
@@ -184,6 +186,9 @@ public class Tour implements Serializable {
         }
         return true;
     }
+    
+    
+    
 
     @Override
     public String toString() {
