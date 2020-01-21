@@ -78,23 +78,30 @@
                     <c:url value="/tour/delete" var="deletelink" >
                         <c:param name="tid" value="${t.tid}" />
                     </c:url>
+
                     <tr>
                         <td class="text-center">${t.tid}</td>
                         <td class="text-center">${t.location}</td>
                         <td class="text-center">${t.tdate}</td>
                         <td class="text-center"><b>${t.cost}$</b></td>
                         <td class="text-center">
-                            
-                                <c:forEach items="${t.customers}" var="tc">
-                                    <ul class="col">
-                                        <li><b>${tc.firstName}, ${tc.lastName}</b>
-                                            <form:form action="${pageContext.request.contextPath}/message/send" method="POST" 
-                                                       modelAttribute="message">
-                                                <button class="customerMSG btn btn-primary">Send Message</button></li>
-                                            </form:form>
-                                    </ul>
-                                </c:forEach>
-                          
+
+                            <c:forEach items="${t.customers}" var="tc">
+                                <c:url value="/message/send" var="messagelink" >
+                                    <c:param name="gid" value="${tc.id}" />
+                                </c:url>
+                                <ul class="col">
+                                    <li><b>${tc.lastName}</b>
+                                        <a 
+                                            href="${messagelink}" 
+                                            class="nav-link nav-link-hover">
+                                            <button class="btn btn-primary text-center">
+                                                Send message <<${tc.id}>>
+                                            </button>
+                                        </a>
+                                </ul>
+                            </c:forEach>
+
 
                         </td>
 

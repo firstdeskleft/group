@@ -28,7 +28,7 @@ public class Message implements Serializable{
     @NotNull
     private int targetId;
     
-    @NotBlank
+    
     private String body;
 
     public Message() {

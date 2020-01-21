@@ -88,7 +88,7 @@
                                 class="nav-link nav-link-hover">
                                 <button class="btn btn-primary text-center">
                                     Send message
-                                </button
+                                </button>
                             </a>
                         </td>
                         <td class="text-center">
