@@ -20,8 +20,8 @@
             <a id="appTitle" class="navbar-brand nav-link-hover text-primary"><b>Book a Tour</b></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#NavbarUtils"
                     aria-controls="NavbarUtils" aria-expanded="false" aria-label="Toggle navigation">
-               <span style="font-size:20px;" class="text-primary navbar-toggler-icon fas fa-bars">
-                    </span>
+                <span style="font-size:20px;" class="text-primary navbar-toggler-icon fas fa-bars">
+                </span>
             </button>
             <div class="collapse navbar-collapse" id="NavbarUtils">
                 <ul class="navbar-nav mr-auto">
@@ -76,14 +76,26 @@
                         <c:param name="tid" value="${t.tid}" />
                     </c:url>
 
+
                 <tr>
                     <td class="text-center">${t.tid}</td>
                     <td class="text-center">${t.location}</td>
                     <td class="text-center">${t.tdate}</td>
                     <td class="text-center">${t.cost}</td>
-                    <td class="text-center">${t.guide.username}</td>                      
+                    <td class="text-center">
+                        ${t.guide.username}
+                        <c:url value="/message/send" var="messagelink" >
+                            <c:param name="gid" value="${tc.id}" />
+                        </c:url>
+                        <a href="${messagelink}" 
+                           class="nav-link nav-link-hover">
+                            <button class="customerMSG btn btn-primary">
+                                Send message
+                            </button>
+                        </a>
+                    </td>                      
                     <td class="text-center"><a href="${deletelink}">
-                            <button onclick="return tourCancelConfirm(this)"  type="submit" class="btn btn-danger" id="cancelBookButton" name="cancelBookButton">
+                            <button onclick="return tourCancelConfirm(this)"  type="submit" class="mt-3 btn btn-danger" id="cancelBookButton" name="cancelBookButton">
                                 Cancel
                             </button>
                         </a>
