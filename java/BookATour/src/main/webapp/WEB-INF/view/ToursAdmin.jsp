@@ -73,7 +73,7 @@
                     <tr>
                         <td class="text-center">${t.location}</td>
                         <td class="text-center">${t.tdate}</td>
-                        <td class="text-center">${t.cost}</td>
+                        <td class="text-center"><b>${t.cost}</b>$</td>
                         <td class="text-center">${t.guide.username}</td>
                     </tr>
                     </c:forEach>

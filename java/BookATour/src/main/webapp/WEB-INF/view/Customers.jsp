@@ -96,7 +96,7 @@
                             <a name="deleteCustomer" href="${deletelink}" id="deleteCustomer" type="submit">
                                     <button 
                                         onclick="return customerDeleteConfirm(this);"
-                                        class="btn btn-danger text-center" id="deleteCustomerBtn" name="deleteCustomerBtn">
+                                        class="mt-2 btn btn-danger text-center" id="deleteCustomerBtn" name="deleteCustomerBtn">
                                             Delete Customer
                                     </button>
                             </a>
