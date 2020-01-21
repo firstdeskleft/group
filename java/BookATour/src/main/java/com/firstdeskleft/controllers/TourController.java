@@ -64,29 +64,10 @@ public class TourController {
     public String showToursforCustomer(Model m) {
 
         Customer customer = (Customer) m.getAttribute("user");
-        List<Tour> customerToursList = customer.getTours();
-        Set<Tour> customerToursSet = new HashSet(customerToursList);
 
         List<Tour> allToursList = tservice.getAllTours();
-        Set<Tour> allToursSet = new HashSet(allToursList);
-
-        System.out.println("rawSet before filtering:" + allToursSet);
-        System.out.println("excludeSet:" + customerToursSet);
-
-        for (Tour tour : customerToursList) {
-            for (Tour tourToDelete : allToursList) {
-                if (tour.getTid().equals(tourToDelete.getTid())) {
-                    allToursList.remove(tour);
-                }
-            }
-        }
-
-        System.out.println("rawSet after filtering:" + allToursSet);
-
-        List<Tour> filteredList = new ArrayList(allToursSet);
 
         m.addAttribute("listOfTours", allToursList);
-
         return "ToursForBooking";
     }
 

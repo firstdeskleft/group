@@ -9,6 +9,7 @@ import com.firstdeskleft.dao.BookingDao;
 import com.firstdeskleft.entities.Customer;
 import com.firstdeskleft.entities.Guide;
 import com.firstdeskleft.entities.Tour;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,6 +40,14 @@ public class BookingServiceImpl implements BookingService {
 
         if (tour == null) {
             return "Tour not found";
+        }
+        
+        List<Tour> bookedTours = customer.getTours();
+        
+        for(Tour bookedTour: bookedTours){
+            if (bookedTour.getTid().equals(tour.getTid())) {
+                 return "Already booked";
+            }
         }
 
         Integer tourCost = tour.getCost();
