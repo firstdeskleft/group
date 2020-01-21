@@ -84,6 +84,7 @@ public class TourController {
 
     @GetMapping("/delete")
     public String deleteTour(@RequestParam("tid") Integer id) {
+        System.out.println("----------------------------------------GETMAPPING DELETE TOUR" );
         tservice.deleteTour(id);
 
         return "redirect:/tour/guidetours";
