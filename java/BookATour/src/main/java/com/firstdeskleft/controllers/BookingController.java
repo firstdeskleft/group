@@ -39,13 +39,7 @@ public class BookingController {
 
         if (resultBooking.equals("success")) {
 
-            System.out.println("BookingContoller after success. Before updating customer:" + customer);
-
             customerService.UpdateCustomer(customer);
-
-            System.out.println("BookingContoller after updating customer:" + customer);
-
-            System.out.println("Transaction completed successfully");
 
             return "Bookings";
 
@@ -61,23 +55,20 @@ public class BookingController {
     }
 
     @GetMapping("/delete")
-    public String cancelBooking(Model model,@RequestParam("tid") Integer tid, @ModelAttribute("user") Customer customer) {
+    public String cancelBooking(Model model, @RequestParam("tid") Integer tid, @ModelAttribute("user") Customer customer) {
 
         Tour tour = tourService.findTourById(tid);
 
-//        String resultCancel = bookingService.attempCancelBooking(tid, customer);
-        
-        
-        System.out.println("Tour removed: " + customer.removeTour(tour));
-        
-        System.out.println("Tour customer list before cancel:"+ tour.getCustomers());
-        
-        tour.removeCustomer(customer);
-        
-        System.out.println("Tour customer list after cancel:"+ tour.getCustomers());
+        String resultCancel = bookingService.attempCancelBooking(tid, customer);
 
-        customerService.UpdateCustomer(customer);
-        
+        if (resultCancel.equals("success")) {
+
+            customerService.UpdateCustomer(customer);
+            
+            return "Bookings";
+
+        }
+
         return "Bookings";
     }
 
