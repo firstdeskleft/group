@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("/booking")
-@SessionAttributes({"user"})
+@SessionAttributes({"user", "errorMessage", "hasError"})
 public class BookingController {
 
 //    @Autowired
@@ -36,9 +36,15 @@ public class BookingController {
 
         String errorMessage = "";
 
-        Boolean insufficientCredits = false;
 
         Tour tour = tourService.findTourById(tid);
+        
+        if(tour == null){
+            
+            errorMessage="Tour not found";
+            
+            forwardToTourListError(model, errorMessage);
+        }
 
         Integer tourCost = tour.getCost();
 
@@ -46,102 +52,77 @@ public class BookingController {
 
         if (customerCredits < tourCost) {
 
-            insufficientCredits = true;
-
-            model.addAttribute("isNegative", insufficientCredits);
-
             errorMessage = "Insufficient credits";
 
-            forwardToTourList(model, errorMessage);
+            forwardToTourListError(model, errorMessage);
 
-        } else {
-
-            //Integer Credits = customer.getCredits() - tour.getCost();
-            //customer.setCredits(customer.getCredits() - tour.getCost());
-            //tour.getGuide().setProfits(tour.getCost() + tour.getGuide().getProfits());
-            Boolean withdrawAccomplished = customer.withdraw(tourCost);
-
-            if (!withdrawAccomplished) {
-
-                System.err.println("Error withdrawing ammount");
-
-                errorMessage = "Error withdrawing ammount";
-
-                forwardToTourList(model, errorMessage);
-            }
-
-            Guide guide = tour.getGuide();
-
-            if (guide == null) {
-
-                System.err.println("Error finding guide. Cancelling transaction and removing tour from database.");
-
-                errorMessage = "Error finding guide. Cancelling transaction and removing tour from database.";
-
-                customer.deposit(tourCost);
-
-                tourService.deleteTour(tour.getTid());
-
-                forwardToTourList(model, errorMessage);
-
-            }
-
-            Boolean depositAccomplised = guide.deposit(tourCost);
-
-            if (!depositAccomplised) {
-
-                System.err.println("Error depositing ammount. Cancelling transaction");
-                errorMessage = "Error depositing ammount. Cancelling transaction";
-
-                customer.deposit(tourCost);
-
-                forwardToTourList(model, errorMessage);
-            }
-
-            Boolean customerAddedTour = customer.addTour(tour);
-
-            if (!customerAddedTour) {
-
-                System.err.println("Error adding tour to customer's booked tours. Cancelling transaction");
-                errorMessage = "Error adding tour to customer's booked tours. Cancelling transaction";
-                
-                customer.deposit(tourCost);
-
-                guide.withdraw(tourCost);
-
-                forwardToTourList(model, errorMessage);
-
-            }
-
-            Boolean tourAddedCustomer = tour.getCustomers().add(customer);
-
-            if (!tourAddedCustomer) {
-                
-                System.out.println("Error adding customer to tour's customers list. Cancelling transaction");
-                errorMessage = "Error adding customer to tour's customers list. Cancelling transaction";
-                
-                customer.deposit(tourCost);
-
-                guide.withdraw(tourCost);
-
-                forwardToTourList(model, errorMessage);
-
-            }
-
-            customerService.UpdateCustomer(customer);
-            guideService.UpdateGuide(guide);
         }
-        
+
+        Boolean withdrawAccomplished = customer.withdraw(tourCost);
+
+        if (!withdrawAccomplished) {
+
+            errorMessage = "Error withdrawing ammount";
+
+            forwardToTourListError(model, errorMessage);
+        }
+
+        Guide guide = tour.getGuide();
+
+        if (guide == null) {
+
+            errorMessage = "Error finding guide. Cancelling transaction and removing tour from database.";
+
+            customer.deposit(tourCost);
+
+            tourService.deleteTour(tour.getTid());
+
+            forwardToTourListError(model, errorMessage);
+
+        }
+
+        Boolean depositAccomplised = guide.deposit(tourCost);
+
+        if (!depositAccomplised) {
+
+            errorMessage = "Error depositing ammount. Cancelling transaction";
+
+            customer.deposit(tourCost);
+
+            forwardToTourListError(model, errorMessage);
+        }
+
+        Boolean customerAddedTour = customer.addTour(tour);
+
+        if (!customerAddedTour) {
+
+            errorMessage = "Error linking customer to tour. Cancelling transaction";
+
+            customer.deposit(tourCost);
+
+            guide.withdraw(tourCost);
+
+            forwardToTourListError(model, errorMessage);
+
+        }
+
+
+
+        customerService.UpdateCustomer(customer);
+        tourService.save(tour);
+        guideService.UpdateGuide(guide);
+
         System.out.println("Transaction completed successfully");
-        
+
         return "Bookings";
-        
+
     }
 
-    public String forwardToTourList(Model model, String errorMessage) {
+    public String forwardToTourListError(Model model, String errorMessage) {
 
-        model.addAttribute("isNegative", errorMessage);
-
+        model.addAttribute("hasError", true);
+        model.addAttribute("errorMessage", errorMessage);
+        
         System.out.println("Returning to tour page");
 
         return "forward:/tour/listforcustomer";

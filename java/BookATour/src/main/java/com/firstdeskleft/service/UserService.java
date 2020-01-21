@@ -13,4 +13,6 @@ public interface UserService extends UserDetailsService{
 
     public void save(User user);
     
+    public User findById(Integer Id);
+    
 }

@@ -66,4 +66,9 @@ public class UserServiceImpl implements UserService {
         return authorities;
     }
 
+    @Override
+    public User findById(Integer Id) {
+       return null;
+    }
+
 }

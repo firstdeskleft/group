@@ -54,7 +54,7 @@
         </nav>
     </header>
     <h3 class="text-left"><b>Available Tours</b></h3>
-    <c:if test="${isNegative}">
+    <c:if test="${hasError}">
         <p>${errorMessage}</p>
     </c:if>
     <br>
