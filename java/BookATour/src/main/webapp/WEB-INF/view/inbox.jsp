@@ -44,6 +44,9 @@
                     <c:url value="/message/send" var="messagelink" >
                         <c:param name="gid" value="${message.sourceId}" />
                     </c:url>
+                    <c:url value="/message/delete" var="messagedeletelink" >
+                        <c:param name="mid" value="${message.id}" />
+                    </c:url>
                     <tr class="bg-info">
                         <td> 
                          <b>Message:</b> ${message.body}
@@ -63,9 +66,13 @@
                             </a>
                         </td>
                         <td> 
-                            <button class="mt-2 btn btn-danger">
-                            Delete Message
-                            </button>
+                            <a name="deleteMessage" href="${messagedeletelink}" id="deleteMessage" type="submit">
+                                    <button 
+                                        onclick="return messageDeleteConfirm(this);"
+                                        class="mt-2 btn btn-danger text-center" id="deleteMessageBtn" name="deleteCustomerBtn">
+                                            Delete Message
+                                    </button>
+                            </a>
                         </td>
                     </tr>
                 </c:forEach>

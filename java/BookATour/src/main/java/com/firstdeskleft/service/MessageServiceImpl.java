@@ -31,6 +31,11 @@ public class MessageServiceImpl implements MessageService{
         
         return mDao.findByTargetId(id);
     }
+
+    @Override
+    public void deleteMessage(Integer id) {
+         mDao.deleteMessage(id);
+    }
     
     
     

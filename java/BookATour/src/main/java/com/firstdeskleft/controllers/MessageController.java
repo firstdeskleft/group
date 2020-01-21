@@ -74,5 +74,13 @@ public class MessageController {
 
         return "inbox";
     }
+    
+     @GetMapping("/delete")
+    public String deleteMessage(@RequestParam("mid") Integer id) {
+       
+        service.deleteMessage(id);
+
+        return "forward:/message/inbox";
+    }
 
 }

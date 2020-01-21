@@ -85,7 +85,7 @@
                     <td class="text-center">
                         ${t.guide.username}
                         <c:url value="/message/send" var="messagelink" >
-                            <c:param name="gid" value="${tc.id}" />
+                            <c:param name="gid" value="${t.guide.id}" />
                         </c:url>
                         <a href="${messagelink}" 
                            class="nav-link nav-link-hover">

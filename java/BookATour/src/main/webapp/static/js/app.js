@@ -48,6 +48,16 @@ function customerDeleteConfirm() {
 ;
 
 
+//======================== Message Delete Confirm =========================//
+
+function messageDeleteConfirm() {
+    return confirm("Are you sure you want to delete this message?");
+};
+
+//======================= Guide Delete Confirm =========================//
+function guideDeleteConfirm() {
+    return confirm("Are you sure you want to delete this Guide?");
+};
 
 
 

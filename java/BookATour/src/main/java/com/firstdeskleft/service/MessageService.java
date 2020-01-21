@@ -8,6 +8,8 @@ public interface MessageService {
     public void addMessage(Message message);    
 
     public List<Message> findByTargetId(Integer id);
+
+    public void deleteMessage(Integer id);
     
     
 }

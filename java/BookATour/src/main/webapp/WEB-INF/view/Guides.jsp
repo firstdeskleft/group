@@ -103,7 +103,7 @@
                                 id="deleteGuide"
                                 type="submit">
                                     <button  
-                                        onclick="return customerDeleteConfirm(this);"
+                                        onclick="return guideDeleteConfirm(this);"
                                         class="mt-2 btn btn-danger text-center nav-link-hover"
                                         id="deleteGuideBtn" name="deleteGuideBtn">
                                             Delete Guide

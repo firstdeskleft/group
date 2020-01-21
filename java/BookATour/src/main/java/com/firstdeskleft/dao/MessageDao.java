@@ -8,5 +8,7 @@ public interface MessageDao {
     public void saveMessage(Message message);
 
     public List<Message> findByTargetId(Integer id);
+
+    public void deleteMessage(Integer id);
     
 }

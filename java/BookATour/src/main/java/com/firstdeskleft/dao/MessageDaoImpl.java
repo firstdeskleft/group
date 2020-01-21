@@ -40,4 +40,10 @@ public class MessageDaoImpl implements MessageDao {
 
     }
 
+    @Override
+    public void deleteMessage(Integer id) {
+      Message message =  getSession().find(Message.class, id);
+        getSession().delete(message);
+    }
+
 }
