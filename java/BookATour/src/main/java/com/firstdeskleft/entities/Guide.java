@@ -15,10 +15,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-/**
- *
- * @author User
- */
 @Entity(name = "Guide")
 @EntityListeners(GenericListener.class)
 @PrimaryKeyJoinColumn(name = "id")
@@ -104,6 +100,50 @@ public class Guide extends User {
         this.profits = profits;
     }
 
+    public boolean deposit(Integer ammount) {
+
+        if (!ensureAmmountPositive(ammount)) {
+            return false;
+        }
+
+        profits += ammount;
+        return true;
+    }
+
+    public boolean withdraw(Integer ammount) {
+
+        if (!ensureAmmountPositive(ammount)) {
+            return false;
+        }
+
+        profits -= ammount;
+        return true;
+
+    }
+
+    public boolean creditsLessThanAmmount(Integer ammount) {
+        return profits < ammount;
+    }
+
+    public boolean creditsEqualToAmmount(Integer ammount) {
+        return Objects.equals(profits, ammount);
+    }
+
+    protected boolean ensureAmmountPositive(Integer ammount) {
+
+        if (creditsLessThanAmmount(ammount)) {
+            System.err.println("Error. Negative credits. No transaction.");
+            return false;
+        }
+
+        if (creditsEqualToAmmount(ammount)) {
+            System.out.println("Credits are zero. No transaction.");
+            return false;
+        }
+
+        return true;
+    }
+
     public List<Tour> getTours() {
         return tours;
     }
@@ -161,8 +201,7 @@ public class Guide extends User {
     public String toString() {
         return "Guide{" + "firstName=" + firstName + ", lastName=" + lastName
                 + ", subject=" + subject + ", certificate=" + certificate
-                + ", profits=" + profits
-               /* + ", tours=" + tours*/ + '}';
+                + ", profits=" + profits + '}';
     }
 
 }

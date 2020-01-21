@@ -45,7 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
         Role role = roleService.findByName("ROLE_CUSTOMER");
         list.add(role);
         customer.setRoles(list);
-        customer.addCredits(bonus);
+        customer.deposit(bonus);
         cdao.save(customer);
     }
 

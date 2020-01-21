@@ -1,4 +1,3 @@
-
 package com.firstdeskleft.entities;
 
 import com.firstdeskleft.listeners.GenericListener;
@@ -28,16 +27,18 @@ import javax.persistence.Table;
 @Table(name = "user")
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
-    , @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id")})
+    ,
+    @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id")
+})
 public class User implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String username;
     private String password;
-    
+
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "id"),
@@ -54,8 +55,7 @@ public class User implements Serializable {
     }
 
     public User(String username, String password, List<Role> roles) {
-        
-        
+
         this.username = username;
         this.password = password;
         this.roles = roles;
@@ -132,11 +132,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", username=" + username + ", password=" + password + ", roles=" + roles + '}';
+        return "User{" + "id=" + id + ", username=" + username + ", password=[hidden]" + ", roles=" + roles + '}';
     }
-    
-    
-    
-    
-    
+
 }

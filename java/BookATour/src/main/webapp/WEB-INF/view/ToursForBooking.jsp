@@ -55,7 +55,7 @@
     </header>
     <h3 class="text-left"><b>Available Tours</b></h3>
     <c:if test="${isNegative}">
-        <p>Sorry not enough credits</p>
+        <p>${errorMessage}</p>
     </c:if>
     <br>
     <br>

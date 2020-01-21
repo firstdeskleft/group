@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.firstdeskleft.entities;
 
 import com.firstdeskleft.listeners.GenericListener;
@@ -20,10 +15,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-/**
- *
- * @author User
- */
 @Entity(name = "Customer")
 @Table(name = "customer")
 @EntityListeners(GenericListener.class)
@@ -34,7 +25,7 @@ public class Customer extends User implements Serializable {
     private String lastName;
     private Integer credits;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "booking",
             joinColumns = {
@@ -98,8 +89,76 @@ public class Customer extends User implements Serializable {
     public void setTours(List<Tour> tours) {
         this.tours = tours;
     }
-    public void addCredits(Integer credits){
-        this.credits= credits;
+
+    public boolean deposit(Integer ammount) {
+
+        if (!ensureAmmountPositive(ammount)) {
+            return false;
+        }
+
+        credits += ammount;
+        return true;
+    }
+
+    public boolean withdraw(Integer ammount) {
+
+        if (!ensureAmmountPositive(ammount)) {
+            return false;
+        }
+
+        credits -= ammount;
+        return true;
+
+    }
+
+    public boolean creditsLessThanAmmount(Integer ammount) {
+        return credits < ammount;
+    }
+
+    public boolean creditsEqualToAmmount(Integer ammount) {
+        return Objects.equals(credits, ammount);
+    }
+
+    protected boolean ensureAmmountPositive(Integer ammount) {
+
+        if (creditsLessThanAmmount(ammount)) {
+            System.err.println("Error. Negative credits. No transaction.");
+            return false;
+        }
+
+        if (creditsEqualToAmmount(ammount)) {
+            System.out.println("Credits are zero. No transaction.");
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean addTour(Tour tour) {
+        if (tours == null) {
+            tours = new ArrayList();
+        }
+
+        Boolean addedTour, addedCustomer;
+        addedTour = tours.add(tour);
+        addedCustomer = tour.getCustomers().add(this);
+
+        return addedTour && addedCustomer;
+    }
+
+    public boolean removeTour(Tour tour) {
+        
+        if (tours == null) {
+            tours = new ArrayList();
+        }
+        
+        boolean removedTour, removedCustomer;
+        
+        removedTour = tours.remove(tour);
+        removedCustomer = tours.remove(this);
+
+        return removedTour && removedCustomer;
+        
     }
 
     @Override
@@ -139,66 +198,9 @@ public class Customer extends User implements Serializable {
         return true;
     }
 
-    public boolean addTour(Tour tour) {
-        if (tours == null) {
-            tours = new ArrayList();
-        }
-
-        Boolean addedTour, addedCustomer;
-        addedTour = tours.add(tour);
-        addedCustomer = tour.getCustomers().add(this);
-
-        return addedTour && addedCustomer;
-    }
-    
-    public boolean removeTour(Tour tour){
-        if (tours == null) {
-            tours = new ArrayList();
-        }
-        boolean removedTour, removedCustomer;
-        removedTour = tours.remove(tour); 
-        removedCustomer = tours.remove(this);
-        
-        return removedTour && removedCustomer;
-    }
-    
-    
-
-//    @Override
-//    public int hashCode() {
-//        int hash = 3;
-//        hash = 67 * hash + Objects.hashCode(this.firstName);
-//        hash = 67 * hash + Objects.hashCode(this.lastName);
-//        hash = 67 * hash + Objects.hashCode(this.credits);
-//        return hash;
-//    }
-//
-//    @Override
-//    public boolean equals(Object obj) {
-//        if (this == obj) {
-//            return true;
-//        }
-//        if (obj == null) {
-//            return false;
-//        }
-//        if (getClass() != obj.getClass()) {
-//            return false;
-//        }
-//        final Customer other = (Customer) obj;
-//        if (!Objects.equals(this.firstName, other.firstName)) {
-//            return false;
-//        }
-//        if (!Objects.equals(this.lastName, other.lastName)) {
-//            return false;
-//        }
-//        if (!Objects.equals(this.credits, other.credits)) {
-//            return false;
-//        }
-//        return true;
-//    }
     @Override
     public String toString() {
-        return "Customer{" + "firstName=" + firstName + ", lastName=" + lastName + ", credits=" + credits +  '}';
+        return "Customer{" + "firstName=" + firstName + ", lastName=" + lastName + ", credits=" + credits + '}';
     }
 
 }

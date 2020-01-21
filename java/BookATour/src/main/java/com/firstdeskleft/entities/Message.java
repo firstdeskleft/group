@@ -37,9 +37,7 @@ public class Message implements Serializable{
     public Message(int sourceId, int targetId) {
         this.sourceId = sourceId;
         this.targetId = targetId;
-    }
-    
-    
+    }       
 
     public Message(int sourceId, int targetId, String body) {
         this.sourceId = sourceId;

@@ -18,10 +18,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import org.springframework.format.annotation.DateTimeFormat;
 
-/**
- *
- * @author User
- */
+
 @Entity(name = "Tour")
 @Table(name = "tour")
 @EntityListeners(GenericListener.class)
@@ -67,9 +64,6 @@ public class Tour implements Serializable {
         this.guide = guide;
         this.customers = customers;
     }
-
-    
-    
     
     public Guide getGuide() {
         return guide;
@@ -194,9 +188,6 @@ public class Tour implements Serializable {
     @Override
     public String toString() {
         return "Tour{" + "tid=" + tid + ", location=" + location + ", cost=" + cost + ", tdate=" + tdate + ", guide=" + guide  + '}';
-    }
-
-    
-    
+    }      
     
 }

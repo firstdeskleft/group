@@ -8,14 +8,8 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-/**
- *
- * @author nick.sabanis
- */
 @Entity
 @EntityListeners(GenericListener.class)
 @Table(name = "role")
@@ -24,9 +18,7 @@ public class Role implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer rid;
-    private String rname;
-
-    
+    private String rname;    
             
     public Role() {
     }
