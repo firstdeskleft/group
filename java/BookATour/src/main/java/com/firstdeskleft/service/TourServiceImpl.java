@@ -50,6 +50,11 @@ public class TourServiceImpl implements TourService{
     public Tour findTourById(Integer id) {
         return tdao.findById(id);
     }
+
+    @Override
+    public List<Tour> getUnbookedTours(Integer id) {
+        return tdao.getUnbookedToursByGuideId(id);
+    }
     
     
     

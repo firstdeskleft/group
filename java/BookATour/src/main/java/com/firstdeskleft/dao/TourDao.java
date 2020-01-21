@@ -23,6 +23,8 @@ public interface TourDao {
     public void delete(Integer id);
 
     public Tour findById(Integer id);
+
+    public List<Tour> getUnbookedToursByGuideId(Integer id);
     
     
 }

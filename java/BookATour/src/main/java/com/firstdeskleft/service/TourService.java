@@ -18,4 +18,6 @@ public interface TourService {
     public void deleteTour(Integer id);
 
     public Tour findTourById(Integer id);
+
+    public List<Tour> getUnbookedTours(Integer id);
 }
