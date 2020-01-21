@@ -167,8 +167,9 @@ a{
 }
 
 #editTourBtn{
-    margin-left: 7px;
+/*    margin-left: 7px;*/
     border-radius: 12px;
+    margin:0px auto;
    
 }
 
@@ -275,4 +276,9 @@ a{
   
   .SendMsg{
       margin-left: 97px;
+  }
+  
+  .customerMSG {
+      border-radius: 12px;
+      font-size: 10px;
   }
