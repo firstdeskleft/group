@@ -100,48 +100,40 @@ public class Guide extends User {
         this.profits = profits;
     }
 
+    
+    protected boolean ammountIsPositive(Integer ammount) {
+        return ammount >= 0;        
+    }
+    
     public boolean deposit(Integer ammount) {
 
-        if (!ensureAmmountPositive(ammount)) {
+        if (!ammountIsPositive(ammount)) {
+            System.err.println("Error. Ammount is not positive.");
             return false;
         }
-
+        
         profits += ammount;
         return true;
     }
 
     public boolean withdraw(Integer ammount) {
 
-        if (!ensureAmmountPositive(ammount)) {
+        if (!ammountIsPositive(ammount)) {
+            System.err.println("Error. Ammount not positive");
+            return false;
+        }
+        
+        if (profitsLessThanAmmount(ammount)){
+            System.err.println("Error. Insufficient credits");
             return false;
         }
 
         profits -= ammount;
         return true;
-
     }
 
-    public boolean creditsLessThanAmmount(Integer ammount) {
+    public boolean profitsLessThanAmmount(Integer ammount) {
         return profits < ammount;
-    }
-
-    public boolean creditsEqualToAmmount(Integer ammount) {
-        return Objects.equals(profits, ammount);
-    }
-
-    protected boolean ensureAmmountPositive(Integer ammount) {
-
-        if (creditsLessThanAmmount(ammount)) {
-            System.err.println("Error. Negative credits. No transaction.");
-            return false;
-        }
-
-        if (creditsEqualToAmmount(ammount)) {
-            System.out.println("Credits are zero. No transaction.");
-            return false;
-        }
-
-        return true;
     }
 
     public List<Tour> getTours() {

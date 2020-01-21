@@ -90,50 +90,41 @@ public class Customer extends User implements Serializable {
         this.tours = tours;
     }
 
+    protected boolean ammountIsPositive(Integer ammount) {
+        return ammount >= 0;        
+    }
+    
     public boolean deposit(Integer ammount) {
 
-        if (!ensureAmmountPositive(ammount)) {
+        if (!ammountIsPositive(ammount)) {
+            System.err.println("Error. Ammount is not positive.");
             return false;
         }
-
+        
         credits += ammount;
         return true;
     }
 
     public boolean withdraw(Integer ammount) {
 
-        if (!ensureAmmountPositive(ammount)) {
+        if (!ammountIsPositive(ammount)) {
+            System.err.println("Error. Ammount not positive");
+            return false;
+        }
+        
+        if (creditsLessThanAmmount(ammount)){
+            System.err.println("Error. Insufficient credits");
             return false;
         }
 
         credits -= ammount;
         return true;
-
     }
 
     public boolean creditsLessThanAmmount(Integer ammount) {
         return credits < ammount;
     }
-
-    public boolean creditsEqualToAmmount(Integer ammount) {
-        return Objects.equals(credits, ammount);
-    }
-
-    protected boolean ensureAmmountPositive(Integer ammount) {
-
-        if (creditsLessThanAmmount(ammount)) {
-            System.err.println("Error. Negative credits. No transaction.");
-            return false;
-        }
-
-        if (creditsEqualToAmmount(ammount)) {
-            System.out.println("Credits are zero. No transaction.");
-            return false;
-        }
-
-        return true;
-    }
-
+   
     public boolean addTour(Tour tour) {
         if (tours == null) {
             tours = new ArrayList();
@@ -147,18 +138,18 @@ public class Customer extends User implements Serializable {
     }
 
     public boolean removeTour(Tour tour) {
-        
+
         if (tours == null) {
             tours = new ArrayList();
         }
-        
+
         boolean removedTour, removedCustomer;
-        
+
         removedTour = tours.remove(tour);
         removedCustomer = tours.remove(this);
 
         return removedTour && removedCustomer;
-        
+
     }
 
     @Override
