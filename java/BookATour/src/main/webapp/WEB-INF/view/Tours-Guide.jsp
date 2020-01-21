@@ -65,6 +65,7 @@
                     <th class="text-center" scope="col">Location</th>
                     <th class="text-center" scope="col">Date</th>
                     <th class="text-center" scope="col">Cost</th>
+                    <th class="text-center" scope="col">Customers</th>
                     <th colspan="2" class="text-center" scope="col">Actions</th>
                 </tr>
             </thead>
@@ -82,16 +83,25 @@
                         <td class="text-center">${t.location}</td>
                         <td class="text-center">${t.tdate}</td>
                         <td class="text-center">${t.cost}</td>
+                        <td class="text-center">
 
-                        <td class="text-center"><a name="editTour" href="${updatelink}" id="editTour" type="submit">
-                                <button class="btn btn-primary text-white text-center" id="editTourBtn" name="editTourBtn">
-                                    <b id="guideEditTour">Edit</b></button></a></td>
-                        <td class="text-center"><a name="deleteTour" href="${deletelink}" id="deleteTour" type="submit">
-                                <b class="text-dark"><button onclick="return tourDeleteConfirm(this);"
-                                                             class="btn btn-danger text-center" id="deleteTourBtn" name="deleteTourBtn">
-                                        <b id="guideDeleteTour">Delete</b></button></b></a></td>
-                                    </c:forEach>
-                </tr>
+                            <c:forEach items="${t.customers}" var="tc">
+                                
+                                ${tc.lastName}
+                            </c:forEach>
+
+
+                        </td>
+                   
+                <td class="text-center"><a name="editTour" href="${updatelink}" id="editTour" type="submit">
+                        <button class="btn btn-primary text-white text-center" id="editTourBtn" name="editTourBtn">
+                            <b id="guideEditTour">Edit</b></button></a></td>
+                <td class="text-center"><a name="deleteTour" href="${deletelink}" id="deleteTour" type="submit">
+                        <b class="text-dark"><button onclick="return tourDeleteConfirm(this);"
+                                                     class="btn btn-danger text-center" id="deleteTourBtn" name="deleteTourBtn">
+                                <b id="guideDeleteTour">Delete</b></button></b></a></td>
+                            </c:forEach>
+            </tr>
             </tbody>
         </table>
     </div>
