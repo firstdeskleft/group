@@ -62,7 +62,9 @@ public class BookingController {
 
     @GetMapping("/delete")
     public String cancelBooking(@RequestParam("tid") Integer tid, @ModelAttribute("user") Customer customer) {
+        System.out.println("--------------------------------------------------------------------Tour id =" +tid);
         Tour t = tourService.findTourById(tid);
+        System.out.println("--------------------------------------------------------------------Tour is= "  +t);
         System.out.println("--------------------------BookingController before remove tour" + customer.getTours());
         customer.removeTour(t);
         System.out.println("---------------------------");

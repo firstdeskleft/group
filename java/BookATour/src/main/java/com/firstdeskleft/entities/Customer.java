@@ -145,7 +145,9 @@ public class Customer extends User implements Serializable {
 
         boolean removedTour, removedCustomer;
 
+        System.out.println("-------------------------------------------------Customer ENtity Before tours.remove    tours =  "   +tours);
         removedTour = tours.remove(tour);
+        System.out.println("-------------------------------------------------Customer ENtity after tours.remove     tours  =  "   +tours);
         removedCustomer = tour.getCustomers().remove(this);
 
         return removedTour && removedCustomer;
