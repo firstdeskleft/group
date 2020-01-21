@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
  */
 @Controller
 @RequestMapping("/tour")
-@SessionAttributes("user")
+@SessionAttributes({"user", "hasError"})
 public class TourController {
 
     @Autowired
@@ -41,9 +41,9 @@ public class TourController {
 
         return "Tours";
     }
-    
+
     @GetMapping("/listforAdmin")
-    public String showToursforAdmin(Model m){
+    public String showToursforAdmin(Model m) {
         List<Tour> list = tservice.getAllTours();
         m.addAttribute("listOfTours", list);
         return "ToursAdmin";
@@ -53,14 +53,15 @@ public class TourController {
     public String showToursforCustomer(Model m) {
         List<Tour> list = tservice.getAllTours();
         m.addAttribute("listOfTours", list);
+
         return "ToursForBooking";
     }
 
     @GetMapping("/create")
     public String createTour(Model m) {
-        
+
         m.addAttribute(new Tour());
-       
+
         return "CreateTour";
     }
 
@@ -69,7 +70,6 @@ public class TourController {
 
         guide.getTours().add(tour);
         tour.setGuide(guide);
-        
 
         tservice.save(tour);
 

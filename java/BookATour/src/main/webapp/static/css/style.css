@@ -287,3 +287,19 @@ a{
     margin-left: 700px;
     text-align: center;
 }
+
+
+.data-lowCredits{
+    text-align: center;
+    width: 15%;
+    height: 80px;
+    margin-left: 700px;
+}
+
+.err {
+    text-align: center;
+}
+
+.fas fa-bars{
+    color: navy;
+}

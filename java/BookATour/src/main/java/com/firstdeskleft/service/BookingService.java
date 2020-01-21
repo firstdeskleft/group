@@ -17,5 +17,7 @@ public interface BookingService {
 
 
     public String attempBooking (Integer tourId,Customer customer);
+
+    public String attempCancelBooking(Integer tid, Customer customer);
     
 }

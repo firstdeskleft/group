@@ -88,16 +88,63 @@ public class BookingServiceImpl implements BookingService {
 
         }
 
-//        System.out.println("----------------------------------------------------SUCCESS");
-//        customerService.UpdateCustomer(customer);
-//        System.out.println("------------------------------AfterCUstomerUpdate");
-//
         System.out.println("Passed errors. Before updating guide:" + guide);
 
         guideService.UpdateGuide(guide);
-        
+
         System.out.println("After updating guide:" + guide);
         System.out.println("Returning to BookingController");
+
+        return "success";
+
+    }
+
+    @Override
+    public String attempCancelBooking(Integer tid, Customer customer) {
+
+        Tour tour = tourService.findTourById(tid);
+
+        if (tour == null) {
+            return "Tour not found";
+        }
+
+        Guide guide = tour.getGuide();
+
+        if (guide == null) {
+
+            tourService.deleteTour(tid);
+
+            return "Guide not found. Removed tour";
+        }
+
+        Integer tourCost = tour.getCost();
+
+        Boolean refundAccomplished = customer.deposit(tourCost);
+
+        if (!refundAccomplished) {
+            return "Could not refund Customer";
+        }
+
+        Boolean withdrawAccomplished = guide.withdraw(tourCost);
+
+        if (!withdrawAccomplished) {
+
+            customer.withdraw(tourCost);
+
+            return "Could not withdraw from guide";
+        }
+
+        Boolean tourRemoved = customer.removeTour(tour);
+
+        if (!tourRemoved) {
+            return "error";
+        }
+
+        Boolean customerRemoved = tour.removeCustomer(customer);
+
+        if (!customerRemoved) {
+            return "error";
+        }
 
         return "success";
 
