@@ -66,10 +66,14 @@
         <input class="data-filter row col-1" type="number" id="searchTourCost" onkeyup="filterToursCost()"
                placeholder="Tour Price">
     </section>
+    <div class="row data-credits">
+        <h4 id="showCredits"><b>Your Credits: ${user.credits}$</b></h4>
+    </div>
     <div class="row padding">
         <table id="tourTable" class="table table-hover table-striped table-bordered col-8 border border-dark">
             <thead>
                 <tr class="bg-info data-tourInfo">
+                    <th class="text-center" scope="col">Tour ID#</th>
                     <th class="text-center" scope="col">Location</th>
                     <th class="text-center" scope="col">Date</th>
                     <th class="text-center" scope="col">Cost</th>
@@ -89,7 +93,7 @@
                         <td class="text-center">${t.tid}</td>
                         <td class="text-center">${t.location}</td>
                         <td class="text-center">${t.tdate}</td>
-                        <td class="text-center">${t.cost}</td>
+                        <td id="tourCost" class="text-center"><b>${t.cost}$</b></td>
                         <td class="text-center">${t.guide.username}</td>                      
                         <td class="text-center">
                             <a href="${booklink}">
@@ -105,7 +109,20 @@
         </table>
     </div>
 
+    <script>
+        
+        function confirmBooking() {
+            return confirm("Are you sure you want to book this Tour?");
+        }
+        ;
 
+        const btn = document.getElementById('bookButton')
+        btn.addEventListener('click', () => {
+            if (${user.credits} < ${t.cost}) {
+                alert('Sorry, not enough money');
+            }
+        })
+    </script>
 
     <!--JQUERY-->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
