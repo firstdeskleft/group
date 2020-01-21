@@ -15,8 +15,7 @@ import java.util.List;
  */
 public interface BookingService {
 
-    public void createBooking(Tour t,Customer c);
 
-//    public  List <Booking> findByCustomerId(Integer Id);
+    public String attempBooking (Integer tourId,Customer customer);
     
 }

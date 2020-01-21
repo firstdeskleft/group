@@ -23,7 +23,7 @@ public class Customer extends User implements Serializable {
 
     private String firstName;
     private String lastName;
-    private Integer credits;
+    private Integer credits=0;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -146,7 +146,7 @@ public class Customer extends User implements Serializable {
         boolean removedTour, removedCustomer;
 
         removedTour = tours.remove(tour);
-        removedCustomer = tours.remove(this);
+        removedCustomer = tour.getCustomers().remove(this);
 
         return removedTour && removedCustomer;
 

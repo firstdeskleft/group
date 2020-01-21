@@ -28,7 +28,7 @@ public class Tour implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer tid;
     private String location;
-    private Integer cost;
+    private Integer cost=0;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate tdate;
     @ManyToOne

@@ -30,7 +30,7 @@ public class Guide extends User {
 
     private Certificate certificate;
 
-    private Integer profits;
+    private Integer profits=0;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "guide", cascade = CascadeType.ALL)
     @Column(name = "tid")

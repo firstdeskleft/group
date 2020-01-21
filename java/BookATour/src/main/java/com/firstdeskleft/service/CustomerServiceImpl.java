@@ -37,6 +37,7 @@ public class CustomerServiceImpl implements CustomerService {
         return cdao.findByUsername(username);
     }
 
+    @Override
     public void saveWithBonusCredits(Customer customer,Integer bonus) {
 
         customer.setPassword(passwordEncoder.encode(customer.getPassword()));
@@ -44,6 +45,7 @@ public class CustomerServiceImpl implements CustomerService {
         List<Role> list = new ArrayList();
         Role role = roleService.findByName("ROLE_CUSTOMER");
         list.add(role);
+        System.out.println("----------------------------------------------------CUSTOMERSERVICE   customer=  "+ customer);
         customer.setRoles(list);
         customer.deposit(bonus);
         cdao.save(customer);
