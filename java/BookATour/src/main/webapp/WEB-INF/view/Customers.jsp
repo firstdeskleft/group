@@ -23,6 +23,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeAdmin"
+                                                          class="nav-link nav-link-hover"><b>Home</b></a></li>
                         <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/tour/listforAdmin"
                                                           class="nav-link nav-link-hover"><b>Tours</b></a></li>
                         <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/guide/list"
@@ -91,15 +93,11 @@
                         </td>
                         <td class="text-center">
                             <a name="deleteCustomer" href="${deletelink}" id="deleteCustomer" type="submit">
-                                <b class="text-dark">
                                     <button 
                                         onclick="return customerDeleteConfirm(this);"
                                         class="btn btn-danger text-center" id="deleteCustomerBtn" name="deleteCustomerBtn">
-                                        <b id="adminDeleteCustomer">
-                                            Delete
-                                        </b>
+                                            Delete Customer
                                     </button>
-                                </b>
                             </a>
                         </td>
                     </c:forEach>

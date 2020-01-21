@@ -3,7 +3,6 @@
 <%@taglib prefix="secutiry" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
 
     <head>
@@ -25,6 +24,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="NavbarUtils">
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/HomeAdmin"
+                                                          class="nav-link nav-link-hover"><b>Home</b></a></li>
                         <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/tour/listforAdmin"
                                                           class="nav-link nav-link-hover"><b>Tours</b></a></li>
                         <li class="nav-item main-item"><a href="${pageContext.request.contextPath}/guide/list"
@@ -100,19 +101,14 @@
                                 href="${deletelink}" 
                                 id="deleteGuide"
                                 type="submit">
-                                <b class="text-dark">
                                     <button  
                                         onclick="return customerDeleteConfirm(this);"
                                         class="btn btn-danger text-center nav-link-hover"
                                         id="deleteGuideBtn" name="deleteGuideBtn">
-                                        <b id="adminDeleteGuide">
-                                            Delete
-                                        </b>
+                                            Delete Guide
                                     </button>
-                                </b>
                             </a>
                         </td>
-                        
                     </c:forEach>
                 </tr>
             </tbody>
