@@ -70,59 +70,52 @@
             <label class="control-label"  for="firstName">First Name</label>
             <div class="controls">
               <form:input type="text" path="firstName" id="firstName" name="firstName" placeholder="" class="input-xlarge"/>
-              <p class="help-block">First Name can contain any letters or numbers, without spaces</p>
             </div>
           </div>
-
+            <br>
           <div class="control-group">
             <!-- Last name -->
             <label class="control-label"  for="lastName">Last Name</label>
             <div class="controls">
               <form:input  path="lastName" type="text" id="lastName" name="lastName" placeholder="" class="input-xlarge"/>
-              <p class="help-block">Last Name can contain any letters or numbers, without spaces</p>
             </div>
           </div>
-
+             <br>
           <div class="control-group">
             <!-- Subject -->
             <label class="control-label"  for="subject">Subject</label>
             <div class="controls">
               <form:input path="subject" type="text" id="subject" name="subject" placeholder="" class="input-xlarge"/>
-              <p class="help-block">Subject can contain any letters or numbers</p>
             </div>
           </div>
-
+             <br>
           <div class="control-group">
             <!-- Certificate -->
             <label class="control-label"  for="certificate">Certificate</label>
             <div class="controls">
               <form:input path="certificate" type="text" id="certificate" name="certificate" placeholder="Certificate ID" class="input-xlarge"/>
-              <p class="help-block"></p>
             </div>
           </div>
-
-
-
+             <br>
+              <br>
+             
           <div class="control-group">
             <!-- Username -->
             <label class="control-label"  for="username">Username</label>
             <div class="controls">
-              <form:input path="username" type="text" id="username" name="username" placeholder="" class="input-xlarge"/>
-              <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+              <form:input path="username" type="text" id="username" name="username" placeholder="" class="input-xlarge" required="true"/>
             </div>
           </div>
-       
+        <br>
           <div class="control-group">
             <!-- Password-->
             <label class="control-label" for="password">Password</label>
             <div class="controls">
-              <form:input path="password" type="password" id="password" name="password" placeholder="" class="input-xlarge"/>
-              <p class="help-block">Password should be at least 4 characters</p>
+              <form:input path="password" type="password" id="password" name="password" placeholder="" class="input-xlarge" required="true"/>
             </div>
           </div>
        
-         
-       
+          <br>
           <div class="control-group">
             <!-- Button -->
             <div class="controls">

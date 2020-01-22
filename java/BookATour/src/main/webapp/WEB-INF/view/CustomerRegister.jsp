@@ -72,39 +72,36 @@
             <label class="control-label"  for="firstName">First Name</label>
             <div class="controls">
               <form:input path="firstName" type="text" id="firstName" name="firstName" placeholder="" class="input-xlarge"/>
-              <p class="help-block">First Name can contain any letters or numbers, without spaces</p>
             </div>
           </div>
-
+            <br>
           <div class="control-group">
             <!-- Last name -->
             <label class="control-label"  for="lastName">Last Name</label>
             <div class="controls">
               <form:input path="lastName" type="text" id="lastName" name="lastName" placeholder="" class="input-xlarge"/>
-              <p class="help-block">Last Name can contain any letters or numbers, without spaces</p>
             </div>
           </div>
 
-
+            <br>
+             <br>
           <div class="control-group">
             <!-- Username -->
             <label class="control-label"  for="username">Username</label>
             <div class="controls">
-              <form:input path="username" type="text" id="username" name="username" placeholder="" class="input-xlarge"/>
-              <p class="help-block">Username can contain any letters or numbers, without spaces</p>
+              <form:input path="username" type="text" id="username" name="username" placeholder="" class="input-xlarge" required="true"/>
             </div>
           </div>
-       
+            <br>
           <div class="control-group">
             <!-- Password-->
             <label class="control-label" for="password">Password</label>
             <div class="controls">
-              <form:input path="password" type="password" id="password" name="password" placeholder="" class="input-xlarge"/>
-              <p class="help-block">Password should be at least 4 characters</p>
+              <form:input path="password" type="password" id="password" name="password" placeholder="" class="input-xlarge" required="true"/>
             </div>
           </div>
 
-          
+          <br>
        
           <div class="control-group">
             <!-- Button -->

@@ -101,7 +101,7 @@ public class TourController {
         System.out.println("----------------------------------------GETMAPPING DELETE TOUR");
         tservice.deleteTour(id);
 
-        return "redirect:/tour/guidetours";
+        return "redirect:/HomeGuide";
     }
 
     @GetMapping("/update")
